@@ -2,8 +2,10 @@
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-
 import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+
+import Counter from './Counter';
 
 let store = createStore(
     (state, action) => {
@@ -17,26 +19,8 @@ let store = createStore(
     },
     { counter: 0 });
 
-class HelloWorld extends React.Component<any, any> {
-	private unsubscribe: Function;
-    componentDidMount() {
-        this.unsubscribe = store.subscribe(() => this.forceUpdate());
-    }
-    componentWillUnmount() {
-        this.unsubscribe();
-    }
-    render() {
-        return (
-            <div>
-                <p>
-                    <label>Counter: </label><b>#{store.getState().counter}</b>
-                </p>
-                <button onClick={e => store.dispatch({ type:'INCR', by: 1 }) }>INCREMENT</button>
-                <span style={{ padding: "0 5px" }} />
-                <button onClick={e => store.dispatch({ type:'INCR', by: -1 }) }>DECREMENT</button>
-            </div>
-        );
-    }
-}
-
-ReactDOM.render(<HelloWorld/>, document.getElementById('app'));
+ReactDOM.render(
+	<Provider store={store}>
+		<Counter />
+	</Provider>,
+	document.getElementById('app'));

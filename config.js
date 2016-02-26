@@ -10,6 +10,7 @@ System.config({
   map: {
     "react": "npm:react@0.14.7",
     "react-dom": "npm:react-dom@0.14.7",
+    "react-redux": "npm:react-redux@4.4.0",
     "redux": "npm:redux@3.3.1",
     "typescript": "npm:typescript@1.8.2",
     "github:jspm/nodelibs-assert@0.1.0": {
@@ -50,6 +51,10 @@ System.config({
     "npm:inherits@2.0.1": {
       "util": "github:jspm/nodelibs-util@0.1.0"
     },
+    "npm:invariant@2.2.0": {
+      "loose-envify": "npm:loose-envify@1.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
     "npm:lodash@4.5.1": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
@@ -65,6 +70,15 @@ System.config({
     },
     "npm:react-dom@0.14.7": {
       "react": "npm:react@0.14.7"
+    },
+    "npm:react-redux@4.4.0": {
+      "hoist-non-react-statics": "npm:hoist-non-react-statics@1.0.5",
+      "invariant": "npm:invariant@2.2.0",
+      "lodash": "npm:lodash@4.5.1",
+      "loose-envify": "npm:loose-envify@1.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "react": "npm:react@0.14.7",
+      "redux": "npm:redux@3.3.1"
     },
     "npm:react@0.14.7": {
       "fbjs": "npm:fbjs@0.6.1",
