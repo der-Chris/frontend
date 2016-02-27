@@ -13,7 +13,7 @@
   },
   "name": "help-me-choose",
   "version": "0.0.1",
-  "main": "config.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,6 +21,7 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "express": "^4.13.4",
     "gulp": "^3.9.1",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-typescript": "^2.12.0",
