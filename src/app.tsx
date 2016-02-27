@@ -5,14 +5,12 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
-import Counter from './Counter';
-import About from './About';
+import { Routes } from './routes';
 
-let store = createStore(
-	(state, action) => {
+let store = createStore((state, action) => {
 		console.log(action.type);
+		
 		switch (action.type) {
 			case 'INCR':
 				return { counter: state.counter + action.by };
@@ -26,9 +24,6 @@ let store = createStore(
 
 ReactDOM.render(
 	<Provider store={store}>
-		<Router history={browserHistory}>
-			<Route path="/" component={Counter} />
-			<Route path="/about" component={About} />
-		</Router>
+		<Routes />
 	</Provider>,
 	document.getElementById('app'));

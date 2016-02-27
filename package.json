@@ -1,6 +1,7 @@
 {
   "jspm": {
     "dependencies": {
+      "material-ui": "npm:material-ui@^0.14.4",
       "react": "npm:react@^0.14.7",
       "react-dom": "npm:react-dom@^0.14.7",
       "react-redux": "npm:react-redux@^4.4.0",
@@ -23,9 +24,14 @@
   "devDependencies": {
     "express": "^4.13.4",
     "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-sass": "^2.2.0",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-typescript": "^2.12.0",
     "http-server": "^0.9.0",
-    "jspm": "^0.16.30"
+    "jspm": "^0.16.30",
+    "merge-stream": "^1.0.0",
+    "normalize.css": "^3.0.3",
+    "typings": "^0.6.8"
   }
 }
