@@ -10,7 +10,7 @@ class Frontpage extends React.Component<any, any> {
 	render() {
 		return (
 			<div className="site frontpage">
-				<h1>Frontpage</h1>
+				<h1>Help-me-Choose</h1>
 				
 				<Paper zDepth={2}>
 					<CreateQuestion />

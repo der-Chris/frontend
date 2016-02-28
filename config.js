@@ -8,12 +8,14 @@ System.config({
   },
 
   map: {
+    "es6-shim": "github:es-shims/es6-shim@0.34.4",
     "material-ui": "npm:material-ui@0.14.4",
     "react": "npm:react@0.14.7",
     "react-dom": "npm:react-dom@0.14.7",
     "react-redux": "npm:react-redux@4.4.0",
     "react-router": "npm:react-router@2.0.0",
     "redux": "npm:redux@3.3.1",
+    "redux-thunk": "npm:redux-thunk@1.0.3",
     "typescript": "npm:typescript@1.8.2",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
