@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 
-import { TextField, RaisedButton, LinearProgress } from 'material-ui';
+import TextField from 'material-ui/lib/text-field';
+import RaisedButton from 'material-ui/lib/raised-button';
+import LinearProgress from 'material-ui/lib/linear-progress';
 
 import { Question } from '../models/Question';
 import { nameChange, submitClick } from '../actions/createQuestion';
@@ -48,7 +50,7 @@ class CreateQuestion extends React.Component<any, any> {
 	}
 	
 	handleQuestionCreated = (question: Question) => {
-		console.log("redirect "+question._id);
+		browserHistory.push('/please/'+question._id);
 	}
 }
 

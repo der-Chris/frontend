@@ -1,5 +1,4 @@
 import { copyAssign } from '../utils';
-import Action from '../actions/Action';
 import { NameChange, SaveActive, SaveDone } from '../actions/createQuestion';
 
 export default function createQuestion(state: any = {}, action: any) {
@@ -18,7 +17,6 @@ export default function createQuestion(state: any = {}, action: any) {
 			return copyAssign({}, state, {
 				saveActive: false
 			});
-		
 		
 		default:
 			return state;

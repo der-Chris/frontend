@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
-import { Paper } from 'material-ui';
+import Paper from 'material-ui/lib/paper';
 
 import CreateQuestion from '../components/CreateQuestion';
 

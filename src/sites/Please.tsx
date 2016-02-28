@@ -1,39 +1,43 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
+
+import LinearProgress from 'material-ui/lib/linear-progress';
+
+import { fetchQuestion } from '../actions/question';
 
 class Please extends React.Component<any, any> {
+	componentDidMount() {
+		this.props.fetchQuestion(this.props.params.qid);
+	}
+
 	render() {
+		let heading = '', content;
+		
+		if (this.props.fetchActive || !this.props.question) {
+			heading = 'Loading...';
+			content = <LinearProgress mode="indeterminate" />;
+		}
+		else if (this.props.fetchError) {
+			heading = 'Fetch Error';
+			content = <pre>{this.props.fetchError}</pre>;
+		}
+		else {
+			heading = this.props.question.name;
+		}
+		
 		return (
 			<div className="site please">
-				<p>
-					<label>Counter: </label>
-					<b>#{this.props.counter}</b>
-				</p>
-				<button onClick={e => this.props.incr()}>INCREMENT</button>
-				<span style={{ padding: "0 5px" }} />
-				<button onClick={e => this.props.decr()}>DECREMENT</button>
-				<span style={{ padding: "0 5px" }} />
-				<button onClick={e => this.props.set(50)}>SET 50</button>
-				<span style={{ padding: "0 5px" }} />
-				<Link to="/about">About</Link>
+				<h1>{heading}</h1>
+				{content}
 			</div>
 		);
 	}
 }
 
-const mapStateToProps = (state) => state;
+const mapStateToProps = (state) => state.question;
 
 const mapDispatchToProps = (dispatch) => ({
-	set: (value: number) => {
-		dispatch({ type: 'SET', to: value });
-	},
-	incr: () => {
-		dispatch({ type: 'INCR', by: 1 });
-	},
-	decr: () => {
-		dispatch({ type: 'INCR', by: -1 });
-	}
+	fetchQuestion: (id: string) => dispatch(fetchQuestion(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Please);

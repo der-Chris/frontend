@@ -13,8 +13,8 @@ export function nameChange(name: string) {
 }
 
 export function submitClick(callback: (question: Question) => any) {
-	return (dispatch) => {
-		createQuestion('HELLOOO')
+	return (dispatch, getState) => {
+		createQuestion(getState().createQuestion.name)
 			.then((question: Question) => {
 				dispatch({ type: SaveDone });
 				return question;

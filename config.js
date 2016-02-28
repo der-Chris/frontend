@@ -6,7 +6,6 @@ System.config({
     "npm:*": "jspm_packages/npm/*",
     "github:*": "jspm_packages/github/*"
   },
-
   map: {
     "es6-shim": "github:es-shims/es6-shim@0.34.4",
     "material-ui": "npm:material-ui@0.14.4",
