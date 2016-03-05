@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Link, browserHistory } from 'react-router';
+import { Link } from 'react-router';
 
 import TextField from 'material-ui/lib/text-field';
 import RaisedButton from 'material-ui/lib/raised-button';
 import LinearProgress from 'material-ui/lib/linear-progress';
 
+import AppState from '../reducers/AppState';
 import { Question } from '../models/Question';
 import { nameChange, submitClick } from '../actions/createQuestion';
 
@@ -27,9 +28,11 @@ class CreateQuestion extends React.Component<any, any> {
 				<TextField type="text" style={textfieldStyle}
 					hintText="Help me choose what used car to buy."
 					floatingLabelText="Enter your Question here"
+					defaultValue={this.props.name}
 					errorText={this.props.nameValid}
 					disabled={this.props.saveActive}
-					onChange={this.onNameChange} />
+					onChange={this.onNameChange}
+					ref="name" />
 				
 				<div style={{textAlign: 'right'}}>
 					<RaisedButton label="Create"
@@ -41,24 +44,21 @@ class CreateQuestion extends React.Component<any, any> {
 		);
 	}
 	
-	onNameChange = (event) => {
-		this.props.nameChange(event.target.value.trim());
+	onNameChange = (event: __React.FormEvent) => {
+		var nameEl = this.refs['name'] as HTMLInputElement;
+		this.props.nameChange(nameEl.value.trim());
 	}
 	
-	onCreateClick = (event) => {
-		this.props.submitClick(this.handleQuestionCreated);
-	}
-	
-	handleQuestionCreated = (question: Question) => {
-		browserHistory.push('/please/'+question._id);
+	onCreateClick = (event: __React.MouseEvent) => {
+		this.props.submitClick();
 	}
 }
 
-const mapStateToProps = (state) => state.createQuestion;
+const mapStateToProps = (state: AppState) => state.createQuestion;
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: Redux.Dispatch) => ({
 	nameChange: (name: string) => dispatch(nameChange(name)),
-	submitClick: (callback: (question: Question) => any) => dispatch(submitClick(callback))
+	submitClick: () => dispatch(submitClick())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateQuestion);

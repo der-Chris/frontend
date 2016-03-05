@@ -6,7 +6,7 @@ export const FetchActive = 'question:fetchQuestion';
 export const FetchDone = 'question:fetchDone';
 
 export function fetchQuestion(id: string) {
-	return (dispatch) => {
+	return (dispatch: Redux.Dispatch) => {
 		fetchQuestionFunc(id)
 			.then((question: Question) => {
 				return dispatch({ type: FetchDone, question });

@@ -12,6 +12,7 @@ export function nameValidator(name: string): string {
 	if (name.length < 4) {
 		return 'MIN_LENGTH';
 	}
+	
 	if (!(/^[a-zA-Z0-9 \-\+,;\.?!]+$/.test(name))) {
 		return 'REGEX';
 	}
@@ -19,7 +20,7 @@ export function nameValidator(name: string): string {
 	return null;
 }
 
-let questionDb = {};
+let questionDb: { [id: string]: Question; } = {};
 
 export function createQuestion(name: string): Promise<Question> {
 	return new Promise((resolve, reject) => {

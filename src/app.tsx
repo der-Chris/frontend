@@ -7,22 +7,22 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import 'es6-shim';
 
+import Action from './actions/Action';
 import reducer from './reducers/index';
 import { Routes } from './routes';
 
 /**
  * Thunk middleware (copied from redux-thunk) allows functions to the dispatched.
  */
-const thunkMiddleware = store => next => action => {
+const thunkMiddleware = (store: Redux.Store) => (next: any) => (action: any) => {
 	return typeof action === 'function' ?
-		action(store.dispatch, store.getState) :
-		next(action);
+		action(store.dispatch, store.getState) : next(action);
 }
 
 /**
  * Logs all actions and states after they are dispatched.
  */
-const loggerMiddleware = store => next => action => {
+const loggerMiddleware = (store: Redux.Store) => (next: any) => (action: Action) => {
 	console.group();
 	console.info('dispatching', action);
 	let result = next(action);
@@ -38,3 +38,7 @@ ReactDOM.render(
 		<Routes />
 	</Provider>,
 	document.getElementById('app'));
+
+import { nameChange, submitClick } from './actions/createQuestion';
+store.dispatch(nameChange('Hello World!'));
+store.dispatch(submitClick());

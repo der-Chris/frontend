@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import LinearProgress from 'material-ui/lib/linear-progress';
 
+import AppState from '../reducers/AppState';
 import { fetchQuestion } from '../actions/question';
 
 class Please extends React.Component<any, any> {
@@ -11,7 +12,7 @@ class Please extends React.Component<any, any> {
 	}
 
 	render() {
-		let heading = '', content;
+		let heading = '', content: JSX.Element;
 		
 		if (this.props.fetchActive || !this.props.question) {
 			heading = 'Loading...';
@@ -34,9 +35,9 @@ class Please extends React.Component<any, any> {
 	}
 }
 
-const mapStateToProps = (state) => state.question;
+const mapStateToProps = (state: AppState) => state.question;
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: Redux.Dispatch) => ({
 	fetchQuestion: (id: string) => dispatch(fetchQuestion(id))
 });
 
