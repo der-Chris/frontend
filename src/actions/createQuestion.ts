@@ -2,7 +2,7 @@ import { browserHistory } from 'react-router';
 
 import AppState from '../reducers/AppState';
 import { NameChangeAction } from '../reducers/createQuestion';
-import { Question, nameValidator, createQuestion } from '../models/Question';
+import { Question, nameValidator, QuestionApi } from '../models/Question';
 
 export const NameChange = 'createQuestion:nameChange';
 export const SaveActive = 'createQuestion:saveActive';
@@ -18,7 +18,7 @@ export function nameChange(name: string): NameChangeAction {
 
 export function submitClick() {
 	return (dispatch: Redux.Dispatch, getState: () => AppState) => {
-		createQuestion(getState().createQuestion.name)
+		QuestionApi.create(getState().createQuestion.name)
 			.then((question: Question) => {
 				dispatch({ type: SaveDone });
 				return question;

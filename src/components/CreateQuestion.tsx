@@ -31,8 +31,7 @@ class CreateQuestion extends React.Component<any, any> {
 					defaultValue={this.props.name}
 					errorText={this.props.nameValid}
 					disabled={this.props.saveActive}
-					onChange={this.onNameChange}
-					ref="name" />
+					onChange={this.onNameChange} />
 				
 				<div style={{textAlign: 'right'}}>
 					<RaisedButton label="Create"
@@ -44,9 +43,8 @@ class CreateQuestion extends React.Component<any, any> {
 		);
 	}
 	
-	onNameChange = (event: __React.FormEvent) => {
-		var nameEl = this.refs['name'] as HTMLInputElement;
-		this.props.nameChange(nameEl.value.trim());
+	onNameChange = (event: any) => {
+		this.props.nameChange(event.target.value.trim());
 	}
 	
 	onCreateClick = (event: __React.MouseEvent) => {

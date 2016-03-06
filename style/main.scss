@@ -1,7 +1,8 @@
 @import '_colors';
 
-body {
+html {
 	background-color: $background-color;
+	box-shadow: inset 0 0 10em $html-shadow-color;
 }
 
 h1, h2, h3, h4 {

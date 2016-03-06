@@ -1,13 +1,13 @@
 import LinearProgress from 'material-ui/lib/linear-progress';
 
-import { Question, fetchQuestion as fetchQuestionFunc } from '../models/Question';
+import { Question, QuestionApi } from '../models/Question';
 
 export const FetchActive = 'question:fetchQuestion';
 export const FetchDone = 'question:fetchDone';
 
 export function fetchQuestion(id: string) {
 	return (dispatch: Redux.Dispatch) => {
-		fetchQuestionFunc(id)
+		QuestionApi.fetch(id)
 			.then((question: Question) => {
 				return dispatch({ type: FetchDone, question });
 			})
