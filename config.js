@@ -19,6 +19,7 @@ System.config({
     "superagent": "npm:superagent@1.7.2",
     "superagent-mocker": "npm:superagent-mocker@0.3.0",
     "typescript": "npm:typescript@1.8.2",
+    "visionmedia/superagent": "github:visionmedia/superagent@1.8.0",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },

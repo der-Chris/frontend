@@ -18,7 +18,7 @@ import { Routes } from './routes';
 const thunkMiddleware = (store: Redux.Store) => (next: any) => (action: any) => {
 	return typeof action === 'function' ?
 		action(store.dispatch, store.getState) : next(action);
-}
+};
 
 /**
  * Logs all actions and states after they are dispatched.
@@ -30,7 +30,7 @@ const loggerMiddleware = (store: Redux.Store) => (next: any) => (action: Action)
 	console.log('next state', store.getState());
 	console.groupEnd();
 	return result;
-}
+};
 
 let store = createStore(reducer, applyMiddleware(loggerMiddleware, thunkMiddleware));
 

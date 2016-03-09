@@ -5,6 +5,7 @@ import LinearProgress from 'material-ui/lib/linear-progress';
 
 import AppState from '../reducers/AppState';
 import { fetchQuestion } from '../actions/question';
+import PleaseSuggestions from '../components/PleaseSuggestions';
 
 class Please extends React.Component<any, any> {
 	componentDidMount() {
@@ -24,6 +25,7 @@ class Please extends React.Component<any, any> {
 		}
 		else {
 			heading = this.props.question.name;
+			content = <PleaseSuggestions />
 		}
 		
 		return (
