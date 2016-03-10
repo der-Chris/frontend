@@ -1,4 +1,4 @@
-import { browserHistory } from 'react-router';
+import { hashHistory } from 'react-router';
 
 import AppState from '../reducers/AppState';
 import { NameChangeAction } from '../reducers/createQuestion';
@@ -24,7 +24,7 @@ export function submitClick() {
 				return question;
 			})
 			.then((question: Question) => {
-				browserHistory.push('/please/'+question._id);
+				hashHistory.push('/please/'+question._id);
 			});
 	
 		return dispatch({ type: SaveActive });

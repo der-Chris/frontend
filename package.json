@@ -21,7 +21,7 @@
   "version": "0.0.1",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "bundle": "jspm bundle dist/app.js dist/bundle.min.js --minify --skip-source-maps"
   },
   "author": "",
   "license": "ISC",

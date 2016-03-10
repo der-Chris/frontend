@@ -39,7 +39,3 @@ ReactDOM.render(
 		<Routes />
 	</Provider>,
 	document.getElementById('app'));
-
-import { nameChange, submitClick } from './actions/createQuestion';
-store.dispatch(nameChange('Hello World!'));
-store.dispatch(submitClick());
