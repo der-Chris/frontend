@@ -1,13 +1,14 @@
 import Action from '../actions/Action';
 import { copyAssign } from '../utils';
 import { NameChange, SaveActive, SaveDone } from '../actions/createQuestion';
+import AppState from "./AppState";
 
 export interface NameChangeAction extends Action {
 	name: string;
 	nameValid: string;
 }
 
-export default function createQuestion(state: any = {}, action: Action) {
+export default function createQuestion(state: any = {}, action: Action): AppState {
 	switch (action.type) {
 		case NameChange:
 			var nameChangeAction = action as NameChangeAction;

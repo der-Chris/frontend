@@ -1,10 +1,8 @@
-/// <reference path='../../../jest.d.ts' />
-
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as TestUtils from 'react-addons-test-utils';
 
-jest.unmock('../Box');
+jest.dontMock('../Box');
 import Box from '../Box';
 
 describe('Box', () => {

@@ -4,7 +4,6 @@ import * as TestUtils from 'react-addons-test-utils';
 
 jest.dontMock('../Button');
 import Button from '../Button';
-import Component = __React.Component;
 
 describe('Button', () => {
 
@@ -18,7 +17,7 @@ describe('Button', () => {
 		clickCount = 0;
 
 		const button = TestUtils.renderIntoDocument(
-			<Button labelText="Button Label" onClick={clickHandler}/>
+			<Button labelText="Button Label" onClick={clickHandler} />
 		);
 		const buttonNode = ReactDOM.findDOMNode(button);
 
