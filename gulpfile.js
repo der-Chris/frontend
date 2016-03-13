@@ -1,8 +1,10 @@
-var gulp = require('gulp')
+var gulp = require('gulp');
 var ts = require('gulp-typescript');
 var sourcemaps = require('gulp-sourcemaps');
 var browserify = require('browserify');
+var uglify = require('gulp-uglify');
 var sass = require('gulp-sass');
+var cleanCSS = require('gulp-clean-css');
 var concat = require('gulp-concat');
 var merge = require('merge-stream');
 var source = require('vinyl-source-stream');
@@ -18,7 +20,7 @@ var vendorLibs = [
 	'es6-shim'
 ];
 
-gulp.task('app:ts', function() {
+gulp.task('app:ts', function () {
 	var tsResult = gulp.src([
 			'src/**/*.ts*'
 		])
@@ -27,12 +29,12 @@ gulp.task('app:ts', function() {
 
 	return tsResult.js
 		.pipe(sourcemaps.write())
-		.pipe(gulp.dest('build/app/'));
+		.pipe(gulp.dest('build/src/'));
 });
 
-gulp.task('app:bundle', function() {
-	return browserify('build/app/app.js', {
-			debug: true,
+gulp.task('app:bundle', function () {
+	return browserify('build/src/app.js', {
+			debug: true
 		})
 		.external(vendorLibs)
 		.bundle()
@@ -40,7 +42,17 @@ gulp.task('app:bundle', function() {
 		.pipe(gulp.dest('build/'));
 });
 
-gulp.task('vendor', function() {
+gulp.task('tests:ts', function () {
+	var tsResult = gulp.src([
+			'tests/**/*.ts*'
+		])
+		.pipe(ts(tsProject));
+
+	return tsResult.js
+		.pipe(gulp.dest('build/tests/'));
+});
+
+gulp.task('vendor:bundle', function () {
 	var b = browserify({ debug: false });
 
 	vendorLibs.forEach(function (id) {
@@ -65,8 +77,24 @@ gulp.task('style', function () {
 	
 	return merge(depStream, sassStream)
 		.pipe(concat('s.css'))
+		.pipe(cleanCSS({ compatibility: 'ie8' }))
 		.pipe(gulp.dest('build/'));
 });
 
+gulp.task('app:minify', function () {
+	gulp.src('build/a.js')
+		.pipe(uglify())
+		.pipe(gulp.dest('build/'));
+});
+
+gulp.task('vendor:minify', function () {
+	gulp.src('build/v.js')
+		.pipe(uglify({
+			preserveComments: 'license'
+		}))
+		.pipe(gulp.dest('build/'));
+});
+
+gulp.task('minify', ['app:minify', 'vendor:minify']);
 gulp.task('app', ['app:ts', 'app:bundle']);
-gulp.task('default', ['app', 'vendor', 'style']);
+gulp.task('default', ['app', 'vendor:bundle', 'style']);

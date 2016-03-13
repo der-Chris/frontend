@@ -1,7 +1,3 @@
-import axios = require('axios');
-
-//import '../mocks/Question';
-
 export class Question {
 	_id: string;
 	name: string;
@@ -22,13 +18,13 @@ export function nameValidator(name: string): string {
 	return null;
 }
 
-function create(name: string): Promise<Question> {
+function create(name: string): any {
 	return axios.post('/hmc-create-question', {
 		name
 	});
 }
 
-function fetch(id: string): Promise<Question> {
+function fetch(id: string): any {
 	return axios.get('/hmc-fetch-question/'+id);
 }
 

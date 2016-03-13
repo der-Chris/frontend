@@ -1,5 +1,6 @@
 
-
+/*
+let mock = mocker(request);
 mock.timeout = 2000;
 
 let questionDb: any = {};
@@ -18,4 +19,4 @@ mock.get('/hmc-fetch-question/:id', (req: any) => {
 	return questionDb[req.params.id];
 });
 
-console.log('Question mock installed...');
+console.log('Question mock installed...');*/
