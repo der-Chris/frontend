@@ -1,5 +1,3 @@
-import LinearProgress from 'material-ui/lib/linear-progress';
-
 import { Question, QuestionApi } from '../models/Question';
 
 export const FetchActive = 'question:fetchQuestion';

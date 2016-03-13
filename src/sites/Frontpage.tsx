@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
-import Paper from 'material-ui/lib/paper';
+import Box from '../ui/Box';
 
 import AppState from '../reducers/AppState';
 import CreateQuestion from '../components/CreateQuestion';
@@ -13,9 +13,9 @@ class Frontpage extends React.Component<any, any> {
 			<div className="site frontpage">
 				<h1>Help-me-Choose</h1>
 				
-				<Paper zDepth={2}>
+				<Box>
 					<CreateQuestion />
-				</Paper>
+				</Box>
 			</div>
 		);
 	}

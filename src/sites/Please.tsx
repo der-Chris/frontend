@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import LinearProgress from 'material-ui/lib/linear-progress';
+import Progress from '../ui/Progress';
 
 import AppState from '../reducers/AppState';
 import { fetchQuestion } from '../actions/question';
@@ -17,7 +17,7 @@ class Please extends React.Component<any, any> {
 		
 		if (this.props.fetchActive || !this.props.question) {
 			heading = 'Loading...';
-			content = <LinearProgress mode="indeterminate" />;
+			content = <Progress />;
 		}
 		else if (this.props.fetchError) {
 			heading = 'Fetch Error';

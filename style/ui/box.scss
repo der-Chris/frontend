@@ -1,0 +1,22 @@
+@import '../_colors';
+
+div.ui.box {
+	background-color: white;
+	border: 1px solid $ui-box-border-color;
+	box-shadow:
+		0 5px 10px -1px $ui-box-shadow-color;
+	
+	&.more {
+		box-shadow:
+			// Shadow
+			0 5px 10px -1px $ui-box-shadow-color,
+			
+			// Bottom Borders
+			0 7px 0 -4px $background-color,
+			0 8px 1px -4px $ui-box-shadow-color,
+			0 14px 0 -8px $background-color,
+			0 15px 2px -8px $ui-box-shadow-color;
+	}
+}
+
+
