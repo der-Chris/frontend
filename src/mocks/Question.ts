@@ -1,9 +1,5 @@
-/// <reference path='../../superagent-mocker.d.ts' />
 
-import request from 'superagent';
-import mocker from 'superagent-mocker';
 
-let mock = mocker(request);
 mock.timeout = 2000;
 
 let questionDb: any = {};
@@ -23,5 +19,3 @@ mock.get('/hmc-fetch-question/:id', (req: any) => {
 });
 
 console.log('Question mock installed...');
-
-

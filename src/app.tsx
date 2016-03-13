@@ -1,6 +1,5 @@
 /// <reference path='../typings/main.d.ts' />
 /// <reference path='../history.d.ts' />
-/// <reference path='../superagent.d.ts' />
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
@@ -24,10 +23,11 @@ const thunkMiddleware = (store: Redux.Store) => (next: any) => (action: any) => 
  * Logs all actions and states after they are dispatched.
  */
 const loggerMiddleware = (store: Redux.Store) => (next: any) => (action: Action) => {
-	console.group();
-	console.info('dispatching', action);
+	console.groupCollapsed('Dispatching '+action.type);
+
 	let result = next(action);
-	console.log('next state', store.getState());
+	console.log('Next state', store.getState());
+
 	console.groupEnd();
 	return result;
 };

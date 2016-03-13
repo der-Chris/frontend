@@ -1,6 +1,6 @@
-import request from 'superagent';
+import axios = require('axios');
 
-import '../mocks/Question';
+//import '../mocks/Question';
 
 export class Question {
 	_id: string;
@@ -8,7 +8,7 @@ export class Question {
 }
 
 // https://w0vb2kjd24.execute-api.eu-west-1.amazonaws.com/prod/hmc-create-question
-// 
+// 'x-api-key', '9cwAx7kQNW6EX9y8BSbDn1ify1q6BaExuwj6UI1e'
 
 export function nameValidator(name: string): string {
 	if (name.length < 4) {
@@ -23,28 +23,13 @@ export function nameValidator(name: string): string {
 }
 
 function create(name: string): Promise<Question> {
-	return new Promise((resolve, reject) => {
-		request
-			.post('/hmc-create-question')
-			.send({ name })
-			.set('x-api-key', '9cwAx7kQNW6EX9y8BSbDn1ify1q6BaExuwj6UI1e')
-			.end((err, res) => {
-				if (err) return reject(err);
-				return resolve(res);
-			});
+	return axios.post('/hmc-create-question', {
+		name
 	});
 }
 
 function fetch(id: string): Promise<Question> {
-	return new Promise((resolve, reject) => {
-		request
-			.get('/hmc-fetch-question/'+id)
-			.set('x-api-key', '9cwAx7kQNW6EX9y8BSbDn1ify1q6BaExuwj6UI1e')
-			.end((err, res) => {
-				if (err) return reject(err);
-				return resolve(res);
-			});
-	});
+	return axios.get('/hmc-fetch-question/'+id);
 }
 
 export var QuestionApi = {

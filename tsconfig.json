@@ -2,16 +2,15 @@
 	"compilerOptions": {
 		"sourceMap": true,
 		"target": "es5",
-		"module": "system",
+		"module": "commonjs",
 		"jsx": "react",
 		"noImplicitAny": true,
-		"noEmitOnError": true,
+		"noEmitOnError": false,
 		"removeComments": true,
 		"experimentalDecorators": true
 	},
 	"exclude": [
 		"typings",
-		"node_modules",
-		"jspm_packages"
+		"node_modules"
 	]
 }

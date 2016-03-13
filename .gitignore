@@ -1,7 +1,7 @@
 /node_modules
-/jspm_packages
 /typings
-/dist
+/build
+/.idea
 
 npm-debug.log
 
