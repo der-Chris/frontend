@@ -12,9 +12,9 @@ div.ui.box {
 			0 5px 10px -1px $ui-box-shadow-color,
 			
 			// Bottom Borders
-			0 7px 0 -4px $background-color,
+			0 7px 0 -4px transparent,
 			0 8px 1px -4px $ui-box-shadow-color,
-			0 14px 0 -8px $background-color,
+			0 14px 0 -8px transparent,
 			0 15px 2px -8px $ui-box-shadow-color;
 	}
 }

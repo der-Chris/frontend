@@ -29,9 +29,8 @@ class CreateQuestion extends React.Component<any, any> {
 					onChange={this.onNameChange} />
 				
 				<div style={{textAlign: 'right'}}>
-					<Button labelText="Create" onClick={this.onCreateClick} />
-//						disabled={!('nameValid' in this.props) || !!this.props.nameValid || this.props.saveActive}
-//						children={progressIndicator} />
+					<Button labelText="Create" onClick={this.onCreateClick}
+						disabled={!('nameValid' in this.props) || !!this.props.nameValid || this.props.saveActive} />
 				</div>
 			</div>
 		);
@@ -39,11 +38,11 @@ class CreateQuestion extends React.Component<any, any> {
 	
 	onNameChange = (event: any) => {
 		this.props.nameChange(event.target.value.trim());
-	}
+	};
 	
-	onCreateClick = (event: __React.MouseEvent) => {
+	onCreateClick = (event: React.MouseEvent) => {
 		this.props.submitClick();
-	}
+	};
 }
 
 const mapStateToProps = (state: AppState) => state.createQuestion;

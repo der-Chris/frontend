@@ -1,0 +1,23 @@
+@import "../_colors";
+
+.ui.text-field {
+	display: block;
+	margin-bottom: 0.5em;
+
+	span {
+		display: block;
+		margin-bottom: 0.2em;
+
+		color: $text-secondary-color;
+
+		&:after {
+			content: ':';
+		}
+	}
+
+	input {
+		width: 100%;
+		color: black;
+		padding: 0.5em 0.8em;
+	}
+}

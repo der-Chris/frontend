@@ -5,7 +5,7 @@ import * as ReactDOM from 'react-dom';
 import * as TestUtils from 'react-addons-test-utils';
 
 jest.unmock('../Box');
-import Box, {testVar} from '../Box';
+import Box from '../Box';
 
 describe('Box', () => {
 
@@ -15,7 +15,6 @@ describe('Box', () => {
 		);
 		const boxNode = ReactDOM.findDOMNode(box);
 
-		// Verify that it's Off by default
 		expect(boxNode.textContent).toEqual('Test Content');
 	});
 

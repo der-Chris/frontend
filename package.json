@@ -6,7 +6,7 @@
   "author": "Brian Pfretzschner <brian.pfretzschner@gmail.com>",
   "main": "server.js",
   "scripts": {
-    "test": "gulp app:ts && ./node_modules/.bin/jest"
+    "test": "gulp app:ts && ./node_modules/.bin/jest --no-watchman"
   },
   "devDependencies": {
     "browserify": "^13.0.0",
@@ -36,6 +36,7 @@
     "redux": "^3.3.1"
   },
   "jest": {
+    "watchman": false,
     "unmockedModulePathPatterns": [
       "<rootDir>/node_modules/react",
       "<rootDir>/node_modules/react-dom",
