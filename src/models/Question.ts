@@ -1,3 +1,5 @@
+import '../mocks/Question';
+
 export class Question {
 	_id: string;
 	name: string;

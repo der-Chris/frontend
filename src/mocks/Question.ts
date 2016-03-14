@@ -1,11 +1,8 @@
-
-/*
-let mock = mocker(request);
-mock.timeout = 2000;
+import fetchMock = require('fetch-mock');
 
 let questionDb: any = {};
 
-mock.post('/hmc-create-question', (req: any) => {
+fetchMock.mock('/hmc-create-question', (req: any) => {
 	var id = 'abc';
 	questionDb[id] = {
 		_id: id,
@@ -15,8 +12,8 @@ mock.post('/hmc-create-question', (req: any) => {
 	return questionDb[id];
 });
 
-mock.get('/hmc-fetch-question/:id', (req: any) => {
+fetchMock.mock('/hmc-fetch-question/:id', (req: any) => {
 	return questionDb[req.params.id];
 });
 
-console.log('Question mock installed...');*/
+console.log('Question mock installed...');
