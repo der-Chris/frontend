@@ -6,6 +6,9 @@ export const FetchDone = 'question:fetchDone';
 export function fetchQuestion(id: string) {
 	return (dispatch: Redux.Dispatch) => {
 		QuestionApi.fetch(id)
+			.then((resp: Response) => {
+				return resp.json<Question>();
+			})
 			.then((question: Question) => {
 				return dispatch({ type: FetchDone, question });
 			})

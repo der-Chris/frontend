@@ -19,9 +19,9 @@ export function nameChange(name: string): NameChangeAction {
 export function submitClick() {
 	return (dispatch: Redux.Dispatch, getState: () => AppState) => {
 		QuestionApi.create(getState().createQuestion.name)
-			.then((question: Question) => {
+			.then((resp: Response) => {
 				dispatch({ type: SaveDone });
-				return question;
+				return resp.json<Question>();
 			})
 			.then((question: Question) => {
 				hashHistory.push('/please/'+question._id);

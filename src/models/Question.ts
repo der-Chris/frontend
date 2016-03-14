@@ -18,14 +18,21 @@ export function nameValidator(name: string): string {
 	return null;
 }
 
-function create(name: string): any {
-	return axios.post('/hmc-create-question', {
-		name
+function create(name: string): Promise<Response> {
+	return window.fetch('/hmc-create-question', {
+		method: 'post',
+		headers: {
+			'Accept': 'application/json',
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify({
+			name
+		})
 	});
 }
 
-function fetch(id: string): any {
-	return axios.get('/hmc-fetch-question/'+id);
+function fetch(id: string): Promise<Response> {
+	return window.fetch('/hmc-fetch-question/'+id);
 }
 
 export var QuestionApi = {
