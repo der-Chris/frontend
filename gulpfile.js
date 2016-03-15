@@ -32,7 +32,7 @@ gulp.task('app:ts', function () {
 		.pipe(gulp.dest('build/src/'));
 });
 
-gulp.task('app:bundle', function () {
+gulp.task('app:bundle', ['app:ts'], function () {
 	return browserify('build/src/app.js', {
 			debug: true
 		})
@@ -40,16 +40,6 @@ gulp.task('app:bundle', function () {
 		.bundle()
 		.pipe(source('a.js'))
 		.pipe(gulp.dest('build/'));
-});
-
-gulp.task('tests:ts', function () {
-	var tsResult = gulp.src([
-			'tests/**/*.ts*'
-		])
-		.pipe(ts(tsProject));
-
-	return tsResult.js
-		.pipe(gulp.dest('build/tests/'));
 });
 
 gulp.task('vendor:bundle', function () {
@@ -81,13 +71,13 @@ gulp.task('style', function () {
 		.pipe(gulp.dest('build/'));
 });
 
-gulp.task('app:minify', function () {
+gulp.task('app:minify', ['app:bundle'], function () {
 	gulp.src('build/a.js')
 		.pipe(uglify())
 		.pipe(gulp.dest('build/'));
 });
 
-gulp.task('vendor:minify', function () {
+gulp.task('vendor:minify', ['vendor:bundle'], function () {
 	gulp.src('build/v.js')
 		.pipe(uglify({
 			preserveComments: 'license'
