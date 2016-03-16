@@ -33,7 +33,7 @@ const loggerMiddleware = (store: Redux.Store) => (next: any) => (action: Action)
 	return result;
 };
 
-let store = createStore(reducer, applyMiddleware(loggerMiddleware, thunkMiddleware));
+let store = createStore(reducer, applyMiddleware(thunkMiddleware, loggerMiddleware));
 
 ReactDOM.render(
 	<Provider store={store}>

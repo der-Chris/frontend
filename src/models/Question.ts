@@ -1,3 +1,5 @@
+import * as request from 'superagent';
+
 import '../mocks/Question';
 
 export class Question {
@@ -20,21 +22,29 @@ export function nameValidator(name: string): string {
 	return null;
 }
 
-function create(name: string): Promise<Response> {
-	return window.fetch('/hmc-create-question', {
-		method: 'post',
-		headers: {
-			'Accept': 'application/json',
-			'Content-Type': 'application/json'
-		},
-		body: JSON.stringify({
-			name
-		})
+function create(name: string): Promise<Question> {
+	return new Promise((resolve, reject) => {
+		request
+			.post('/hmc-create-question')
+			.send({ name })
+			.set('x-api-key', '9cwAx7kQNW6EX9y8BSbDn1ify1q6BaExuwj6UI1e')
+			.end((err: Error, res: any) => {
+				if (err) return reject(err);
+				return resolve(res);
+			});
 	});
 }
 
-function fetch(id: string): Promise<Response> {
-	return window.fetch('/hmc-fetch-question/'+id);
+function fetch(id: string): Promise<Question> {
+	return new Promise((resolve, reject) => {
+		request
+			.get('/hmc-fetch-question/' + id)
+			.set('x-api-key', '9cwAx7kQNW6EX9y8BSbDn1ify1q6BaExuwj6UI1e')
+			.end((err: Error, res: any) => {
+				if (err) return reject(err);
+				return resolve(res);
+			});
+	});
 }
 
 export var QuestionApi = {

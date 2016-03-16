@@ -1,10 +1,12 @@
+import {SuperAgent} from "superagent";
+
 declare module superagentMocker {
-	interface Agent extends superagent.Agent {
+	interface Agent extends SuperAgent {
 		timeout: number;
 	}
 }
 
 declare module "superagent-mocker" {
-	function mocker(agent: superagent.Agent): superagentMocker.Agent;
+	function mocker(agent: SuperAgent): superagentMocker.Agent;
 	export = mocker;
 }
