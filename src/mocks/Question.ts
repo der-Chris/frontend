@@ -1,18 +1,24 @@
-import fetchMock = require('fetch-mock');
+/// <reference path='../../superagent-mocker.d.ts' />
+
+import request from 'superagent';
+import mocker from 'superagent-mocker';
+
+let mock = mocker(request);
+mock.timeout = 2000;
 
 let questionDb: any = {};
 
-fetchMock.mock('/hmc-create-question', (req: any) => {
+mock.post('/hmc-create-question', (req: any) => {
 	var id = 'abc';
 	questionDb[id] = {
 		_id: id,
 		name: req.body.name
 	};
-	
+
 	return questionDb[id];
 });
 
-fetchMock.mock('/hmc-fetch-question/:id', (req: any) => {
+mock.get('/hmc-fetch-question/:id', (req: any) => {
 	return questionDb[req.params.id];
 });
 
