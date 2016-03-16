@@ -1,7 +1,7 @@
 /// <reference path='../../superagent-mocker.d.ts' />
 
 import * as request from 'superagent';
-import * as mocker from 'superagent-mocker';
+import mocker from 'superagent-mocker';
 
 let mock = mocker(request);
 mock.timeout = 2000;
@@ -9,7 +9,7 @@ mock.timeout = 2000;
 let questionDb: any = {};
 
 mock.post('/hmc-create-question', (req: any) => {
-	var id = 'abc';
+	let id = 'abc';
 	questionDb[id] = {
 		_id: id,
 		name: req.body.name

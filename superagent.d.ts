@@ -1,5 +1,5 @@
 declare module 'superagent' {
-	export interface Response {
+	interface Response {
 		text: string;
 		body: any;
 		files: any;
@@ -25,7 +25,7 @@ declare module 'superagent' {
 		get(header: string): string;
 	}
 
-	export interface Request {
+	interface Request {
 		attach(field: string, file: string, filename: string): Request;
 		redirects(n: number): Request;
 		part(): Request;
@@ -48,32 +48,28 @@ declare module 'superagent' {
 		end(callback?: (err: Error, res: Response) => void): Request;
 	}
 
-	interface Agent {
-		get(url:string, callback?:(err:Error, res:Response) => void): Request;
-		post(url:string, callback?:(err:Error, res:Response) => void): Request;
-		put(url:string, callback?:(err:Error, res:Response) => void): Request;
-		head(url:string, callback?:(err:Error, res:Response) => void): Request;
-		del(url:string, callback?:(err:Error, res:Response) => void): Request;
-		options(url:string, callback?:(err:Error, res:Response) => void): Request;
-		trace(url:string, callback?:(err:Error, res:Response) => void): Request;
-		copy(url:string, callback?:(err:Error, res:Response) => void): Request;
-		lock(url:string, callback?:(err:Error, res:Response) => void): Request;
-		mkcol(url:string, callback?:(err:Error, res:Response) => void): Request;
-		move(url:string, callback?:(err:Error, res:Response) => void): Request;
-		propfind(url:string, callback?:(err:Error, res:Response) => void): Request;
-		proppatch(url:string, callback?:(err:Error, res:Response) => void): Request;
-		unlock(url:string, callback?:(err:Error, res:Response) => void): Request;
-		report(url:string, callback?:(err:Error, res:Response) => void): Request;
-		mkactivity(url:string, callback?:(err:Error, res:Response) => void): Request;
-		checkout(url:string, callback?:(err:Error, res:Response) => void): Request;
-		merge(url:string, callback?:(err:Error, res:Response) => void): Request;
-		//m-search(url: string, callback?: (err: Error, res: Response) => void): Request;
-		notify(url:string, callback?:(err:Error, res:Response) => void): Request;
-		subscribe(url:string, callback?:(err:Error, res:Response) => void): Request;
-		unsubscribe(url:string, callback?:(err:Error, res:Response) => void): Request;
-		patch(url:string, callback?:(err:Error, res:Response) => void): Request;
-		parse(fn:Function): Request;
-	}
-
-	export default Agent;
+	export function get(url: string, callback?: (err: Error, res: Response) => void): Request;
+	export function post(url: string, callback?: (err: Error, res: Response) => void): Request;
+	// put(url:string, callback?:(err:Error, res:Response) => void): Request;
+	// head(url:string, callback?:(err:Error, res:Response) => void): Request;
+	// del(url:string, callback?:(err:Error, res:Response) => void): Request;
+	// options(url:string, callback?:(err:Error, res:Response) => void): Request;
+	// trace(url:string, callback?:(err:Error, res:Response) => void): Request;
+	// copy(url:string, callback?:(err:Error, res:Response) => void): Request;
+	// lock(url:string, callback?:(err:Error, res:Response) => void): Request;
+	// mkcol(url:string, callback?:(err:Error, res:Response) => void): Request;
+	// move(url:string, callback?:(err:Error, res:Response) => void): Request;
+	// propfind(url:string, callback?:(err:Error, res:Response) => void): Request;
+	// proppatch(url:string, callback?:(err:Error, res:Response) => void): Request;
+	// unlock(url:string, callback?:(err:Error, res:Response) => void): Request;
+	// report(url:string, callback?:(err:Error, res:Response) => void): Request;
+	// mkactivity(url:string, callback?:(err:Error, res:Response) => void): Request;
+	// checkout(url:string, callback?:(err:Error, res:Response) => void): Request;
+	// merge(url:string, callback?:(err:Error, res:Response) => void): Request;
+	// m-search(url: string, callback?: (err: Error, res: Response) => void): Request;
+	// notify(url:string, callback?:(err:Error, res:Response) => void): Request;
+	// subscribe(url:string, callback?:(err:Error, res:Response) => void): Request;
+	// unsubscribe(url:string, callback?:(err:Error, res:Response) => void): Request;
+	// patch(url:string, callback?:(err:Error, res:Response) => void): Request;
+	// parse(fn:Function): Request;
 }
