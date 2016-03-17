@@ -1,7 +1,7 @@
 /// <reference path='../../superagent-mocker.d.ts' />
 
 import * as request from 'superagent';
-import mocker from 'superagent-mocker';
+import mocker = require('superagent-mocker');
 
 let mock = mocker(request);
 mock.timeout = 2000;
