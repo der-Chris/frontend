@@ -19,7 +19,8 @@ mock.post('/hmc-create-question', (req: any) => {
 });
 
 mock.get('/hmc-fetch-question/:id', (req: any) => {
-	return questionDb[req.params.id];
+	if (req.params.id in questionDb) return questionDb[req.params.id];
+	else return null;
 });
 
 console.log('Question mock installed...');

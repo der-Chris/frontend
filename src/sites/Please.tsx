@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
+import Box from '../ui/Box';
 import Progress from '../ui/Progress';
 
 import AppState from '../reducers/AppState';
@@ -31,7 +32,10 @@ class Please extends React.Component<any, any> {
 		return (
 			<div className="site please">
 				<h1>{heading}</h1>
-				{content}
+
+				<Box>
+					{content}
+				</Box>
 			</div>
 		);
 	}
