@@ -1,24 +1,24 @@
 import { hashHistory } from 'react-router';
 
 import AppState from '../reducers/AppState';
-import { NameChangeAction } from '../reducers/createQuestion';
-import { Question, nameValidator, QuestionApi } from '../models/Question';
+import { TitleChangeAction } from '../reducers/createQuestion';
+import { Question, titleValidator, QuestionApi } from '../models/Question';
 
-export const NameChange = 'createQuestion:nameChange';
+export const TitleChange = 'createQuestion:titleChange';
 export const SaveActive = 'createQuestion:saveActive';
 export const SaveDone = 'createQuestion:saveDone';
 
-export function nameChange(name: string): NameChangeAction {
+export function titleChange(title: string): TitleChangeAction {
 	return {
-		type: NameChange,
-		name: name.trim(),
-		nameValid: nameValidator(name.trim())
+		type: TitleChange,
+		title: title.trim(),
+		titleValid: titleValidator(title.trim())
 	};
 }
 
 export function submitClick() {
 	return (dispatch: Redux.Dispatch, getState: () => AppState) => {
-		QuestionApi.create(getState().createQuestion.name)
+		QuestionApi.create(getState().createQuestion.title)
 			.then((question: Question) => {
 				dispatch({ type: SaveDone });
 				return question;

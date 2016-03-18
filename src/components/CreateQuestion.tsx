@@ -8,7 +8,7 @@ import Progress from '../ui/Progress';
 
 import AppState from '../reducers/AppState';
 import { Question } from '../models/Question';
-import { nameChange, submitClick } from '../actions/createQuestion';
+import { titleChange, submitClick } from '../actions/createQuestion';
 
 class CreateQuestion extends React.Component<any, any> {
 	render() {
@@ -21,23 +21,23 @@ class CreateQuestion extends React.Component<any, any> {
 			<div className="component create-question">
 				<h2>Create Question {this.props.saveActive}</h2>
 				
-				<TextField type="text" value={this.props.name}
+				<TextField type="text" value={this.props.title}
 					hintText="Help me choose which used car to buy."
 					labelText="Enter your Question here"
-					errorText={this.props.nameValid}
+					errorText={this.props.titleValid}
 					disabled={this.props.saveActive}
-					onChange={this.onNameChange} />
+					onChange={this.onTitleChange} />
 				
 				<div style={{textAlign: 'right'}}>
 					<Button labelText="Create" onClick={this.onCreateClick}
-						disabled={!('nameValid' in this.props) || !!this.props.nameValid || this.props.saveActive} />
+						disabled={!('titleValid' in this.props) || !!this.props.titleValid || this.props.saveActive} />
 				</div>
 			</div>
 		);
 	}
 	
-	onNameChange = (event: any) => {
-		this.props.nameChange(event.target.value.trim());
+	onTitleChange = (event: any) => {
+		this.props.titleChange(event.target.value.trim());
 	};
 	
 	onCreateClick = (event: React.MouseEvent) => {
@@ -48,7 +48,7 @@ class CreateQuestion extends React.Component<any, any> {
 const mapStateToProps = (state: AppState) => state.createQuestion;
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch) => ({
-	nameChange: (name: string) => dispatch(nameChange(name)),
+	titleChange: (title: string) => dispatch(titleChange(title)),
 	submitClick: () => dispatch(submitClick())
 });
 

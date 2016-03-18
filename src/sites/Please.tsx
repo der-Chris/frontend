@@ -24,7 +24,7 @@ class Please extends React.Component<any, any> {
 			content = <pre>{this.props.fetchError}</pre>;
 		}
 		else {
-			heading = this.props.question.name;
+			heading = this.props.question.title;
 			content = <PleaseSuggestions />
 		}
 		

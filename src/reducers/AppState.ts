@@ -1,6 +1,6 @@
 interface CreateQuestion {
-	name?: string;
-	nameValid: string;
+	title?: string;
+	titleValid: string;
 	saveActive?: boolean;
 }
 

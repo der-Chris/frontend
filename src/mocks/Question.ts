@@ -12,7 +12,7 @@ mock.post('/hmc-create-question', (req: any) => {
 	let id = 'abc';
 	questionDb[id] = {
 		_id: id,
-		name: req.body.name
+		title: req.body.title
 	};
 
 	return questionDb[id];
