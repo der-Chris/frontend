@@ -6,7 +6,7 @@ import Progress from '../ui/Progress';
 
 import AppState from '../reducers/AppState';
 import { fetchQuestion } from '../actions/question';
-import PleaseSuggestions from '../components/PleaseSuggestions';
+import Suggestions from '../components/Suggestions';
 
 class Please extends React.Component<any, any> {
 	componentDidMount() {
@@ -26,16 +26,14 @@ class Please extends React.Component<any, any> {
 		}
 		else {
 			heading = this.props.question.title;
-			content = <PleaseSuggestions />
+			content = <Box><Suggestions /></Box>;
 		}
 		
 		return (
 			<div className="site please">
 				<h1>{heading}</h1>
+				{content}
 
-				<Box>
-					{content}
-				</Box>
 			</div>
 		);
 	}

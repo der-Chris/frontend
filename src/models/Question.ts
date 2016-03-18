@@ -9,7 +9,7 @@ export enum Visibility {
 }
 
 export interface Question {
-	_id: string;
+	id: string;
 	key: string;
 	title: string;
 	visibility: Visibility;

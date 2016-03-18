@@ -24,7 +24,7 @@ export function submitClick() {
 				return question;
 			})
 			.then((question: Question) => {
-				hashHistory.push('/please/' + question._id);
+				hashHistory.push('/please/' + question.id);
 			});
 
 		return dispatch({ type: SaveActive });
