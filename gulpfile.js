@@ -20,29 +20,29 @@ var vendorLibs = [
 	'es6-shim'
 ];
 
-gulp.task('app:ts', function () {
+gulp.task('client:ts', function () {
 	var tsResult = gulp.src([
-			'src/**/*.ts*'
+			'client/src/**/*.ts*'
 		])
 		.pipe(sourcemaps.init())
 		.pipe(ts(tsProject));
 
 	return tsResult.js
 		.pipe(sourcemaps.write())
-		.pipe(gulp.dest('build/src/'));
+		.pipe(gulp.dest('build/client/src/'));
 });
 
-gulp.task('app:bundle', ['app:ts'], function () {
-	return browserify('build/src/app.js', {
+gulp.task('client:bundle', ['client:ts'], function () {
+	return browserify('build/client/src/app.js', {
 			debug: true
 		})
 		.external(vendorLibs)
 		.bundle()
 		.pipe(source('a.js'))
-		.pipe(gulp.dest('build/'));
+		.pipe(gulp.dest('build/client/'));
 });
 
-gulp.task('vendor:bundle', function () {
+gulp.task('client:vendor:bundle', function () {
 	var b = browserify({ debug: false });
 
 	vendorLibs.forEach(function (id) {
@@ -56,11 +56,11 @@ gulp.task('vendor:bundle', function () {
 			this.emit('end');
 		})
 		.pipe(source('v.js'))
-		.pipe(gulp.dest('build/'));
+		.pipe(gulp.dest('build/client/'));
 });
 
-gulp.task('style', function () {
-	var sassStream = gulp.src('style/**/*.scss')
+gulp.task('client:style', function () {
+	var sassStream = gulp.src('client/style/**/*.scss')
 		.pipe(sass().on('error', sass.logError));
 	
 	var depStream = gulp.src('node_modules/normalize.css/normalize.css');
@@ -68,23 +68,36 @@ gulp.task('style', function () {
 	return merge(depStream, sassStream)
 		.pipe(concat('s.css'))
 		.pipe(cleanCSS({ compatibility: 'ie8' }))
-		.pipe(gulp.dest('build/'));
+		.pipe(gulp.dest('build/client/'));
 });
 
-gulp.task('app:minify', ['app:bundle'], function () {
-	gulp.src('build/a.js')
+gulp.task('client:minify', ['client:bundle'], function () {
+	gulp.src('build/client/a.js')
 		.pipe(uglify())
-		.pipe(gulp.dest('build/'));
+		.pipe(gulp.dest('build/client/'));
 });
 
-gulp.task('vendor:minify', ['vendor:bundle'], function () {
-	gulp.src('build/v.js')
+gulp.task('client:vendor:minify', ['client:vendor:bundle'], function () {
+	gulp.src('build/client/v.js')
 		.pipe(uglify({
 			preserveComments: 'license'
 		}))
-		.pipe(gulp.dest('build/'));
+		.pipe(gulp.dest('build/client/'));
 });
 
-gulp.task('minify', ['app:minify', 'vendor:minify']);
-gulp.task('app', ['app:ts', 'app:bundle']);
-gulp.task('default', ['app', 'vendor:bundle', 'style']);
+gulp.task('server:ts', function () {
+	var tsResult = gulp.src([
+			'server/**/*.ts*'
+		])
+		.pipe(sourcemaps.init())
+		.pipe(ts(tsProject));
+
+	return tsResult.js
+		.pipe(sourcemaps.write())
+		.pipe(gulp.dest('build/server/'));
+});
+
+gulp.task('minify', ['client:minify', 'cient:vendor:minify']);
+gulp.task('client', ['app:ts', 'client:bundle']);
+gulp.task('server', ['server:ts']);
+gulp.task('default', ['server', 'client', 'client:vendor:bundle', 'client:style']);
