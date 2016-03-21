@@ -2,13 +2,14 @@
 	height: 0.5em;
 	width: 100%;
 
-	background: linear-gradient(270deg, #09cb99, #a9e527, #ed8f17, #ed1794, #384cd8, #61c9ed);
-	background-size: 1200% 1200%;
+	background: linear-gradient(270deg, #09cb99, #a9e527, #ed8f17, #ed1794, #384cd8, #61c9ed, #a9e527);
+	background-size: 200% 0.5em;
 
-	animation: AnimationName 2s ease infinite;
+	animation: AnimationName 4s ease-in-out infinite;
 
 	@keyframes AnimationName {
 		0% {background-position: 0% 10%}
-		100% {background-position: 100% 90%}
+		50% {background-position: 100% 90%}
+		100% {background-position: 0% 10%}
 	}
 }
