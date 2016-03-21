@@ -98,6 +98,6 @@ gulp.task('server:ts', function () {
 });
 
 gulp.task('minify', ['client:minify', 'cient:vendor:minify']);
-gulp.task('client', ['app:ts', 'client:bundle']);
+gulp.task('client', ['client:ts', 'client:bundle']);
 gulp.task('server', ['server:ts']);
 gulp.task('default', ['server', 'client', 'client:vendor:bundle', 'client:style']);

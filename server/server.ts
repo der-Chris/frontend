@@ -1,10 +1,14 @@
+/// <reference path="../typings/main.d.ts" />
+/// <reference path="../history.d.ts" />
+
 import 'source-map-support/register';
 import * as express from 'express';
+import { Request, Response } from 'express';
 
 let app = express();
 
-app.use('/build', express.static('../client'));
-app.get('*', function (req, res) {
+app.use('/build', express.static('./build/client'));
+app.get('*', function (req: Request, res: Response) {
 	res.sendFile('index.html', { root: '.' });
 });
 
