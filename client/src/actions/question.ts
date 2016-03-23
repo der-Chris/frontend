@@ -1,4 +1,5 @@
-import { Question, QuestionApi } from '../models/Question';
+import { Question } from '../models/Question';
+import * as QuestionApi from '../api/question';
 
 export const FetchActive = 'question:fetchQuestion';
 export const FetchDone = 'question:fetchDone';

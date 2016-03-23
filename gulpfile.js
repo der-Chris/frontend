@@ -97,7 +97,7 @@ gulp.task('server:ts', function () {
 		.pipe(gulp.dest('build/server/'));
 });
 
-gulp.task('minify', ['client:minify', 'cient:vendor:minify']);
+gulp.task('client:minify', ['client:minify', 'cient:vendor:minify']);
 gulp.task('client', ['client:ts', 'client:bundle']);
 gulp.task('server', ['server:ts']);
 gulp.task('default', ['server', 'client', 'client:vendor:bundle', 'client:style']);

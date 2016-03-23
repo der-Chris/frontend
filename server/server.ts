@@ -2,16 +2,25 @@
 /// <reference path="../history.d.ts" />
 
 import 'source-map-support/register';
+import * as assert from 'assert';
+import { MongoClient } from 'mongodb';
 import * as express from 'express';
 import { Request, Response } from 'express';
 
+// Set up express
 let app = express();
-
 app.use('/build', express.static('./build/client'));
-app.get('*', function (req: Request, res: Response) {
+app.use('/api', require('./api'));
+app.get('*', (req: Request, res: Response) => {
 	res.sendFile('index.html', { root: '.' });
 });
 
-app.listen(8000, function () {
-	console.log('Listening on port 8000...');
+let url = 'mongodb://localhost:27017/hmc';
+MongoClient.connect(url, (err, db) => {
+	assert.equal(null, err);
+
+	// Connection established
+	app.listen(8000, () => {
+		console.log('Listening on port 8000...');
+	});
 });

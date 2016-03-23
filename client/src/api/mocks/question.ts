@@ -1,4 +1,4 @@
-/// <reference path='../../../superagent-mocker.d.ts' />
+/// <reference path='../../../../superagent-mocker.d.ts' />
 
 import * as request from 'superagent';
 import mocker = require('superagent-mocker');

@@ -2,7 +2,8 @@ import { browserHistory } from 'react-router';
 
 import AppState from '../reducers/AppState';
 import { TitleChangeAction } from '../reducers/createQuestion';
-import { Question, titleValidator, QuestionApi } from '../models/Question';
+import { Question, titleValidator } from '../models/Question';
+import * as QuestionApi from '../api/question';
 
 export const TitleChange = 'createQuestion:titleChange';
 export const SaveActive = 'createQuestion:saveActive';
