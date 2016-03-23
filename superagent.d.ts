@@ -50,8 +50,8 @@ declare module 'superagent' {
 
 	export function get(url: string, callback?: (err: Error, res: Response) => void): Request;
 	export function post(url: string, callback?: (err: Error, res: Response) => void): Request;
-	// put(url:string, callback?:(err:Error, res:Response) => void): Request;
-	// head(url:string, callback?:(err:Error, res:Response) => void): Request;
+	export function put(url: string, callback?: (err: Error, res: Response) => void): Request;
+	export function head(url: string, callback?: (err: Error, res: Response) => void): Request;
 	// del(url:string, callback?:(err:Error, res:Response) => void): Request;
 	// options(url:string, callback?:(err:Error, res:Response) => void): Request;
 	// trace(url:string, callback?:(err:Error, res:Response) => void): Request;

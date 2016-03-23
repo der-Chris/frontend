@@ -17,6 +17,7 @@ export default class TextField extends React.Component<TextFieldProps, {}> {
 				<span>{this.props.labelText}</span>
 				<input type={this.props.type}
 					value={this.props.value}
+					disabled={this.props.disabled}
 					onChange={this.props.onChange} />
 			</label>
 		);

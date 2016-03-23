@@ -30,6 +30,7 @@ class CreateQuestion extends React.Component<any, any> {
 				
 				<div style={{textAlign: 'right'}}>
 					<Button labelText="Create" onClick={this.onCreateClick}
+						active={this.props.saveActive}
 						disabled={!('titleValid' in this.props) || !!this.props.titleValid || this.props.saveActive} />
 				</div>
 			</div>

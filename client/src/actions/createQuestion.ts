@@ -2,7 +2,7 @@ import { browserHistory } from 'react-router';
 
 import AppState from '../reducers/AppState';
 import { TitleChangeAction } from '../reducers/createQuestion';
-import { Question, titleValidator } from '../models/Question';
+import { Question, Visibility, titleValidator } from '../models/Question';
 import * as QuestionApi from '../api/question';
 
 export const TitleChange = 'createQuestion:titleChange';
@@ -19,7 +19,7 @@ export function titleChange(title: string): TitleChangeAction {
 
 export function submitClick() {
 	return (dispatch: Redux.Dispatch, getState: () => AppState) => {
-		QuestionApi.create(getState().createQuestion.title)
+		QuestionApi.create(getState().createQuestion.title, 'private')
 			.then((question: Question) => {
 				dispatch({ type: SaveDone });
 				return question;

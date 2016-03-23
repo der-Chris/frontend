@@ -1,14 +1,11 @@
-export enum Visibility {
-	'public',
-	'private',
-	'password'
-}
+export type Visibility = 'public' | 'private' | 'password';
 
 export interface Question {
 	id: string;
 	key: string;
 	title: string;
 	visibility: Visibility;
+	createdAt: string;
 }
 
 export function titleValidator(title: string): string {

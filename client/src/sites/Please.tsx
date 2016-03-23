@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
 import Box from '../ui/Box';
@@ -15,14 +16,17 @@ class Please extends React.Component<any, any> {
 
 	render() {
 		let heading = '', content: JSX.Element;
-		
-		if (this.props.fetchActive || !this.props.question) {
+
+		if (this.props.fetchError) {
+			heading = 'Fetch Error';
+			content = <Box>
+					<pre>{this.props.fetchError.message}</pre>
+					<Link to={'/'}>Back to Frontpage...</Link>
+				</Box>;
+		}
+		else if (this.props.fetchActive || !this.props.question) {
 			heading = 'Loading...';
 			content = <Progress />;
-		}
-		else if (this.props.fetchError) {
-			heading = 'Fetch Error';
-			content = <pre>{this.props.fetchError}</pre>;
 		}
 		else {
 			heading = this.props.question.title;
@@ -33,7 +37,6 @@ class Please extends React.Component<any, any> {
 			<div className="site please">
 				<h1>{heading}</h1>
 				{content}
-
 			</div>
 		);
 	}

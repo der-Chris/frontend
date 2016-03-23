@@ -6,9 +6,11 @@ import * as assert from 'assert';
 import { MongoClient } from 'mongodb';
 import * as express from 'express';
 import { Request, Response } from 'express';
+import * as bodyParser from 'body-parser';
 
 // Set up express
 let app = express();
+app.use(bodyParser.json());
 app.use('/build', express.static('./build/client'));
 app.use('/api', require('./api'));
 app.get('*', (req: Request, res: Response) => {
