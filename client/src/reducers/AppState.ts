@@ -1,6 +1,10 @@
-interface CreateQuestion {
-	title?: string;
-	titleValid: string;
+import { Visibility } from '../models/Question';
+
+export interface CreateQuestion {
+	title: string;
+	visibility: Visibility;
+
+	titleValid?: string;
 	saveActive?: boolean;
 }
 

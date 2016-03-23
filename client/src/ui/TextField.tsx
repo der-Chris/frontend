@@ -16,6 +16,7 @@ export default class TextField extends React.Component<TextFieldProps, {}> {
 			<label className="ui text-field">
 				<span>{this.props.labelText}</span>
 				<input type={this.props.type}
+					placeholder={this.props.hintText}
 					value={this.props.value}
 					disabled={this.props.disabled}
 					onChange={this.props.onChange} />

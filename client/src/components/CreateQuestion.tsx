@@ -4,19 +4,15 @@ import { Link } from 'react-router';
 
 import TextField from '../ui/TextField';
 import Button from '../ui/Button';
-import Progress from '../ui/Progress';
+import Flipswitch from '../ui/Flipswitch';
 
 import AppState from '../reducers/AppState';
 import { Question } from '../models/Question';
-import { titleChange, submitClick } from '../actions/createQuestion';
+import { titleChange, visibilityChange, submitClick } from '../actions/createQuestion';
+import {Visibility} from "../models/Question";
 
 class CreateQuestion extends React.Component<any, any> {
 	render() {
-		let progressIndicator = <span />;
-		if (this.props.saveActive) {
-			progressIndicator = <Progress />;
-		}
-		
 		return (
 			<div className="component create-question">
 				<h2>Create Question {this.props.saveActive}</h2>
@@ -27,6 +23,11 @@ class CreateQuestion extends React.Component<any, any> {
 					errorText={this.props.titleValid}
 					disabled={this.props.saveActive}
 					onChange={this.onTitleChange} />
+
+				<Flipswitch checked={this.props.visibility === 'public'}
+					labelText="Visibility"
+					onLabel="Public" offLabel="Private"
+					onChange={this.onVisibilityChange} />
 				
 				<div style={{textAlign: 'right'}}>
 					<Button labelText="Create" onClick={this.onCreateClick}
@@ -38,7 +39,12 @@ class CreateQuestion extends React.Component<any, any> {
 	}
 	
 	onTitleChange = (event: any) => {
-		this.props.titleChange(event.target.value.trim());
+		this.props.titleChange(event.target.value);
+	};
+
+	onVisibilityChange = (event: any) => {
+		let visibility = event.target.checked ? 'public' : 'private';
+		this.props.visibilityChange(visibility);
 	};
 	
 	onCreateClick = (event: React.MouseEvent) => {
@@ -50,6 +56,7 @@ const mapStateToProps = (state: AppState) => state.createQuestion;
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch) => ({
 	titleChange: (title: string) => dispatch(titleChange(title)),
+	visibilityChange: (visibility: Visibility) => dispatch(visibilityChange(visibility)),
 	submitClick: () => dispatch(submitClick())
 });
 
