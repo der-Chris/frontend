@@ -1,4 +1,5 @@
 import * as request from 'superagent';
+import { Response } from 'superagent';
 
 //import '../mocks/Question';
 
@@ -23,9 +24,9 @@ export function fetch(id: string): Promise<Question> {
 	return new Promise((resolve, reject) => {
 		request
 			.get('/api/v1/question/' + id)
-			.end((err: Error, res: any) => {
+			.end((err: Error, res: Response) => {
 				if (err) return reject(err);
-				return resolve(res);
+				return resolve(res.body);
 			});
 	});
 }

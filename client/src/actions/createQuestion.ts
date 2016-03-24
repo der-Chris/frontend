@@ -34,7 +34,7 @@ export function submitClick() {
 				return question;
 			})
 			.then((question: Question) => {
-				browserHistory.push('/please/' + question.id);
+				browserHistory.push('/please/' + question._id);
 			});
 
 		return dispatch({ type: SaveActive });
