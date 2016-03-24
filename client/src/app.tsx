@@ -8,23 +8,26 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import 'es6-shim';
 
-import Action from './actions/Action';
+import Action, { SimpleAction, FuncAction } from './actions/Action';
 import reducer from './reducers/index';
 import { Routes } from './routes';
 
 /**
  * Thunk middleware (copied from redux-thunk) allows functions to the dispatched.
  */
-const thunkMiddleware = (store: Redux.Store) => (next: any) => (action: any) => {
-	return typeof action === 'function' ?
-		action(store.dispatch, store.getState) : next(action);
+const thunkMiddleware = (store: Redux.Store) => (next: any) => (action: Action) => {
+	if (typeof action === 'function') {
+		let funcAction = action as FuncAction;
+		return funcAction(store.dispatch, store.getState);
+	}
+	else return next(action);
 };
 
 /**
  * Logs all actions and states after they are dispatched.
  */
-const loggerMiddleware = (store: Redux.Store) => (next: any) => (action: Action) => {
-	console.groupCollapsed('Dispatching '+action.type);
+const loggerMiddleware = (store: Redux.Store) => (next: any) => (action: SimpleAction) => {
+	console.groupCollapsed('Dispatching ' + action.type);
 
 	let result = next(action);
 	console.log('Next state', store.getState());

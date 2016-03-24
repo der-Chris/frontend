@@ -1,9 +1,9 @@
-import { browserHistory } from 'react-router';
-
 import AppState from '../reducers/AppState';
 import { TitleChangeAction, VisibilityChangeAction } from '../reducers/createQuestion';
 import { Question, Visibility, titleValidator } from '../models/Question';
 import * as QuestionApi from '../api/question';
+import Action from './Action';
+import {redirectViewQuestion} from './question';
 
 export const TitleChange = 'createQuestion:titleChange';
 export const VisibilityChange = 'createQuestion:visibilityChange';
@@ -25,7 +25,7 @@ export function visibilityChange(visibility: Visibility): VisibilityChangeAction
 	};
 }
 
-export function submitClick() {
+export function submitClick(): Action {
 	return (dispatch: Redux.Dispatch, getState: () => AppState) => {
 		let state = getState();
 		QuestionApi.create(state.createQuestion.title, state.createQuestion.visibility)
@@ -34,7 +34,7 @@ export function submitClick() {
 				return question;
 			})
 			.then((question: Question) => {
-				browserHistory.push('/please/' + question._id);
+				dispatch(redirectViewQuestion(question));
 			});
 
 		return dispatch({ type: SaveActive });

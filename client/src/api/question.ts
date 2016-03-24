@@ -13,9 +13,9 @@ export function create(title: string, visibility: Visibility): Promise<Question>
 				title,
 				visibility
 			})
-			.end((err: Error, res: any) => {
+			.end((err: Error, res: Response) => {
 				if (err) return reject(err);
-				return resolve(res);
+				return resolve(res.body);
 			});
 	});
 }

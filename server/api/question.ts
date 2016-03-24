@@ -18,9 +18,9 @@ question.put('/', (req, res) => {
 		createdAt: new Date().toISOString()
 	};
 
-	db.collection('questions').insertOne(q, (err, _q) => {
-		console.log(err, _q);
-		res.send(_q);
+	db.collection('questions').insertOne(q, (err, insertRes) => {
+		if (err) return res.status(400).send('');
+		else return res.send(insertRes.ops[0]);
 	});
 });
 
