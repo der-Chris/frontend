@@ -27,7 +27,7 @@ const thunkMiddleware = (store: Redux.Store) => (next: any) => (action: Action) 
  * Logs all actions and states after they are dispatched.
  */
 const loggerMiddleware = (store: Redux.Store) => (next: any) => (action: SimpleAction) => {
-	console.groupCollapsed('Dispatching ' + action.type);
+	console.group('Dispatching ' + action.type);
 
 	let result = next(action);
 	console.log('Next state', store.getState());

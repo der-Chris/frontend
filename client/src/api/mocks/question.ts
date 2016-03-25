@@ -23,4 +23,4 @@ mock.get('/hmc-fetch-question/:id', (req: any) => {
 	else return null;
 });
 
-console.log('Question mock installed...');
+console.log('QuestionModel mock installed...');

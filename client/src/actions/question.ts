@@ -1,15 +1,22 @@
-import { Question } from '../models/Question';
+import { QuestionModel } from '../models/Question';
 import * as QuestionApi from '../api/question';
-import Action from './Action';
-import {redirect} from "./global";
+import { redirect } from './global';
+import { RedirectAction } from './global';
+import { SimpleAction, FuncAction } from './Action';
 
-export const FetchActive = 'question:fetchQuestion';
+export const FetchActive = 'question:fetchById';
 export const FetchDone = 'question:fetchDone';
 
-export function fetchQuestion(id: string) {
+export interface FetchDoneAction extends SimpleAction {
+	type: string;
+	question?: QuestionModel;
+	fetchError?: any;
+}
+
+export function fetchById(id: string): FuncAction {
 	return (dispatch: Redux.Dispatch) => {
 		QuestionApi.fetch(id)
-			.then((question: Question) => {
+			.then((question: QuestionModel) => {
 				return dispatch({ type: FetchDone, question });
 			})
 			.catch((err: any) => {
@@ -20,6 +27,12 @@ export function fetchQuestion(id: string) {
 	};
 }
 
-export function redirectViewQuestion(question: Question): Action {
-	return redirect('/please/' + question._id);
+export function redirectViewQuestion(question: QuestionModel): RedirectAction {
+	let url = '/please/' + question._id;
+	if (question.visibility === 'private') {
+		// QuestionModel is private -> append key to url
+		url += '/' + question.key;
+	}
+
+	return redirect(url);
 }

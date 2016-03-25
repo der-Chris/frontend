@@ -1,4 +1,5 @@
-import { Visibility } from '../models/Question';
+import { QuestionModel, Visibility } from '../models/Question';
+import { CreateSuggestionState } from './createSuggestion';
 
 export interface CreateQuestion {
 	title: string;
@@ -11,6 +12,8 @@ export interface CreateQuestion {
 interface AppState {
 	createQuestion?: CreateQuestion;
 	question?: any;
+
+	createSuggestion?: CreateSuggestionState;
 }
 
 export default AppState;

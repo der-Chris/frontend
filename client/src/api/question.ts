@@ -1,11 +1,11 @@
 import * as request from 'superagent';
 import { Response } from 'superagent';
 
-//import '../mocks/Question';
+//import '../mocks/QuestionModel';
 
-import { Question, Visibility} from '../models/Question';
+import { QuestionModel, Visibility} from '../models/Question';
 
-export function create(title: string, visibility: Visibility): Promise<Question> {
+export function create(title: string, visibility: Visibility): Promise<QuestionModel> {
 	return new Promise((resolve, reject) => {
 		request
 			.put('/api/v1/question')
@@ -20,7 +20,7 @@ export function create(title: string, visibility: Visibility): Promise<Question>
 	});
 }
 
-export function fetch(id: string): Promise<Question> {
+export function fetch(id: string): Promise<QuestionModel> {
 	return new Promise((resolve, reject) => {
 		request
 			.get('/api/v1/question/' + id)

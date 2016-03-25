@@ -6,7 +6,8 @@ import Box from '../ui/Box';
 import Progress from '../ui/Progress';
 
 import AppState from '../reducers/AppState';
-import { fetchQuestion } from '../actions/question';
+import { fetchById } from '../actions/question';
+import CreateSuggestion from '../components/CreateSuggestion';
 import Suggestions from '../components/Suggestions';
 
 class Please extends React.Component<any, any> {
@@ -30,7 +31,7 @@ class Please extends React.Component<any, any> {
 		}
 		else {
 			heading = this.props.question.title;
-			content = <Box><Suggestions /></Box>;
+			content = <div><CreateSuggestion /><Suggestions /></div>;
 		}
 		
 		return (
@@ -45,7 +46,7 @@ class Please extends React.Component<any, any> {
 const mapStateToProps = (state: AppState) => state.question;
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch) => ({
-	fetchQuestion: (id: string) => dispatch(fetchQuestion(id))
+	fetchQuestion: (id: string) => dispatch(fetchById(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Please);

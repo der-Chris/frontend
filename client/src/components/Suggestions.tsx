@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
+import Box from '../ui/Box';
 import AppState from '../reducers/AppState';
 
 class PleaseSuggestions extends React.Component<any, any> {
@@ -11,7 +12,7 @@ class PleaseSuggestions extends React.Component<any, any> {
 			content = <span />;
 		}
 		else {
-			content = <div>Suggestions go here!</div>
+			content = <Box>Suggestions go here!</Box>
 		}
 
 		return (

@@ -7,9 +7,8 @@ import Button from '../ui/Button';
 import Flipswitch from '../ui/Flipswitch';
 
 import AppState from '../reducers/AppState';
-import { Question } from '../models/Question';
+import { QuestionModel, Visibility } from '../models/Question';
 import { titleChange, visibilityChange, submitClick } from '../actions/createQuestion';
-import {Visibility} from "../models/Question";
 
 class CreateQuestion extends React.Component<any, any> {
 	render() {

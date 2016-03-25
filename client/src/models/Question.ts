@@ -1,6 +1,6 @@
 export type Visibility = 'public' | 'private' | 'password';
 
-export interface Question {
+export interface QuestionModel {
 	_id?: string;
 	key: string;
 	title: string;
@@ -13,7 +13,7 @@ export function titleValidator(title: string): string {
 		return 'MIN_LENGTH';
 	}
 
-	if (!(/^[A-Za-z0-9 \-\+,;\.?!]+$/.test(title))) {
+	if (!(/^[A-Za-z0-9 \-\+,:;\.?!]+$/.test(title))) {
 		return 'REGEX';
 	}
 

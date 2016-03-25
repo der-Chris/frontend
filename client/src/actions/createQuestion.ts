@@ -1,6 +1,6 @@
 import AppState from '../reducers/AppState';
 import { TitleChangeAction, VisibilityChangeAction } from '../reducers/createQuestion';
-import { Question, Visibility, titleValidator } from '../models/Question';
+import { QuestionModel, Visibility, titleValidator } from '../models/Question';
 import * as QuestionApi from '../api/question';
 import Action from './Action';
 import {redirectViewQuestion} from './question';
@@ -29,11 +29,11 @@ export function submitClick(): Action {
 	return (dispatch: Redux.Dispatch, getState: () => AppState) => {
 		let state = getState();
 		QuestionApi.create(state.createQuestion.title, state.createQuestion.visibility)
-			.then((question: Question) => {
+			.then((question: QuestionModel) => {
 				dispatch({ type: SaveDone });
 				return question;
 			})
-			.then((question: Question) => {
+			.then((question: QuestionModel) => {
 				dispatch(redirectViewQuestion(question));
 			});
 
