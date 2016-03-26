@@ -8,7 +8,7 @@ import Progress from '../ui/Progress';
 import AppState from '../reducers/AppState';
 import { fetchById } from '../actions/question';
 import CreateSuggestion from '../components/CreateSuggestion';
-import Suggestions from '../components/Suggestions';
+import ListSuggestions from '../components/ListSuggestions';
 
 class Please extends React.Component<any, any> {
 	componentDidMount() {
@@ -31,7 +31,7 @@ class Please extends React.Component<any, any> {
 		}
 		else {
 			heading = this.props.question.title;
-			content = <div><CreateSuggestion /><Suggestions /></div>;
+			content = <div><CreateSuggestion /><ListSuggestions /></div>;
 		}
 		
 		return (

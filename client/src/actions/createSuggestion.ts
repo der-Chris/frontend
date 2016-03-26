@@ -12,3 +12,19 @@ export function textChange(text: string): TextChangeAction {
 		textValid: textValidator(text)
 	};
 }
+
+export function submitClick(text: string): Action {
+	return (dispatch: Redux.Dispatch, getState: () => AppState) => {
+		let state = getState();
+		QuestionApi.create(state.createQuestion.title, state.createQuestion.visibility)
+			.then((question: QuestionModel) => {
+				dispatch({ type: SaveDone });
+				return question;
+			})
+			.then((question: QuestionModel) => {
+				dispatch(redirectViewQuestion(question));
+			});
+
+		return dispatch({ type: SaveActive });
+	};
+}

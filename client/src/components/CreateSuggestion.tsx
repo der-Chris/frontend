@@ -5,7 +5,7 @@ import Box from '../ui/Box';
 import TextField from '../ui/TextField';
 import Button from '../ui/Button';
 import AppState from '../reducers/AppState';
-import { textChange } from '../actions/createSuggestion';
+import { textChange, submitClick } from '../actions/createSuggestion';
 
 class CreateSuggestion extends React.Component<any, any> {
 	render() {
@@ -13,6 +13,7 @@ class CreateSuggestion extends React.Component<any, any> {
 			<div className="component create-suggestion">
 				<Box>
 					<TextField type="text"
+						value={this.props.text}
 						hintText="Enter your suggestion here."
 						errorText={this.props.textValid}
 						disabled={this.props.saveActive}
@@ -23,8 +24,6 @@ class CreateSuggestion extends React.Component<any, any> {
 							active={this.props.saveActive}
 							disabled={!('textValid' in this.props) || !!this.props.textValid || this.props.saveActive} />
 					</div>
-
-
 
 					<div className="clearfix"></div>
 				</Box>
@@ -37,14 +36,15 @@ class CreateSuggestion extends React.Component<any, any> {
 	};
 
 	onCreateClick = () => {
-
+		this.props.submitClick(this.props.text);
 	};
 }
 
 const mapStateToProps = (state: AppState) => state.createSuggestion ? state.createSuggestion : {};
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch) => ({
-	textChange: (text: string) => dispatch(textChange(text))
+	textChange: (text: string) => dispatch(textChange(text)),
+	submitClick: (text: string) => dispatch(submitClick(text))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateSuggestion);

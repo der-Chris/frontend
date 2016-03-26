@@ -11,9 +11,6 @@ class PleaseSuggestions extends React.Component<any, any> {
 		if (this.props.fetchActive) {
 			content = <span />;
 		}
-		else {
-			content = <Box>Suggestions go here!</Box>
-		}
 
 		return (
 			<div className="component please-suggestions">

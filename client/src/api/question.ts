@@ -1,9 +1,7 @@
 import * as request from 'superagent';
 import { Response } from 'superagent';
 
-//import '../mocks/QuestionModel';
-
-import { QuestionModel, Visibility} from '../models/Question';
+import { QuestionModel, Visibility } from '../models/Question';
 
 export function create(title: string, visibility: Visibility): Promise<QuestionModel> {
 	return new Promise((resolve, reject) => {

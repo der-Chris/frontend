@@ -5,10 +5,10 @@ import { db } from '../db';
 import { randomString } from '../../client/src/utils';
 import { QuestionModel, titleValidator } from '../../client/src/models/Question';
 
-let question = express.Router();
-export = question;
+let router = express.Router();
+export = router;
 
-question.put('/', (req, res) => {
+router.put('/', (req, res) => {
 	// TODO Schema validation
 	let titleErr = titleValidator(req.body.title);
 
@@ -20,7 +20,7 @@ question.put('/', (req, res) => {
 	};
 
 	if (q.visibility === 'private') {
-		q.key = randomString(12);
+		q.key = randomString(24);
 	}
 
 	db.collection('questions').insertOne(q, (err, insertRes) => {
@@ -29,7 +29,7 @@ question.put('/', (req, res) => {
 	});
 });
 
-question.get('/:id/:key?', (req, res) => {
+router.get('/:id/:key?', (req, res) => {
 	let objectId = new ObjectID(req.params.id);
 
 	db.collection('questions').findOne({ _id: objectId }, (err, q) => {
@@ -46,7 +46,7 @@ question.get('/:id/:key?', (req, res) => {
 	});
 });
 
-question.post('/search', (req, res) => {
+router.post('/search', (req, res) => {
 	// TODO limit possible filters, also limit data that could be found (not private/password)
 
 	db.collection('questions').find(req.body).toArray((err, results) => {
