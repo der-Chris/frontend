@@ -34,6 +34,8 @@ question.get('/:id', (req, res) => {
 });
 
 question.post('/search', (req, res) => {
+	// TODO limit possible filters, also limit data that could be found (not private/password)
+
 	db.collection('questions').find(req.body).toArray((err, results) => {
 		if (err) return res.status(404).send('');
 		else return res.send(results);

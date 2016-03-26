@@ -4,7 +4,7 @@ import { TextChange } from '../actions/createSuggestion';
 
 export interface CreateSuggestionState {
 	text: string;
-	textValid: string;
+	textValid?: string;
 }
 
 export interface TextChangeAction extends SimpleAction {
@@ -13,8 +13,7 @@ export interface TextChangeAction extends SimpleAction {
 }
 
 let defaultState: CreateSuggestionState = {
-	text: '',
-	textValid: null
+	text: ''
 };
 
 export default function createSuggestion(state: CreateSuggestionState = defaultState, action: SimpleAction): CreateSuggestionState {

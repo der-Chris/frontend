@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import Box from '../ui/Box';
 import TextField from '../ui/TextField';
+import Button from '../ui/Button';
 import AppState from '../reducers/AppState';
 import { textChange } from '../actions/createSuggestion';
 
@@ -13,7 +14,19 @@ class CreateSuggestion extends React.Component<any, any> {
 				<Box>
 					<TextField type="text"
 						hintText="Enter your suggestion here."
+						errorText={this.props.textValid}
+						disabled={this.props.saveActive}
 						onChange={this.onTextChange} />
+
+					<div style={{float: 'right'}}>
+						<Button labelText="Create" onClick={this.onCreateClick}
+							active={this.props.saveActive}
+							disabled={!('textValid' in this.props) || !!this.props.textValid || this.props.saveActive} />
+					</div>
+
+
+
+					<div className="clearfix"></div>
 				</Box>
 			</div>
 		);
@@ -21,6 +34,10 @@ class CreateSuggestion extends React.Component<any, any> {
 
 	onTextChange = (event: any) => {
 		this.props.textChange(event.target.value);
+	};
+
+	onCreateClick = () => {
+
 	};
 }
 
