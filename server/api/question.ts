@@ -2,6 +2,7 @@ import * as express from 'express';
 import { ObjectID } from 'mongodb';
 
 import { db } from '../db';
+import { randomString } from '../../client/src/utils';
 import { QuestionModel, titleValidator } from '../../client/src/models/Question';
 
 let question = express.Router();
@@ -18,18 +19,30 @@ question.put('/', (req, res) => {
 		createdAt: new Date().toISOString()
 	};
 
+	if (q.visibility === 'private') {
+		q.key = randomString(12);
+	}
+
 	db.collection('questions').insertOne(q, (err, insertRes) => {
 		if (err) return res.status(400).send('');
 		else return res.send(insertRes.ops[0]);
 	});
 });
 
-question.get('/:id', (req, res) => {
+question.get('/:id/:key?', (req, res) => {
 	let objectId = new ObjectID(req.params.id);
 
 	db.collection('questions').findOne({ _id: objectId }, (err, q) => {
 		if (err) return res.status(404).send('');
-		else return res.send(q);
+
+		if (q.visibility === 'private') {
+			// Compare key
+			if (!req.params.key || req.params.key !== q.key) {
+				return res.status(401).send('');
+			}
+		}
+
+		return res.send(q);
 	});
 });
 

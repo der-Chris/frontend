@@ -20,10 +20,13 @@ export function create(title: string, visibility: Visibility): Promise<QuestionM
 	});
 }
 
-export function fetch(id: string): Promise<QuestionModel> {
+export function fetch(id: string, key?: string): Promise<QuestionModel> {
 	return new Promise((resolve, reject) => {
+		let url = '/api/v1/question/' + id;
+		if (key) url += '/' + key;
+
 		request
-			.get('/api/v1/question/' + id)
+			.get(url)
 			.end((err: Error, res: Response) => {
 				if (err) return reject(err);
 				return resolve(res.body);

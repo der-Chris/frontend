@@ -9,7 +9,8 @@ export class Routes extends React.Component<any, any> {
 		return (
 			<Router history={browserHistory}>
 				<Route path="/" component={Frontpage} />
-				<Route path="/please/:qid" component={Please} />
+				<Route path="/please/:id" component={Please} />
+				<Route path="/please/:id/:key" component={Please} />
 			</Router>
 		);
 	}

@@ -13,9 +13,9 @@ export interface FetchDoneAction extends SimpleAction {
 	fetchError?: any;
 }
 
-export function fetchById(id: string): FuncAction {
+export function fetchById(id: string, key?: string): FuncAction {
 	return (dispatch: Redux.Dispatch) => {
-		QuestionApi.fetch(id)
+		QuestionApi.fetch(id, key)
 			.then((question: QuestionModel) => {
 				return dispatch({ type: FetchDone, question });
 			})

@@ -12,7 +12,7 @@ import Suggestions from '../components/Suggestions';
 
 class Please extends React.Component<any, any> {
 	componentDidMount() {
-		this.props.fetchQuestion(this.props.params.qid);
+		this.props.fetchQuestion(this.props.params.id, this.props.params.key);
 	}
 
 	render() {
@@ -46,7 +46,7 @@ class Please extends React.Component<any, any> {
 const mapStateToProps = (state: AppState) => state.question;
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch) => ({
-	fetchQuestion: (id: string) => dispatch(fetchById(id))
+	fetchQuestion: (id: string, key?: string) => dispatch(fetchById(id, key))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Please);
