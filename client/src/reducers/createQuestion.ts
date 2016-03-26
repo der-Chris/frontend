@@ -1,9 +1,16 @@
 import { TitleChange, SaveActive, SaveDone } from '../actions/createQuestion';
 import AppState from "./AppState";
 import { Visibility } from "../models/Question";
-import {VisibilityChange} from "../actions/createQuestion";
-import CreateQuestion from "./AppState";
+import { VisibilityChange } from "../actions/createQuestion";
 import { SimpleAction } from '../actions/Action';
+
+export interface CreateQuestionState {
+	title: string;
+	visibility: Visibility;
+
+	titleValid?: string;
+	saveActive?: boolean;
+}
 
 export interface TitleChangeAction extends SimpleAction {
 	title: string;
@@ -14,12 +21,12 @@ export interface VisibilityChangeAction extends SimpleAction {
 	visibility: Visibility;
 }
 
-let defaultState = {
+let defaultState: CreateQuestionState = {
 	title: '',
 	visibility: 'public'
 };
 
-export default function createQuestion(state: CreateQuestion = defaultState, action: SimpleAction): CreateQuestion {
+export default function createQuestion(state: CreateQuestionState = defaultState, action: SimpleAction): CreateQuestionState {
 	switch (action.type) {
 		case TitleChange:
 			var titleChangeAction = action as TitleChangeAction;

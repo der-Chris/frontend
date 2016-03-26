@@ -12,7 +12,7 @@ import AppState from "../../reducers/AppState";
 describe('CreateQuestion', () => {
 
 	function reducer(state: any = {}, action: Action): AppState {
-		return {};
+		return null;
 	}
 
 	it('should display empty question title input', () => {

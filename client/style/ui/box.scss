@@ -9,6 +9,10 @@ div.ui.box {
 	box-shadow:
 		0 5px 10px -1px $ui-box-shadow-color;
 	
+	&.clickable {
+		cursor: pointer;
+	}
+	
 	&.more {
 		box-shadow:
 			// Bottom Borders

@@ -1,9 +1,17 @@
 import * as React from 'react';
 
-export default class Box extends React.Component<any, {}> {
+interface Props {
+	onClick?: () => void;
+	children?: JSX.Element
+}
+
+export default class Box extends React.Component<Props, {}> {
 	render() {
+		let classes = 'ui box';
+		if (this.props.onClick) classes += ' clickable';
+
 		return (
-			<div className="ui box">
+			<div className={classes} onClick={this.props.onClick}>
 				{this.props.children}
 			</div>
 		);

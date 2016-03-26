@@ -30,3 +30,15 @@ export function fetch(id: string): Promise<QuestionModel> {
 			});
 	});
 }
+
+export function find(filter: Object): Promise<QuestionModel[]> {
+	return new Promise((resolve, reject) => {
+		request
+			.post('/api/v1/question/search')
+			.send(filter)
+			.end((err: Error, res: Response) => {
+				if (err) return reject(err);
+				return resolve(res.body);
+			});
+	});
+}

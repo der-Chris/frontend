@@ -32,3 +32,10 @@ question.get('/:id', (req, res) => {
 		else return res.send(q);
 	});
 });
+
+question.post('/search', (req, res) => {
+	db.collection('questions').find(req.body).toArray((err, results) => {
+		if (err) return res.status(404).send('');
+		else return res.send(results);
+	});
+});

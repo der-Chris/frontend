@@ -6,6 +6,9 @@ import Box from '../ui/Box';
 
 import AppState from '../reducers/AppState';
 import CreateQuestion from '../components/CreateQuestion';
+import ListQuestions from '../components/ListQuestions';
+
+const filter = { visibility: 'public' };
 
 class Frontpage extends React.Component<any, any> {
 	render() {
@@ -16,6 +19,8 @@ class Frontpage extends React.Component<any, any> {
 				<Box>
 					<CreateQuestion />
 				</Box>
+
+				<ListQuestions filter={filter} />
 			</div>
 		);
 	}

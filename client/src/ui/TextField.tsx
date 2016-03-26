@@ -15,7 +15,7 @@ export default class TextField extends React.Component<TextFieldProps, {}> {
 		// Prepare label
 		let label: any = '';
 		if (this.props.labelText) {
-			label = <span>{this.props.labelText}:</span>;
+			label = <span>{this.props.labelText+':'}</span>;
 		}
 
 		let disabled = this.props.disabled;

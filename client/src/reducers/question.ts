@@ -3,13 +3,13 @@ import { QuestionModel as QuestionModel, Visibility } from '../models/Question';
 import { SimpleAction } from '../actions/Action';
 import AppState from './AppState';
 
-export interface Question {
+export interface QuestionState {
 	question?: QuestionModel;
 	fetchActive?: boolean;
 	fetchError?: boolean;
 }
 
-export default function question(state: Question = {}, action: SimpleAction): AppState {
+export default function question(state: QuestionState = {}, action: SimpleAction): QuestionState {
 	switch (action.type) {
 		case FetchActive:
 			return Object.assign({}, state, {

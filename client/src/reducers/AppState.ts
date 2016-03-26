@@ -1,17 +1,11 @@
-import { QuestionModel, Visibility } from '../models/Question';
+import { CreateQuestionState } from './createQuestion';
 import { CreateSuggestionState } from './createSuggestion';
-
-export interface CreateQuestion {
-	title: string;
-	visibility: Visibility;
-
-	titleValid?: string;
-	saveActive?: boolean;
-}
+import { ListQuestionsState } from './listQuestions';
 
 interface AppState {
-	createQuestion?: CreateQuestion;
+	createQuestion?: CreateQuestionState;
 	question?: any;
+	listQuestions: ListQuestionsState;
 
 	createSuggestion?: CreateSuggestionState;
 }

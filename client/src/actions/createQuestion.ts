@@ -3,7 +3,7 @@ import { TitleChangeAction, VisibilityChangeAction } from '../reducers/createQue
 import { QuestionModel, Visibility, titleValidator } from '../models/Question';
 import * as QuestionApi from '../api/question';
 import Action from './Action';
-import {redirectViewQuestion} from './question';
+import { redirectViewQuestion } from './question';
 
 export const TitleChange = 'createQuestion:titleChange';
 export const VisibilityChange = 'createQuestion:visibilityChange';
