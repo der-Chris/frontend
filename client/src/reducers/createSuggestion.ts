@@ -38,10 +38,14 @@ export default function createSuggestion(state: CreateSuggestionState = defaultS
 
 		case SaveDone:
 			var saveDoneAction = action as SaveDoneAction;
-			return Object.assign({}, state, {
+			let newState = Object.assign({}, state, defaultState, {
 				suggestion: saveDoneAction.suggestion,
 				saveActive: false
 			});
+
+			// Clear text validation
+			delete newState.textValid;
+			return newState;
 
 		default:
 			return state;
