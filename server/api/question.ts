@@ -46,6 +46,10 @@ router.get('/:id/:key?', (req, res) => {
 	});
 });
 
+router.get('/:id/:key?', (req, res) => {
+
+});
+
 router.post('/search', (req, res) => {
 	// TODO limit possible filters, also limit data that could be found (not private/password)
 

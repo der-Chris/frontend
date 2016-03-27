@@ -3,10 +3,12 @@ import { Response } from 'superagent';
 
 import { QuestionModel, Visibility } from '../models/Question';
 
+const baseUrl = '/api/v1/question';
+
 export function create(title: string, visibility: Visibility): Promise<QuestionModel> {
 	return new Promise((resolve, reject) => {
 		request
-			.put('/api/v1/question')
+			.put(baseUrl)
 			.send({
 				title,
 				visibility
@@ -20,7 +22,7 @@ export function create(title: string, visibility: Visibility): Promise<QuestionM
 
 export function fetch(id: string, key?: string): Promise<QuestionModel> {
 	return new Promise((resolve, reject) => {
-		let url = '/api/v1/question/' + id;
+		let url = baseUrl + '/' + id;
 		if (key) url += '/' + key;
 
 		request
@@ -35,7 +37,7 @@ export function fetch(id: string, key?: string): Promise<QuestionModel> {
 export function find(filter: Object): Promise<QuestionModel[]> {
 	return new Promise((resolve, reject) => {
 		request
-			.post('/api/v1/question/search')
+			.post(baseUrl + '/search')
 			.send(filter)
 			.end((err: Error, res: Response) => {
 				if (err) return reject(err);
