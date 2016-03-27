@@ -2,7 +2,7 @@
   "name": "help-me-choose",
   "description": "Collaborate in choosing the best option for a specific purpose!",
   "license": "MIT",
-  "version": "0.0.3",
+  "version": "0.3.1",
   "author": "Brian Pfretzschner <brian.pfretzschner@gmail.com>",
   "main": "server.js",
   "scripts": {
