@@ -22,7 +22,7 @@ export function fetchById(id: string, key?: string): FuncAction {
 			.catch((err: any) => {
 				return dispatch({ type: FetchDone, fetchError: err });
 			});
-	
+
 		return dispatch({ type: FetchActive });
 	};
 }
@@ -33,6 +33,6 @@ export function redirectViewQuestion(question: QuestionModel): RedirectAction {
 		// QuestionModel is private -> append key to url
 		url += '/' + question.key;
 	}
-
+	
 	return redirect(url);
 }

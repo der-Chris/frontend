@@ -18,8 +18,8 @@ export function textChange(text: string): TextChangeAction {
 
 export function submitClick(text: string): Action {
 	return (dispatch: Redux.Dispatch, getState: () => AppState) => {
-		let state = getState();
-		SuggestionApi.create(state.createSuggestion.text)
+		let state: AppState = getState();
+		SuggestionApi.create(state.createSuggestion.text, state.question.question._id, state.question.question.key)
 			.then((suggestion: SuggestionModel) => {
 				dispatch({
 					type: SaveDone,

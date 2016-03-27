@@ -1,6 +1,7 @@
 import { CreateQuestionState } from './createQuestion';
 import { CreateSuggestionState } from './createSuggestion';
 import { ListQuestionsState } from './listQuestions';
+import { ListSuggestionsState } from './listSuggestions';
 
 interface AppState {
 	createQuestion?: CreateQuestionState;
@@ -8,6 +9,7 @@ interface AppState {
 	listQuestions: ListQuestionsState;
 
 	createSuggestion?: CreateSuggestionState;
+	listSuggestions?: ListSuggestionsState;
 }
 
 export default AppState;

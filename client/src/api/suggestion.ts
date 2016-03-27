@@ -4,12 +4,15 @@ import { Response } from 'superagent';
 import { QuestionModel } from '../models/Question';
 import { SuggestionModel } from '../models/Suggestion';
 
-const baseUrl = '/api/v1/suggestion';
+const baseUrl = '/api/v1/question';
 
-export function create(text: string): Promise<SuggestionModel> {
+export function create(text: string, questionId: string, key?: string): Promise<SuggestionModel> {
 	return new Promise((resolve, reject) => {
+		let url = baseUrl + '/' + questionId;
+		if (key) url += '/' + key;
+		url += '/suggestion';
 		request
-			.put(baseUrl)
+			.put(url)
 			.send({
 				text
 			})
@@ -22,8 +25,9 @@ export function create(text: string): Promise<SuggestionModel> {
 
 export function fetchAll(questionId: string, key?: string): Promise<SuggestionModel[]> {
 	return new Promise((resolve, reject) => {
-		let url = baseUrl + '/search';
+		let url = baseUrl + '/' + questionId;
 		if (key) url += '/' + key;
+		url += '/suggestions';
 
 		request
 			.get(url)

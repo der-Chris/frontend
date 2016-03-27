@@ -20,7 +20,8 @@ class Please extends React.Component<any, any> {
 
 		if (this.props.fetchError) {
 			heading = 'Fetch Error';
-			content = <Box>
+			content =
+				<Box>
 					<pre>{this.props.fetchError.message}</pre>
 					<Link to={'/'}>Back to Frontpage...</Link>
 				</Box>;
@@ -31,7 +32,13 @@ class Please extends React.Component<any, any> {
 		}
 		else {
 			heading = this.props.question.title;
-			content = <div><CreateSuggestion /><ListSuggestions /></div>;
+			content =
+				<div>
+					<CreateSuggestion />
+					<ListSuggestions
+						questionId={this.props.params.id}
+						key={this.props.params.key} />
+				</div>;
 		}
 		
 		return (
