@@ -13,7 +13,7 @@ export function titleValidator(title: string): string {
 		return 'MIN_LENGTH';
 	}
 
-	if (!(/^[A-Za-z0-9 \-\+,:;\.?!'"]+$/.test(title))) {
+	if (!(/^[A-Za-z0-9 \-\+,:;\.?!'"()]+$/.test(title))) {
 		return 'REGEX';
 	}
 

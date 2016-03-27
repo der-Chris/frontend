@@ -12,7 +12,7 @@ export function textValidator(text: string): string {
 		return 'MIN_LENGTH';
 	}
 
-	if (!(/^[A-Za-z0-9 \/\-\+,:;\.?!=#'"]+$/.test(text))) {
+	if (!(/^[A-Za-z0-9 \/\-\+,:;\.?!=#'"()]+$/.test(text))) {
 		return 'REGEX';
 	}
 
