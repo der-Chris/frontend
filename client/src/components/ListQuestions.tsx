@@ -25,7 +25,7 @@ class ListQuestions extends React.Component<any, any> {
 
 				{this.props.questions.map((question: QuestionModel) => {
 					return (
-						<Box onClick={this.onQuestionClick.bind(this, question)}>
+						<Box onClick={this.onQuestionClick.bind(this, question)} key={question._id}>
 							<h3>{question.title}</h3>
 							<small>Created at {question.createdAt}</small>
 						</Box>
