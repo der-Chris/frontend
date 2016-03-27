@@ -1,28 +1,68 @@
-import {FetchActive} from "../question";
-jest.autoMockOff();
 jest.dontMock('../question');
 jest.dontMock('../global');
-jest.dontMock('../../models/QuestionModel');
+jest.dontMock('../../models/Question');
 
+import AppState from '../../reducers/AppState';
 import Action, { FuncAction, SimpleAction } from '../Action';
 import { QuestionModel } from '../../models/Question';
-import { fetchById, redirectViewQuestion } from '../question';
+import { FetchActive, FetchDone, fetchById, redirectViewQuestion, FetchDoneAction } from '../question';
 import { Redirect } from '../global';
 
 describe('question actions', () => {
 
 	describe('fetchById', () => {
-		it('should resolve and return question object', () => {
-			// TODO
-			/*let funcAction: FuncAction = fetchById('__id');
+		pit('should resolve and return question object', () => {
+			let funcAction: any = fetchById('__id');
 			expect(typeof funcAction).toBe('function');
 
-			funcAction((action: Action) => {
-				expect(typeof action.type).toBe('string');
+			return new Promise((resolve, reject) => {
+				let invocationCount = 0;
 
-				let simpleAction = action as SimpleAction;
-				expect(simpleAction.type).toBe(FetchActive);
-			});*/
+				funcAction((action: Action) => {
+					expect('type' in action).toBeTruthy();
+					let simpleAction = action as SimpleAction;
+
+					if (invocationCount === 0) {
+						expect(simpleAction.type).toBe(FetchActive);
+					}
+					else {
+						expect(simpleAction.type).toBe(FetchDone);
+						let fetchDoneAction = action as FetchDoneAction;
+						expect(fetchDoneAction.question).toBeDefined();
+						expect(fetchDoneAction.question._id).toBe('__id');
+						resolve();
+					}
+
+					invocationCount++;
+				});
+			});
+		});
+
+		pit('should reject and provide the error', () => {
+			let funcAction: any = fetchById('abc');
+			expect(typeof funcAction).toBe('function');
+
+			return new Promise((resolve, reject) => {
+				let invocationCount = 0;
+
+				funcAction((action: Action) => {
+					expect('type' in action).toBeTruthy();
+					let simpleAction = action as SimpleAction;
+
+					if (invocationCount === 0) {
+						expect(simpleAction.type).toBe(FetchActive);
+					}
+					else {
+						expect(simpleAction.type).toBe(FetchDone);
+						let fetchDoneAction = action as FetchDoneAction;
+						expect(fetchDoneAction.question).toBeUndefined();
+						expect(fetchDoneAction.fetchError).toBeDefined();
+						resolve();
+					}
+
+					invocationCount++;
+				});
+			});
 		});
 	});
 
