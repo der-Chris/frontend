@@ -1,5 +1,8 @@
+import { ObjectID } from 'mongodb';
+
 export interface SuggestionModel {
 	_id?: string;
+	questionId: ObjectID;
 	text: string;
 	createdAt: string;
 }
