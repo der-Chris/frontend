@@ -37,13 +37,13 @@ router.get('/:id/:key?/suggestions', (req, res) => {
 	// TODO Make sure, key exists
 	let questionId = new ObjectID(req.params.id);
 
-	db.collection('suggestions').find({
-		questionId
-
-	}).toArray((err, results) => {
-		if (err) return res.status(404).send('');
-		else return res.send(results);
-	});
+	db.collection('suggestions')
+		.find({ questionId })
+		.sort({ createdAt: -1 })
+		.toArray((err, results) => {
+			if (err) return res.status(404).send('');
+			else return res.send(results);
+		});
 });
 
 /*
@@ -94,8 +94,12 @@ router.get('/:id/:key?', (req, res) => {
 router.post('/search', (req, res) => {
 	// TODO limit possible filters, also limit data that could be found (not private/password)
 
-	db.collection('questions').find(req.body).toArray((err, results) => {
-		if (err) return res.status(404).send('');
-		else return res.send(results);
-	});
+	db.collection('questions')
+		.find(req.body)
+		.sort({ createdAt: -1 })
+		.limit(10)
+		.toArray((err, results) => {
+			if (err) return res.status(404).send('');
+			else return res.send(results);
+		});
 });
