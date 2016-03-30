@@ -52,7 +52,7 @@ status code 401 is returned.
 
 Status Code: 200
 
-    Question object
+    Question
 
 **Error**
 
@@ -74,9 +74,7 @@ Body contains a valid Mongodb filter.
 
 Status Code: 200
 
-    [
-      Question objects
-	}
+    Question[]
 
 **Error**
 
@@ -111,7 +109,7 @@ Status Code: 400
 
 Status Code: 200
 
-    Suggestion object
+    Suggestion
 
 **Error**
 
@@ -127,9 +125,7 @@ Status Code: 400
 
 Status Code: 200
 
-    [
-      Suggestion objects
-    ]
+    Suggestion[]
 
 **Error**
 
