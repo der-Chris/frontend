@@ -136,3 +136,25 @@ Status Code: 400
 Status Code: 404
 
     string
+
+
+## Comment
+
+    {
+      _id: string;
+      suggestionId: string;
+      text: string;
+      createdAt: Date;
+    }
+
+
+## Vote
+
+    {
+      _id: string;
+      suggestionId: string;
+      value: number;
+      createdAt: Date;
+    }
+
+* value: Either 1 or -1.
