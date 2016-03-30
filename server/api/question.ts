@@ -55,14 +55,13 @@ router.put('/', (req, res) => {
 	let titleErr = titleValidator(req.body.title);
 
 	let q: QuestionModel = {
-		key: 'key',
 		title: req.body.title,
 		visibility: req.body.visibility,
 		createdAt: new Date().toISOString()
 	};
 
 	if (q.visibility === 'private') {
-		q.key = randomString(24);
+		q.visibilityToken = randomString(24);
 	}
 
 	db.collection('questions').insertOne(q, (err, insertRes) => {
@@ -85,10 +84,6 @@ router.get('/:id/:key?', (req, res) => {
 
 		return res.send(q);
 	});
-});
-
-router.get('/:id/:key?', (req, res) => {
-
 });
 
 router.post('/search', (req, res) => {
