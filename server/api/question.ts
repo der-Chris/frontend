@@ -24,7 +24,7 @@ router.put('/:id/:key?/suggestion', (req, res) => {
 	let suggestion: SuggestionModel = {
 		questionId,
 		text: req.body.text,
-		createdAt: new Date().toISOString()
+		createdAt: new Date()
 	};
 
 	db.collection('suggestions').insertOne(suggestion, (err, insertRes) => {
@@ -57,7 +57,7 @@ router.put('/', (req, res) => {
 	let q: QuestionModel = {
 		title: req.body.title,
 		visibility: req.body.visibility,
-		createdAt: new Date().toISOString()
+		createdAt: new Date()
 	};
 
 	if (q.visibility === 'private') {

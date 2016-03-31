@@ -5,7 +5,7 @@ export interface QuestionModel {
 	visibilityToken?: string;
 	title: string;
 	visibility: Visibility;
-	createdAt: string;
+	createdAt: Date;
 }
 
 export function titleValidator(title: string): string {

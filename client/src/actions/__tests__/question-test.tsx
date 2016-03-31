@@ -72,7 +72,7 @@ describe('question actions', () => {
 			key: '__key',
 			title: 'Test',
 			visibility: 'private',
-			createdAt: 'createdAt'
+			createdAt: new Date()
 		};
 
 		it('should redirect to public & password questions', () => {

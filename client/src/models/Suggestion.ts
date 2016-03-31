@@ -4,7 +4,7 @@ export interface SuggestionModel {
 	_id?: string;
 	questionId: ObjectID;
 	text: string;
-	createdAt: string;
+	createdAt: Date;
 }
 
 export function textValidator(text: string): string {
