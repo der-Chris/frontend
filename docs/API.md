@@ -1,5 +1,18 @@
 # v1
 
+## User
+
+Users email address is stored in the _id field, so that an email address uniquly identifies a user.
+
+    {
+      _id: string;
+      password: string;
+      firstname: string;
+      lastname: string;
+      ...
+    }
+
+
 ## Question
 
     {
@@ -7,14 +20,18 @@
       visibilityToken?: string;
       title: string;
       visibility: string;
-      createdAt: Date;
+      userId?: string;
+      meta: {
+        createdAt: Date;
+        ip: string;
+        userAgent: string;
+      }
     }
 
 * _id: Unique identifier for that document. Format: `/^[A-Za-z0-9]{12}$/`
 * visibilityToken: Randomly generated token. This should act as kind of a
   shared key. If the visibility of this question is set to private, a random
-  visibilityToken is generated. If the user does not provide this token, he
-  is not allowed to fetch this question. Therefore, the token is added to the
+  visibilityToken is generated. If the user does not provide this token, hea the
   url of that question. Format: `/^[A-Za-z0-9]{12}$/`
 * title: Question title. Format: `/^[A-Za-z0-9 \-\+,:;\.?!'"()]+$/`
 * visibility: Enum: `['public', 'private', 'password']`
@@ -90,6 +107,7 @@ Status Code: 400
       questionId: string;
       text: string;
       createdAt: Date;
+      userId?: string;
     }
 
 * _id: Unique identifier for that document. Format: `/^[A-Za-z0-9]{12}$/`
@@ -145,6 +163,7 @@ Status Code: 404
       suggestionId: string;
       text: string;
       createdAt: Date;
+      userId?: string;
     }
 
 
@@ -155,6 +174,7 @@ Status Code: 404
       suggestionId: string;
       value: number;
       createdAt: Date;
+      userId?: string;
     }
 
 * value: Either 1 or -1.
