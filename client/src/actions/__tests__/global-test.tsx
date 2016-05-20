@@ -1,6 +1,4 @@
-jest.autoMockOff();
 jest.mock('react-router');
-jest.dontMock('../global');
 
 import { Redirect, redirect } from '../global';
 

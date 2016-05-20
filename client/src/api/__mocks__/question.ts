@@ -14,3 +14,9 @@ export function fetch(id: string): Promise<QuestionModel> {
 		else return reject('Not found');
 	});
 }
+
+export function find(filter: Object): Promise<QuestionModel[]> {
+	return new Promise((resolve, reject) => {
+		return resolve([]);
+	});
+}

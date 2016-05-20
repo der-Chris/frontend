@@ -51,7 +51,7 @@ class CreateQuestion extends React.Component<any, any> {
 	};
 }
 
-const mapStateToProps = (state: AppState) => state.createQuestion;
+const mapStateToProps = (state: AppState) => (state || {}).createQuestion || {};
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch) => ({
 	titleChange: (title: string) => dispatch(titleChange(title)),

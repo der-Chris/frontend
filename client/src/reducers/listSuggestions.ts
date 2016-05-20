@@ -10,7 +10,7 @@ export interface ListSuggestionsState {
 	fetchAllActive: boolean;
 }
 
-let defaultState: ListSuggestionsState = {
+export const defaultState: ListSuggestionsState = {
 	suggestions: [],
 	fetchAllActive: false
 };

@@ -1,6 +1,4 @@
-jest.dontMock('../question');
-jest.dontMock('../global');
-jest.dontMock('../../models/Question');
+jest.mock('../../api/question');
 
 import AppState from '../../reducers/AppState';
 import Action, { FuncAction, SimpleAction } from '../Action';

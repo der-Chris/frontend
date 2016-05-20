@@ -1,5 +1,3 @@
-jest.dontMock('../Suggestion');
-
 import { textValidator } from '../Suggestion';
 
 describe('Suggestion model', () => {

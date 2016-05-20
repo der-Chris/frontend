@@ -1,4 +1,5 @@
-import AppState from "./AppState";
+import AppState from './AppState';
+
 import { SimpleAction } from '../actions/Action';
 import { FindActive, FindDone, FindDoneAction } from '../actions/listQuestions';
 import { QuestionModel } from '../models/Question';
@@ -8,7 +9,7 @@ export interface ListQuestionsState {
 	findActive: boolean;
 }
 
-let defaultState: ListQuestionsState = {
+export const defaultState: ListQuestionsState = {
 	questions: [],
 	findActive: false
 };

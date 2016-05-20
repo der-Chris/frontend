@@ -11,9 +11,10 @@ import { redirectViewQuestion } from '../actions/question';
 interface Props {
 	titleText?: string;
 	filter: Object;
+	questions: QuestionModel[];
 }
 
-class ListQuestions extends React.Component<any, any> {
+class ListQuestions extends React.Component<Props, any> {
 	componentDidMount() {
 		this.props.findQuestions(this.props.filter);
 	}
