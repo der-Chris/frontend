@@ -17,9 +17,9 @@ Users email address is stored in the _id field, so that an email address uniquly
 
     {
       _id: string;
-      visibilityToken?: string;
       title: string;
       visibility: string;
+      visibilityToken?: string;
       userId?: string;
       meta: {
         createdAt: Date;
@@ -29,12 +29,12 @@ Users email address is stored in the _id field, so that an email address uniquly
     }
 
 * _id: Unique identifier for that document. Format: `/^[A-Za-z0-9]{12}$/`
+* title: Question title. Format: `/^[A-Za-z0-9 \-\+,:;\.?!'"()]+$/`
+* visibility: Enum: `['public', 'private', 'password']`
 * visibilityToken: Randomly generated token. This should act as kind of a
   shared key. If the visibility of this question is set to private, a random
   visibilityToken is generated. If the user does not provide this token, hea the
   url of that question. Format: `/^[A-Za-z0-9]{12}$/`
-* title: Question title. Format: `/^[A-Za-z0-9 \-\+,:;\.?!'"()]+$/`
-* visibility: Enum: `['public', 'private', 'password']`
 
 
 ### Create
