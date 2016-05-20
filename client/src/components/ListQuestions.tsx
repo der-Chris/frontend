@@ -4,19 +4,27 @@ import { Link } from 'react-router';
 
 import Box from '../ui/Box';
 import AppState from '../reducers/AppState';
+import { ListQuestionsState } from '../reducers/listQuestions';
 import { QuestionModel } from '../models/Question';
 import { find } from '../actions/listQuestions';
 import { redirectViewQuestion } from '../actions/question';
 
+interface Actions {
+	findQuestions: (filter: Object) => void;
+	redirectViewQuestion: (question: QuestionModel) => void;
+}
+
 interface Props {
 	titleText?: string;
 	filter: Object;
-	questions: QuestionModel[];
+	
+	state?: ListQuestionsState;
+	actions?: Actions;
 }
 
 class ListQuestions extends React.Component<Props, any> {
 	componentDidMount() {
-		this.props.findQuestions(this.props.filter);
+		this.props.actions.findQuestions(this.props.filter);
 	}
 
 	render() {
@@ -24,7 +32,7 @@ class ListQuestions extends React.Component<Props, any> {
 			<div className="component list-questions">
 				{this.props.titleText ? <h2>{this.props.titleText}</h2> : ''}
 
-				{this.props.questions.map((question: QuestionModel) => {
+				{this.props.state.questions.map((question: QuestionModel) => {
 					return (
 						<Box onClick={this.onQuestionClick.bind(this, question)} key={question._id}>
 							<h3>{question.title}</h3>
@@ -37,11 +45,11 @@ class ListQuestions extends React.Component<Props, any> {
 	}
 
 	onQuestionClick(question: QuestionModel) {
-		this.props.redirectViewQuestion(question);
+		this.props.actions.redirectViewQuestion(question);
 	}
 }
 
-const mapStateToProps = (state: AppState) => state.listQuestions;
+const mapStateToProps = (state: AppState) => ({ state: state.listQuestions });
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch) => ({
 	findQuestions: (filter: Object) => dispatch(find(filter)),

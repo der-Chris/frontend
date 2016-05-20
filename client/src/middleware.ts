@@ -8,8 +8,7 @@ export const thunkMiddleware = (store: Redux.Store) => (next: any) => (action: A
 		let funcAction = action as FuncAction;
 		return funcAction(store.dispatch, store.getState);
 	}
-	else 
-        console.log(action);return next(action);
+	else return next(action);
 };
 
 /**

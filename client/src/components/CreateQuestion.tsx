@@ -7,56 +7,68 @@ import Button from '../ui/Button';
 import Flipswitch from '../ui/Flipswitch';
 
 import AppState from '../reducers/AppState';
+import { CreateQuestionState } from '../reducers/createQuestion';
 import { QuestionModel, Visibility } from '../models/Question';
 import { titleChange, visibilityChange, submitClick } from '../actions/createQuestion';
 
-class CreateQuestion extends React.Component<any, any> {
+interface Actions {
+	titleChange: (title: string) => void;
+	visibilityChange: (visibility: Visibility) => void;
+	submitClick: () => void;
+}
+
+interface Props {
+	state?: CreateQuestionState;
+	actions?: Actions;
+}
+
+class CreateQuestion extends React.Component<Props, {}> {
 	render() {
 		return (
 			<div className="component create-question">
-				<h2>Create Question {this.props.saveActive}</h2>
+				<h2>Create Question</h2>
 				
-				<TextField type="text" value={this.props.title}
+				<TextField type="text" value={this.props.state.title}
 					hintText="Help me choose which used car to buy."
 					labelText="Enter your Question here"
-					errorText={this.props.titleValid}
-					disabled={this.props.saveActive}
+					errorText={this.props.state.titleValid}
+					disabled={this.props.state.saveActive}
 					onChange={this.onTitleChange} />
 
-				<Flipswitch checked={this.props.visibility === 'public'}
+				<Flipswitch checked={this.props.state.visibility === 'public'}
 					labelText="Visibility"
 					onLabel="Public" offLabel="Private"
 					onChange={this.onVisibilityChange} />
 				
 				<div style={{textAlign: 'right'}}>
 					<Button labelText="Create" onClick={this.onCreateClick}
-						active={this.props.saveActive}
-						disabled={!('titleValid' in this.props) || !!this.props.titleValid || this.props.saveActive} />
+						active={this.props.state.saveActive}
+						disabled={!('titleValid' in this.props) || !!this.props.state.titleValid || this.props.state.saveActive} />
 				</div>
 			</div>
 		);
 	}
 	
 	onTitleChange = (event: any) => {
-		this.props.titleChange(event.target.value);
+		this.props.actions.titleChange(event.target.value);
 	};
 
 	onVisibilityChange = (event: any) => {
-		let visibility = event.target.checked ? 'public' : 'private';
-		this.props.visibilityChange(visibility);
+		let visibility: Visibility = event.target.checked ? 'public' : 'private';
+		this.props.actions.visibilityChange(visibility);
 	};
 	
 	onCreateClick = (event: React.MouseEvent) => {
-		this.props.submitClick();
+		this.props.actions.submitClick();
 	};
 }
 
-const mapStateToProps = (state: AppState) => (state || {}).createQuestion || {};
+const mapStateToProps = (state: AppState) => ({ state: state.createQuestion });
 
-const mapDispatchToProps = (dispatch: Redux.Dispatch) => ({
+const mapDispatchToProps = (dispatch: Redux.Dispatch) => ({ action: {
 	titleChange: (title: string) => dispatch(titleChange(title)),
 	visibilityChange: (visibility: Visibility) => dispatch(visibilityChange(visibility)),
 	submitClick: () => dispatch(submitClick())
-});
+}});
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateQuestion);

@@ -1,23 +1,17 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import * as TestUtils from 'react-addons-test-utils';
 
 import CreateQuestion from '../CreateQuestion';
-import Action from '../../actions/Action';
-import AppState from '../../reducers/AppState';
+import reducer from '../../reducers/index';
+import { thunkMiddleware } from '../../middleware';
 
 describe('CreateQuestion', () => {
 
-	function reducer(state: any = {}, action: Action): AppState {
-		return null;
-	}
-
 	it('should display empty question title input', () => {
-		return;
-		
-		let store = createStore(reducer);
+		let store = createStore(reducer, applyMiddleware(thunkMiddleware));
 		
 		const createQuestion = TestUtils.renderIntoDocument(
 			<Provider store={store}>
@@ -25,7 +19,7 @@ describe('CreateQuestion', () => {
 			</Provider>
 		);
 		const createQuestionNode = ReactDOM.findDOMNode(createQuestion);
-		expect(createQuestionNode.textContent).toEqual('Create Question');
+		expect(createQuestionNode.textContent).toContain('Create Question');
 	});
 
 });
