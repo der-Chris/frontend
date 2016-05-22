@@ -45,3 +45,28 @@ export function find(filter: Object): Promise<QuestionModel[]> {
 			});
 	});
 }
+
+import { API_MOCKS } from '../config';
+if (API_MOCKS) {
+	let mocker = require('superagent-mocker');
+	let mock = mocker(request);
+
+	const mockedQuestions: QuestionModel[] = [
+		{
+			_id: 'id1',
+			visibility: 'public',
+			title: 'Mocked public Question',
+			createdAt: '2016-05-20'
+		}
+	];
+
+	mock.post(baseUrl + '/search', function () {
+		return {
+			body: mockedQuestions
+		};
+	});
+	
+	mock.get(baseUrl + '/:id', function (req: any) {
+		return { body: mockedQuestions.reduce((carry: any, q: QuestionModel) => q._id === req.params.id ? q : carry) };
+	});
+}

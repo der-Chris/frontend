@@ -2,10 +2,9 @@ export type Visibility = 'public' | 'private' | 'password';
 
 export interface QuestionModel {
 	_id?: string;
-	key?: string;
+	visibility: Visibility;
 	visibilityToken?: string;
 	title: string;
-	visibility: Visibility;
 	createdAt: Date;
 }
 

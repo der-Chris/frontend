@@ -9,6 +9,7 @@ var concat = require('gulp-concat');
 var merge = require('merge-stream');
 var source = require('vinyl-source-stream');
 var resolve = require('resolve');
+var copy = require('gulp-copy');
 
 var tsProject = ts.createProject('tsconfig.json', { sortOutput: true });
 
@@ -71,6 +72,14 @@ gulp.task('client:style', function () {
 		.pipe(gulp.dest('build/client/'));
 });
 
+gulp.task('client:copy', function () {
+	return gulp.src([
+			'index.html',
+			'favicon.png'
+		])
+  		.pipe(copy('build/client/'));
+});
+
 gulp.task('client:minify', ['client:bundle'], function () {
 	gulp.src('build/client/a.js')
 		.pipe(uglify())
@@ -98,6 +107,6 @@ gulp.task('server:ts', function () {
 });
 
 gulp.task('minify', ['client:minify', 'client:vendor:minify']);
-gulp.task('client', ['client:ts', 'client:bundle']);
+gulp.task('client', ['client:ts', 'client:bundle', 'client:copy']);
 gulp.task('server', ['server:ts']);
 gulp.task('default', ['server', 'client', 'client:vendor:bundle', 'client:style']);

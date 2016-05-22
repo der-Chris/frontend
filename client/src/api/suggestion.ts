@@ -37,3 +37,24 @@ export function fetchAll(questionId: string, key?: string): Promise<SuggestionMo
 			});
 	});
 }
+
+import { API_MOCKS } from '../config';
+if (API_MOCKS) {
+	let mocker = require('superagent-mocker');
+	let mock = mocker(request);
+
+	const mockedSuggestions: { string: SuggestionModel[] } = {
+		'id1': [
+			{
+				_id: 'suggestion1',
+				questionId: 'id1',
+				text: 'What about option #1',
+				createdAt: '2016-05-20'
+			}
+		]
+	};
+	
+	mock.get(baseUrl + '/:id/suggestions', function (req: any) {
+		return { body: mockedSuggestions[req.params.id] };
+	});
+}

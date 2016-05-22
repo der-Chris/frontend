@@ -51,9 +51,9 @@ class ListQuestions extends React.Component<Props, any> {
 
 const mapStateToProps = (state: AppState) => ({ state: state.listQuestions });
 
-const mapDispatchToProps = (dispatch: Redux.Dispatch) => ({
+const mapDispatchToProps = (dispatch: Redux.Dispatch) => ({ actions: {
 	findQuestions: (filter: Object) => dispatch(find(filter)),
 	redirectViewQuestion: (question: QuestionModel) => redirectViewQuestion(question)
-});
+}});
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListQuestions);

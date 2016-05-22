@@ -1,4 +1,4 @@
-import { browserHistory } from 'react-router';
+import { hashHistory } from 'react-router';
 
 import Action from './Action';
 import { SimpleAction } from './Action';
@@ -11,7 +11,7 @@ export interface RedirectAction extends SimpleAction {
 }
 
 export function redirect(url: string): RedirectAction {
-	browserHistory.push(url);
+	hashHistory.push(url);
 
 	return {
 		type: Redirect,
