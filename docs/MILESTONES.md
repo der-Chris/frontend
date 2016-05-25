@@ -3,6 +3,13 @@
 ## v0.x
 Basic features: create question, public/private question links, post suggestion, comment and up/down vote suggestion.
 
+### Use cases
+* A user visits the site the first time, sees the "Create Question" form to directly enter a question. Below this form, the latest public questions of other users are listed.
+* A user creates a new question by filling out the "Create Question" form (title and visibilty) at the front page and gets redirected to his new question. A infobox at the top of the page explains what the user has to do (copy url, send to others, create suggestion, vote and comment).
+* A user receives a link of question, opens it and sees the title of the question, all current suggestions ordered by their current votes. By clicking on a suggestion, all their comments are displayed.
+* A user creates a suggestion for a question by posting a link or text or both in the "New Suggestion" form at a question.
+
+### Features
 * v0.3
   * Basic Question API
   * Nodejs server
@@ -19,4 +26,4 @@ Basic features: create question, public/private question links, post suggestion,
 # Planned Milestones
 
 ## v1.x
-User authentication, differential view on question after first visit.
+User authentication, differential view on question after first visit, search, tags.
