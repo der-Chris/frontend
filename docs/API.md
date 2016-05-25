@@ -2,10 +2,10 @@
 
 ## User
 
-Users email address is stored in the _id field, so that an email address uniquly identifies a user.
+Users email address is stored in the id field, so that an email address uniquly identifies a user.
 
     {
-      _id: string;
+      id: string;
       password: string;
       firstname: string;
       lastname: string;
@@ -16,25 +16,22 @@ Users email address is stored in the _id field, so that an email address uniquly
 ## Question
 
     {
-      _id: string;
+      id: string;
       title: string;
       visibility: string;
       visibilityToken?: string;
-      userId?: string;
       meta: {
         createdAt: Date;
+        userId?: string;
         ip: string;
         userAgent: string;
       }
     }
 
-* _id: Unique identifier for that document. Format: `/^[A-Za-z0-9]{12}$/`
+* id: Unique identifier for that document. Format: `/^[A-Za-z0-9]{12}$/`
 * title: Question title. Format: `/^[A-Za-z0-9 \-\+,:;\.?!'"()]+$/`
 * visibility: Enum: `['public', 'private', 'password']`
-* visibilityToken: Randomly generated token. This should act as kind of a
-  shared key. If the visibility of this question is set to private, a random
-  visibilityToken is generated. If the user does not provide this token, hea the
-  url of that question. Format: `/^[A-Za-z0-9]{12}$/`
+* visibilityToken: Randomly generated token. This should act as kind of a shared key. If the visibility of this question is set to private, a random visibilityToken is generated. If the user does not provide this token, hea the url of that question. Format: `/^[A-Za-z0-9]{12}$/`
 
 
 ### Create
@@ -59,11 +56,9 @@ Status Code: 400
 
 
 ### Get
-`GET /api/v1/question/:_id/:visibilityToken?`
+`GET /api/v1/question/:id/:visibilityToken?`
 
-If the question with the given _id has visibility set to 'private', the
-provided visibilityToken is checked. If none was given or it does not match,
-status code 401 is returned.
+If the question with the given id has visibility set to 'private', the provided visibilityToken is checked. If none was given or it does not match, status code 401 is returned.
 
 **Success**
 
@@ -83,9 +78,19 @@ Status Code: 401
 
 
 ### Search
-`POST /api/v1/question/search`
+`GET /api/v1/questions/:options`
 
-Body contains a valid Mongodb filter.
+Get a list of questions for which the given options.filter matches.
+
+TODO how shall the options object look like? How are filter given?
+
+Options must be an object like this:
+
+    {
+      filter: TODO
+      sort: TODO
+      offset: number;
+    }
 
 **Success**
 
@@ -103,21 +108,25 @@ Status Code: 400
 ## Suggestion
 
     {
-      _id?: string;
+      id?: string;
       questionId: string;
       text: string;
-      createdAt: Date;
-      userId?: string;
+      meta: {
+        createdAt: Date;
+        userId?: string;
+        ip: string;
+        userAgent: string;
+      }
     }
 
-* _id: Unique identifier for that document. Format: `/^[A-Za-z0-9]{12}$/`
+* id: Unique identifier for that document. Format: `/^[A-Za-z0-9]{12}$/`
 * questionId: Id of the question this suggestions belongs to.
   Format: `/^[A-Za-z0-9]{12}$/`
 * text: Content of suggestion. Format: `/^[A-Za-z0-9 \/\-\+,:;\.?!=#'"()]+$/`
 
 
 ### Create
-`PUT /api/v1/question/:_id/:visibilityToken?/suggestion`
+`PUT /api/v1/question/:id/:visibilityToken?/suggestion`
 
     {
       text: string;
@@ -137,7 +146,7 @@ Status Code: 400
 
 
 ### Get
-`GET /api/v1/question/:_id/:key?/suggestions`
+`GET /api/v1/question/:id/:visibilityToken?/suggestions`
 
 **Success**
 
@@ -159,22 +168,30 @@ Status Code: 404
 ## Comment
 
     {
-      _id: string;
+      id: string;
       suggestionId: string;
       text: string;
-      createdAt: Date;
-      userId?: string;
+      meta: {
+        createdAt: Date;
+        userId?: string;
+        ip: string;
+        userAgent: string;
+      }
     }
 
 
 ## Vote
 
     {
-      _id: string;
+      id: string;
       suggestionId: string;
       value: number;
-      createdAt: Date;
-      userId?: string;
+      meta: {
+        createdAt: Date;
+        userId?: string;
+        ip: string;
+        userAgent: string;
+      }
     }
 
 * value: Either 1 or -1.
