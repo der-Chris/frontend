@@ -43,13 +43,17 @@ if (API_MOCKS) {
 	let mocker = require('superagent-mocker');
 	let mock = mocker(request);
 
-	const mockedSuggestions: { string: SuggestionModel[] } = {
+	const mockedSuggestions: { [qid: string]: SuggestionModel[] } = {
 		'id1': [
 			{
-				_id: 'suggestion1',
+				id: 'suggestion1',
 				questionId: 'id1',
 				text: 'What about option #1',
-				createdAt: '2016-05-20'
+				meta: {
+					createdAt: new Date(),
+					ip: '127.0.0.1',
+					userAgent: ''
+				}
 			}
 		]
 	};

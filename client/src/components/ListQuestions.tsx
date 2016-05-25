@@ -34,9 +34,9 @@ class ListQuestions extends React.Component<Props, any> {
 
 				{this.props.state.questions.map((question: QuestionModel) => {
 					return (
-						<Box onClick={this.onQuestionClick.bind(this, question)} key={question._id}>
+						<Box onClick={this.onQuestionClick.bind(this, question)} key={question.id}>
 							<h3>{question.title}</h3>
-							<small>Created at {question.createdAt}</small>
+							<small>Created at {question.meta.createdAt}</small>
 						</Box>
 					);
 				})}

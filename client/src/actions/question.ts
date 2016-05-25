@@ -28,10 +28,10 @@ export function fetchById(id: string, key?: string): FuncAction {
 }
 
 export function redirectViewQuestion(question: QuestionModel): RedirectAction {
-	let url = '/please/' + question._id;
+	let url = '/please/' + question.id;
 	if (question.visibility === 'private') {
 		// QuestionModel is private -> append key to url
-		url += '/' + question.key;
+		url += '/' + question.visibilityToken;
 	}
 	
 	return redirect(url);

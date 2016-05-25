@@ -23,9 +23,9 @@ class PleaseSuggestions extends React.Component<any, any> {
 				<div>
 					{this.props.suggestions.map((suggestion: SuggestionModel) => {
 						return (
-							<Box key={suggestion._id}>
+							<Box key={suggestion.id}>
 								<h3>{suggestion.text}</h3>
-								<small>Created at {suggestion.createdAt}</small>
+								<small>Created at {suggestion.meta.createdAt}</small>
 							</Box>
 						);
 					})}

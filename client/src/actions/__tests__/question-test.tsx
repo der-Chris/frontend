@@ -27,7 +27,7 @@ describe('question actions', () => {
 						expect(simpleAction.type).toBe(FetchDone);
 						let fetchDoneAction = action as FetchDoneAction;
 						expect(fetchDoneAction.question).toBeDefined();
-						expect(fetchDoneAction.question._id).toBe('__id');
+						expect(fetchDoneAction.question.id).toBe('__id');
 						resolve();
 					}
 
@@ -66,11 +66,15 @@ describe('question actions', () => {
 
 	describe('redirectViewQuestion', () => {
 		let q: QuestionModel = {
-			_id: '__id',
-			key: '__key',
-			title: 'Test',
+			id: '__id',
 			visibility: 'private',
-			createdAt: new Date()
+			visibilityToken: '__key',
+			title: 'Test',
+			meta: {
+				createdAt: new Date(),
+				ip: '',
+				userAgent: ''
+			}
 		};
 
 		it('should redirect to public & password questions', () => {

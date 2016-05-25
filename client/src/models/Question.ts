@@ -1,11 +1,16 @@
 export type Visibility = 'public' | 'private' | 'password';
 
 export interface QuestionModel {
-	_id?: string;
+	id?: string;
 	visibility: Visibility;
 	visibilityToken?: string;
 	title: string;
-	createdAt: Date;
+	meta: {
+		createdAt: Date;
+		userId?: string;
+		ip: string;
+		userAgent: string;
+	};
 }
 
 export function titleValidator(title: string): string {

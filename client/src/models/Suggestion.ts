@@ -1,10 +1,13 @@
-import { ObjectID } from 'mongodb';
-
 export interface SuggestionModel {
-	_id?: string;
-	questionId: ObjectID;
+	id?: string;
+	questionId: string;
 	text: string;
-	createdAt: Date;
+	meta: {
+		createdAt: Date;
+		userId?: string;
+		ip: string;
+		userAgent: string;
+	};
 }
 
 export function textValidator(text: string): string {

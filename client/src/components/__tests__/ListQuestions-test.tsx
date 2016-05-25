@@ -1,4 +1,3 @@
-jest.mock('../../actions/listQuestions');
 jest.mock('../../api/question');
 
 import * as React from 'react';
@@ -9,6 +8,7 @@ import * as TestUtils from 'react-addons-test-utils';
 
 import reducer from '../../reducers/index';
 import { thunkMiddleware } from '../../middleware';
+import ListQuestions from '../ListQuestions';
 
 describe('ListQuestions', () => {
 
@@ -18,7 +18,6 @@ describe('ListQuestions', () => {
 		const titleText = 'List Questions Test Title Text';
 		const filter = { visibility: 'public' };
 
-		return;
 		const listQuestions = TestUtils.renderIntoDocument(
 			<Provider store={store}>
 				<ListQuestions titleText={titleText} filter={filter} />

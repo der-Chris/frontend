@@ -3,13 +3,18 @@ import { QuestionModel } from '../../models/Question';
 export function fetch(id: string): Promise<QuestionModel> {
 	return new Promise((resolve, reject) => {
 		if (id === '__id') {
-			return resolve({
-				_id: id,
-				key: 'key',
-				title: 'Mock api/quesion:fetch',
+			const q: QuestionModel = {
+				id: id,
 				visibility: 'public',
-				createdAt: new Date().toISOString()
-			});
+				visibilityToken: 'key',
+				title: 'Mock api/quesion:fetch',
+				meta: {
+					createdAt: new Date(),
+					ip: '127.0.0.1',
+					userAgent: ''
+				}
+			};
+			return resolve(q);
 		}
 		else return reject('Not found');
 	});

@@ -53,10 +53,14 @@ if (API_MOCKS) {
 
 	const mockedQuestions: QuestionModel[] = [
 		{
-			_id: 'id1',
+			id: 'id1',
 			visibility: 'public',
 			title: 'Mocked public Question',
-			createdAt: '2016-05-20'
+			meta: {
+				createdAt: new Date(),
+				ip: '127.0.0.1',
+				userAgent: ''
+			}
 		}
 	];
 
@@ -67,6 +71,6 @@ if (API_MOCKS) {
 	});
 	
 	mock.get(baseUrl + '/:id', function (req: any) {
-		return { body: mockedQuestions.reduce((carry: any, q: QuestionModel) => q._id === req.params.id ? q : carry) };
+		return { body: mockedQuestions.reduce((carry: any, q: QuestionModel) => q.id === req.params.id ? q : carry) };
 	});
 }
