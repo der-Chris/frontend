@@ -8,6 +8,7 @@ Basic features: create question, public/private question links, post suggestion,
 * A user creates a new question by filling out the "Create Question" form (title and visibilty) at the front page and gets redirected to his new question. A infobox at the top of the page explains what the user has to do (copy url, send to others, create suggestion, vote and comment).
 * A user receives a link of question, opens it and sees the title of the question, all current suggestions ordered by their current votes. By clicking on a suggestion, all their comments are displayed.
 * A user creates a suggestion for a question by posting a link or text or both in the "New Suggestion" form at a question.
+* As soon as a user visits the site, a cookie is generated to identify that user. All user actions are associated with the cookie's value such that the user can revisit the site without loosing track of the content he created. This mechanism will be replaced by user authentication in version 1.x.
 
 ### Features
 * v0.3
