@@ -20,10 +20,10 @@ export function create(title: string, visibility: Visibility): Promise<QuestionM
 	});
 }
 
-export function fetch(id: string, key?: string): Promise<QuestionModel> {
+export function fetch(id: string, visibilityToken?: string): Promise<QuestionModel> {
 	return new Promise((resolve, reject) => {
 		let url = baseUrl + '/' + id;
-		if (key) url += '/' + key;
+		if (visibilityToken) url += '/' + visibilityToken;
 
 		request
 			.get(url)

@@ -68,7 +68,7 @@ describe('question actions', () => {
 		let q: QuestionModel = {
 			id: '__id',
 			visibility: 'private',
-			visibilityToken: '__key',
+			visibilityToken: '__visibilityToken',
 			title: 'Test',
 			meta: {
 				createdAt: new Date(),
@@ -99,7 +99,7 @@ describe('question actions', () => {
 			let action = redirectViewQuestion(q);
 			expect(action).toBeDefined();
 			expect(action.type).toBe(Redirect);
-			expect(action.url).toBe('/please/__id/__key');
+			expect(action.url).toBe('/please/__id/__visibilityToken');
 		});
 	});
 

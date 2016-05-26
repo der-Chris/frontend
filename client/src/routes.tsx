@@ -10,7 +10,7 @@ export class Routes extends React.Component<any, any> {
 			<Router history={hashHistory}>
 				<Route path="/" component={Frontpage} />
 				<Route path="/please/:id" component={Please} />
-				<Route path="/please/:id/:key" component={Please} />
+				<Route path="/please/:id/:visibilityToken" component={Please} />
 			</Router>
 		);
 	}

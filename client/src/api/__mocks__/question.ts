@@ -6,7 +6,7 @@ export function fetch(id: string): Promise<QuestionModel> {
 			const q: QuestionModel = {
 				id: id,
 				visibility: 'public',
-				visibilityToken: 'key',
+				visibilityToken: 'visibilityToken',
 				title: 'Mock api/quesion:fetch',
 				meta: {
 					createdAt: new Date(),

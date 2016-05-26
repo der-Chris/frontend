@@ -13,9 +13,9 @@ export interface FetchDoneAction extends SimpleAction {
 	fetchError?: any;
 }
 
-export function fetchById(id: string, key?: string): FuncAction {
+export function fetchById(id: string, visibilityToken?: string): FuncAction {
 	return (dispatch: Redux.Dispatch) => {
-		QuestionApi.fetch(id, key)
+		QuestionApi.fetch(id, visibilityToken)
 			.then((question: QuestionModel) => {
 				return dispatch({ type: FetchDone, question });
 			})
@@ -30,7 +30,7 @@ export function fetchById(id: string, key?: string): FuncAction {
 export function redirectViewQuestion(question: QuestionModel): RedirectAction {
 	let url = '/please/' + question.id;
 	if (question.visibility === 'private') {
-		// QuestionModel is private -> append key to url
+		// QuestionModel is private -> append visibilityToken to url
 		url += '/' + question.visibilityToken;
 	}
 	

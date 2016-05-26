@@ -10,9 +10,9 @@ export interface FetchAllDoneAction extends SimpleAction {
 	suggestions: SuggestionModel[];
 }
 
-export function fetchAll(questionId: string, key?: string): Action {
+export function fetchAll(questionId: string, visibilityToken?: string): Action {
 	return (dispatch: Redux.Dispatch, getState: () => AppState) => {
-		SuggestionApi.fetchAll(questionId, key)
+		SuggestionApi.fetchAll(questionId, visibilityToken)
 			.then((suggestions: SuggestionModel[]) => {
 				let action: FetchAllDoneAction = {
 					type: FetchAllDone,

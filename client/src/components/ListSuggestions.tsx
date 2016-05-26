@@ -10,7 +10,7 @@ import { SuggestionModel } from '../models/Suggestion';
 
 class PleaseSuggestions extends React.Component<any, any> {
 	componentDidMount() {
-		this.props.fetchAll(this.props.questionId, this.props.key);
+		this.props.fetchAll(this.props.questionId, this.props.visibilityToken);
 	}
 
 	render() {
@@ -23,7 +23,7 @@ class PleaseSuggestions extends React.Component<any, any> {
 				<div>
 					{this.props.suggestions.map((suggestion: SuggestionModel) => {
 						return (
-							<Box key={suggestion.id}>
+							<Box>
 								<h3>{suggestion.text}</h3>
 								<small>Created at {suggestion.meta.createdAt}</small>
 							</Box>
@@ -43,7 +43,7 @@ class PleaseSuggestions extends React.Component<any, any> {
 const mapStateToProps = (state: AppState) => state.listSuggestions;
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch) => ({
-	fetchAll: (questionId: string, key?: string) => dispatch(fetchAll(questionId, key))
+	fetchAll: (questionId: string, visibilityToken?: string) => dispatch(fetchAll(questionId, visibilityToken))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PleaseSuggestions);

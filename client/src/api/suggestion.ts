@@ -6,10 +6,10 @@ import { SuggestionModel } from '../models/Suggestion';
 
 const baseUrl = '/api/v1/question';
 
-export function create(text: string, questionId: string, key?: string): Promise<SuggestionModel> {
+export function create(text: string, questionId: string, visibilityToken?: string): Promise<SuggestionModel> {
 	return new Promise((resolve, reject) => {
 		let url = baseUrl + '/' + questionId;
-		if (key) url += '/' + key;
+		if (visibilityToken) url += '/' + visibilityToken;
 		url += '/suggestion';
 		request
 			.put(url)
@@ -23,10 +23,10 @@ export function create(text: string, questionId: string, key?: string): Promise<
 	});
 }
 
-export function fetchAll(questionId: string, key?: string): Promise<SuggestionModel[]> {
+export function fetchAll(questionId: string, visibilityToken?: string): Promise<SuggestionModel[]> {
 	return new Promise((resolve, reject) => {
 		let url = baseUrl + '/' + questionId;
-		if (key) url += '/' + key;
+		if (visibilityToken) url += '/' + visibilityToken;
 		url += '/suggestions';
 
 		request

@@ -12,7 +12,7 @@ import ListSuggestions from '../components/ListSuggestions';
 
 class Please extends React.Component<any, any> {
 	componentDidMount() {
-		this.props.fetchQuestion(this.props.params.id, this.props.params.key);
+		this.props.fetchQuestion(this.props.params.id, this.props.params.visibilityToken);
 	}
 
 	render() {
@@ -37,7 +37,7 @@ class Please extends React.Component<any, any> {
 					<CreateSuggestion />
 					<ListSuggestions
 						questionId={this.props.params.id}
-						key={this.props.params.key} />
+						visibilityToken={this.props.params.visibilityToken} />
 				</div>;
 		}
 		
@@ -53,7 +53,7 @@ class Please extends React.Component<any, any> {
 const mapStateToProps = (state: AppState) => state.question;
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch) => ({
-	fetchQuestion: (id: string, key?: string) => dispatch(fetchById(id, key))
+	fetchQuestion: (id: string, visibilityToken?: string) => dispatch(fetchById(id, visibilityToken))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Please);
