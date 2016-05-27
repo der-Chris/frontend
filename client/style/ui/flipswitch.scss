@@ -21,6 +21,10 @@
 		color: $text-primary-color;
 		cursor: pointer;
 	}
+	input[type=checkbox]:disabled + label.switch {
+		color: $text-secondary-color;
+		cursor: not-allowed;
+	}
 
 	label.switch .on-label {
 		display: none;

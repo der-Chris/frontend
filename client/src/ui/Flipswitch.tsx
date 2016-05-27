@@ -2,6 +2,7 @@ import * as React from 'react';
 
 interface Props {
 	checked: boolean;
+	disabled?: boolean;
 	labelText: string;
 	onLabel: string;
 	offLabel: string;
@@ -15,6 +16,7 @@ export default class Flipswitch extends React.Component<Props, {}> {
 				<label className="text" htmlFor="flipswitch">{this.props.labelText}:</label>
 
 				<input type="checkbox" name="flipswitch" id="flipswitch"
+					disabled={!!this.props.disabled}
 					checked={this.props.checked}
 					onChange={this.props.onChange} />
 
