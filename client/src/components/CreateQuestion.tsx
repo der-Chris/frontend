@@ -37,13 +37,14 @@ class CreateQuestion extends React.Component<Props, {}> {
 
 				<Flipswitch checked={this.props.state.visibility === 'public'}
 					labelText="Visibility"
+					disabled={this.props.state.saveActive}
 					onLabel="Public" offLabel="Private"
 					onChange={this.onVisibilityChange} />
 				
 				<div style={{textAlign: 'right'}}>
 					<Button labelText="Create" onClick={this.onCreateClick}
 						active={this.props.state.saveActive}
-						disabled={!('titleValid' in this.props) || !!this.props.state.titleValid || this.props.state.saveActive} />
+						disabled={!('titleValid' in this.props.state) || !!this.props.state.titleValid || this.props.state.saveActive} />
 				</div>
 			</div>
 		);
@@ -65,7 +66,7 @@ class CreateQuestion extends React.Component<Props, {}> {
 
 const mapStateToProps = (state: AppState) => ({ state: state.createQuestion });
 
-const mapDispatchToProps = (dispatch: Redux.Dispatch) => ({ action: {
+const mapDispatchToProps = (dispatch: Redux.Dispatch) => ({ actions: {
 	titleChange: (title: string) => dispatch(titleChange(title)),
 	visibilityChange: (visibility: Visibility) => dispatch(visibilityChange(visibility)),
 	submitClick: () => dispatch(submitClick())

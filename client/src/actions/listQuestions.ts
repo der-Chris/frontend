@@ -13,7 +13,6 @@ export interface FindDoneAction extends SimpleAction {
 
 export function find(filter: Object): Action {
 	return (dispatch: Redux.Dispatch, getState: () => AppState) => {
-		let state = getState();
 		QuestionApi.find(filter)
 			.then((questions: QuestionModel[]) => {
 				let action: FindDoneAction = {

@@ -1,6 +1,7 @@
 /// <reference path='../../typings/main.d.ts' />
 /// <reference path='../../history.d.ts' />
 /// <reference path='../../superagent.d.ts' />
+/// <reference path='../../pouchdb.d.ts' />
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';

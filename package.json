@@ -36,6 +36,7 @@
     "express": "^4.13.4",
     "mongodb": "^2.1.10",
     "normalize.css": "^4.1.1",
+    "pouchdb": "^5.3.2",
     "react": "^15.0.2",
     "react-dom": "^15.0.2",
     "react-redux": "^4.4.1",
