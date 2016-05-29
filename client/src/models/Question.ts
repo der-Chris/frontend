@@ -1,7 +1,7 @@
 export type Visibility = 'public' | 'private' | 'password';
 
 export interface QuestionModel {
-	id?: string;
+	_id?: string;
 	visibility: Visibility;
 	visibilityToken?: string;
 	title: string;

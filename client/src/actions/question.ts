@@ -28,7 +28,7 @@ export function fetchById(id: string, visibilityToken?: string): FuncAction {
 }
 
 export function redirectViewQuestion(question: QuestionModel): RedirectAction {
-	let url = '/please/' + question.id;
+	let url = '/please/' + question._id;
 	if (question.visibility === 'private') {
 		// QuestionModel is private -> append visibilityToken to url
 		url += '/' + question.visibilityToken;

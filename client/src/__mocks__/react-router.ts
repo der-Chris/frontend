@@ -1,2 +1,2 @@
-export var browserHistory: string[] = [];
 export var hashHistory: string[] = [];
+export var browserHistory: string[] = [];

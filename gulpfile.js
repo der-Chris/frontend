@@ -18,7 +18,8 @@ var vendorLibs = [
 	'react-dom',
 	'redux',
 	'react-redux',
-	'es6-shim'
+	'es6-shim',
+	'pouchdb'
 ];
 
 gulp.task('client:ts', function () {

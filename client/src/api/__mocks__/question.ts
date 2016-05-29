@@ -1,10 +1,10 @@
 import { QuestionModel } from '../../models/Question';
 
-export function fetch(id: string): Promise<QuestionModel> {
+export function fetch(_id: string): Promise<QuestionModel> {
 	return new Promise((resolve, reject) => {
-		if (id === '__id') {
+		if (_id === '__id') {
 			const q: QuestionModel = {
-				id: id,
+				_id: _id,
 				visibility: 'public',
 				visibilityToken: 'visibilityToken',
 				title: 'Mock api/quesion:fetch',
