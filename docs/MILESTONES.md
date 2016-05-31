@@ -1,7 +1,7 @@
 # Past Versions
 
 ## v0.x
-Basic features: create question, public/private question links, post suggestion, comment and up/down vote suggestion.
+Basic features: create question, public/private question links, post suggestion, comment and up/down vote suggestion, monitoring.
 
 ### Use cases
 * A user visits the site the first time, sees the "Create Question" form to directly enter a question. Below this form, the latest public questions of other users are listed.
