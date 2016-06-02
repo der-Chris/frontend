@@ -1,21 +1,15 @@
 {
-  "ambientDependencies": {
-    "axios": "github:DefinitelyTyped/DefinitelyTyped/axios/axios.d.ts#fccd7d8e6fd518ac03b687d77b0e983fe52a8de3",
-    "body-parser": "github:DefinitelyTyped/DefinitelyTyped/body-parser/body-parser.d.ts#7de6c3dd94feaeb21f20054b9f30d5dabc5efabd",
-    "es6-shim": "github:DefinitelyTyped/DefinitelyTyped/es6-shim/es6-shim.d.ts#4de74cb527395c13ba20b438c3a7a419ad931f1c",
-    "express": "github:DefinitelyTyped/DefinitelyTyped/express/express.d.ts#7de6c3dd94feaeb21f20054b9f30d5dabc5efabd",
-    "express-serve-static-core": "github:DefinitelyTyped/DefinitelyTyped/express-serve-static-core/express-serve-static-core.d.ts#7de6c3dd94feaeb21f20054b9f30d5dabc5efabd",
-    "jest": "github:DefinitelyTyped/DefinitelyTyped/jest/jest.d.ts#72314845b938bfb8c507306d5c3e45f708c2602a",
-    "mime": "github:DefinitelyTyped/DefinitelyTyped/mime/mime.d.ts#56295f5058cac7ae458540423c50ac2dcf9fc711",
-    "mongodb": "github:DefinitelyTyped/DefinitelyTyped/mongodb/mongodb.d.ts#56295f5058cac7ae458540423c50ac2dcf9fc711",
-    "node": "github:DefinitelyTyped/DefinitelyTyped/node/node.d.ts#315f5612ceb4de6f1f81f8cf49878084ea3f364a",
-    "react": "github:DefinitelyTyped/DefinitelyTyped/react/react.d.ts#f407264835650f5f38d4bb2c515a79e7a835916b",
-    "react-addons-test-utils": "github:DefinitelyTyped/DefinitelyTyped/react/react-addons-test-utils.d.ts#edb41e785093cc434ffd16e9a1f8610eae536af2",
-    "react-dom": "github:DefinitelyTyped/DefinitelyTyped/react/react-dom.d.ts#ca5bfe76d2d9bf6852cbc712d9f3e0047c93486e",
-    "react-redux": "github:DefinitelyTyped/DefinitelyTyped/react-redux/react-redux.d.ts#a513c4df6eb8505da8eef432891c8b69b73535d9",
-    "react-router": "github:DefinitelyTyped/DefinitelyTyped/react-router/react-router.d.ts#07feae11780495b90145451d48d4a50923762ef1",
-    "redux": "github:DefinitelyTyped/DefinitelyTyped/redux/redux.d.ts#a820bbdead70913f0c750802b367ed54cb99b442",
-    "serve-static": "github:DefinitelyTyped/DefinitelyTyped/serve-static/serve-static.d.ts#7de6c3dd94feaeb21f20054b9f30d5dabc5efabd",
-    "socket.io": "github:DefinitelyTyped/DefinitelyTyped/socket.io/socket.io.d.ts#7de6c3dd94feaeb21f20054b9f30d5dabc5efabd"
+  "globalDependencies": {
+    "es6-shim": "registry:dt/es6-shim#0.31.2+20160317120654",
+    "jest": "registry:dt/jest#0.9.0+20160425141105",
+    "node": "registry:dt/node#6.0.0+20160524002506",
+    "pouchdb/pouch": "registry:dt/pouchdb/pouch#0.1.0+20160425153630",
+    "react": "registry:dt/react#0.14.0+20160526134601",
+    "react-addons-test-utils": "registry:dt/react-addons-test-utils#0.14.0+20160427035638",
+    "react-dom": "registry:dt/react-dom#0.14.0+20160412154040",
+    "react-redux": "registry:dt/react-redux#4.4.0+20160501125835",
+    "react-router": "registry:dt/react-router#2.0.0+20160501155536",
+    "react-router/history": "registry:dt/react-router/history#2.0.0+20160602154905",
+    "redux": "registry:dt/redux#3.3.1+20160326112656"
   }
 }

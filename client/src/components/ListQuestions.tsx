@@ -2,7 +2,6 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
-import Box from '../ui/Box';
 import AppState from '../reducers/AppState';
 import { ListQuestionsState } from '../reducers/listQuestions';
 import { QuestionModel } from '../models/Question';
@@ -26,18 +25,20 @@ class ListQuestions extends React.Component<Props, any> {
 	componentDidMount() {
 		this.props.actions.findQuestions(this.props.filter);
 	}
-
+	
 	render() {
 		return (
-			<div className="component list-questions">
+			<div className="component list-questions columns">
 				{this.props.titleText ? <h2>{this.props.titleText}</h2> : ''}
 
 				{this.props.state.questions.map((question: QuestionModel) => {
 					return (
-						<Box onClick={this.onQuestionClick.bind(this, question)}>
-							<h3>{question.title}</h3>
-							<small>Created at {question.meta.createdAt}</small>
-						</Box>
+						<div className="column col-3 col-md-4 col-sm-6">
+							<div className="clickable card" onClick={this.onQuestionClick.bind(this, question)}>
+								<h4>{question.title}</h4>
+								<small>Created at {question.meta.createdAt}</small>
+							</div>
+						</div>
 					);
 				})}
 			</div>

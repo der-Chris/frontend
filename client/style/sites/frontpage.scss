@@ -1,0 +1,13 @@
+.site.frontpage {
+	.background {
+		background: url('bg.jpg');
+		background-position: center top;
+		background-repeat: no-repeat;
+		background-size: cover;
+
+		> .column > .card {
+			margin-top: 10vh;
+			margin-bottom: 10vh;
+		}
+	}
+}

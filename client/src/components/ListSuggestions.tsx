@@ -33,7 +33,7 @@ class PleaseSuggestions extends React.Component<any, any> {
 		}
 
 		return (
-			<div className='component list-suggestions'>
+			<div className="component list-suggestions">
 				{content}
 			</div>
 		);

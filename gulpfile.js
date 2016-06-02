@@ -51,8 +51,7 @@ gulp.task('client:vendor:bundle', function () {
 		b.require(resolve.sync(id), { expose: id });
 	});
 
-	return b
-		.bundle()
+	return b.bundle()
 		.on('error', function (err){
 			console.log(err.message);
 			this.emit('end');
@@ -65,8 +64,10 @@ gulp.task('client:style', function () {
 	var sassStream = gulp.src('client/style/**/*.scss')
 		.pipe(sass().on('error', sass.logError));
 	
-	var depStream = gulp.src('node_modules/normalize.css/normalize.css');
-	
+	var depStream = gulp.src([
+		'node_modules/spectre.css/dist/spectre.min.css'
+	]);
+
 	return merge(depStream, sassStream)
 		.pipe(concat('s.css'))
 		.pipe(cleanCSS({ compatibility: 'ie8' }))

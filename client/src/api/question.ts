@@ -2,11 +2,18 @@ let PouchDB = require('pouchdb');
 
 import { QuestionModel, Visibility } from '../models/Question';
 import * as config from '../config';
+import { randomString } from '../util';
 
 let questionsDb = new PouchDB(config.baseUrl + config.couchPrefix + '/questions');
+let questionDbs: { [questionId: string]: PouchDB } = {};
 
 export function create(title: string, visibility: Visibility): Promise<QuestionModel> {
-	const doc = {
+	const questionId = randomString(config.questionIdLength);
+	const questionDb = new PouchDB(config.baseUrl + config.couchPrefix + '/question-' + questionId);
+	questionDbs[questionId] = questionDb;
+
+	const doc: QuestionModel = {
+		_id: 'question',
 		title,
 		visibility,
 		meta: {
@@ -16,7 +23,7 @@ export function create(title: string, visibility: Visibility): Promise<QuestionM
 		}
 	};
 
-	return questionsDb.post(doc);
+	return questionDb.put(doc);
 }
 
 export function fetch(_id: string, visibilityToken?: string): Promise<QuestionModel> {
