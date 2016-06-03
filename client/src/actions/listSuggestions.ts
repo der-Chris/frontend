@@ -1,7 +1,7 @@
 import AppState from '../reducers/AppState';
 import Action, { SimpleAction } from './Action';
 import * as SuggestionApi from '../api/suggestion';
-import { SuggestionModel } from '../../../common/models/Suggestion';
+import { SuggestionModel } from '../common/models/Suggestion';
 
 export const FetchAllActive = 'listSuggestions:fetchAllActive';
 export const FetchAllDone = 'listSuggestions:fetchAllDone';

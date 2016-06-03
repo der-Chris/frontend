@@ -1,13 +1,21 @@
-.site.frontpage {
-	.background {
-		background: url('bg.jpg');
-		background-position: center top;
-		background-repeat: no-repeat;
-		background-size: cover;
+@import "../_colors";
 
-		> .column > .card {
-			margin-top: 10vh;
-			margin-bottom: 10vh;
-		}
+.site.frontpage {
+	> .columns:not(.header) > .column {
+		margin-top: 10vh;
+		margin-bottom: 10vh;
+	}
+
+	.section1 {
+//		background-color: $secondary-color
+	}
+	.section2 {
+//		background: url('bg.jpg');
+//		background-position: center top;
+//		background-repeat: no-repeat;
+//		background-size: cover;
+	}
+	.section3 {
+//		background-color: $primary-color
 	}
 }

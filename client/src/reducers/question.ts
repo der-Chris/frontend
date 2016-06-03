@@ -1,5 +1,5 @@
 import { FetchActive, FetchDone, FetchDoneAction } from '../actions/question';
-import { QuestionModel as QuestionModel, Visibility } from '../../../common/models/Question';
+import { QuestionModel as QuestionModel, Visibility } from '../common/models/Question';
 import { SimpleAction } from '../actions/Action';
 import AppState from './AppState';
 

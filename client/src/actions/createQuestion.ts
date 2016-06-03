@@ -1,6 +1,6 @@
 import AppState from '../reducers/AppState';
 import { TitleChangeAction, VisibilityChangeAction } from '../reducers/createQuestion';
-import { QuestionModel, Visibility, titleValidator } from '../../../common/models/Question';
+import { QuestionModel, Visibility, titleValidator } from '../common/models/Question';
 import * as QuestionApi from '../api/question';
 import Action from './Action';
 import { redirectViewQuestion } from './question';

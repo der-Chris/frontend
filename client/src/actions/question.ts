@@ -1,4 +1,4 @@
-import { QuestionModel } from '../../../common/models/Question';
+import { QuestionModel } from '../common/models/Question';
 import * as QuestionApi from '../api/question';
 import { redirect } from './global';
 import { RedirectAction } from './global';

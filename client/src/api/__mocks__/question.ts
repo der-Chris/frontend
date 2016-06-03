@@ -1,4 +1,4 @@
-import { QuestionModel } from '../../../../common/models/Question';
+import { QuestionModel } from '../../common/models/Question';
 
 export function fetch(_id: string): Promise<QuestionModel> {
 	return new Promise((resolve, reject) => {

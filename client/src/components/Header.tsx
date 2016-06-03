@@ -12,20 +12,26 @@ class Header extends React.Component<Props, {}> {
 	render() {
 		return (
 			<div className="component header columns">
-				<div className="column col-12 centered">
+				<div className="column col-12">
 
-					<header className="navbar">
-						<section className="navbar-section">
-							<a href="#" className="btn btn-link btn-lg">
-								<i className="icon icon-people"></i>
-							</a>
-							<a href="#" className="navbar-brand">Help Me Choose</a>
-						</section>
-						
-						<section className="navbar-section">
-							<a href="#" className="btn btn-link">Legal</a>
-						</section>
-					</header>
+					<div className="columns grid-960 centered">
+						<div className="column col-12">
+					
+							<header className="navbar">
+								<section className="navbar-section">
+									<a href="#" className="btn btn-link btn-lg">
+										<i className="icon icon-people"></i>
+									</a>
+									<a href="#" className="navbar-brand">Help Me Choose</a>
+								</section>
+								
+								<section className="navbar-section">
+									<a href="#" className="btn btn-link">Legal</a>
+								</section>
+							</header>
+
+						</div>
+					</div>
 
 				</div>
 			</div>

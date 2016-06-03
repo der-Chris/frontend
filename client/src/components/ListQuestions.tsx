@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 
 import AppState from '../reducers/AppState';
 import { ListQuestionsState } from '../reducers/listQuestions';
-import { QuestionModel } from '../../../common/models/Question';
+import { QuestionModel } from '../common/models/Question';
 import { find } from '../actions/listQuestions';
 import { redirectViewQuestion } from '../actions/question';
 
@@ -33,10 +33,12 @@ class ListQuestions extends React.Component<Props, any> {
 
 				{this.props.state.questions.map((question: QuestionModel) => {
 					return (
-						<div className="column col-3 col-md-4 col-sm-6">
+						<div className="column col-3 col-md-4 col-sm-6 col-xs-12" key={question._id}>
 							<div className="clickable card" onClick={this.onQuestionClick.bind(this, question)}>
-								<h4>{question.title}</h4>
-								<small>Created at {question.meta.createdAt}</small>
+								<div className="card-header">
+									<h4 className="card-title">{question.title}</h4>
+									<h6 className="card-meta">Created at {question.meta.createdAt}</h6>
+								</div>
 							</div>
 						</div>
 					);

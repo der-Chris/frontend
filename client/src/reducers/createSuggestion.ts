@@ -1,7 +1,7 @@
 import AppState from "./AppState";
 import { SimpleAction } from '../actions/Action';
 import { TextChange, SaveActive, SaveDone } from '../actions/createSuggestion';
-import { SuggestionModel } from '../../../common/models/Suggestion';
+import { SuggestionModel } from '../common/models/Suggestion';
 
 export interface CreateSuggestionState {
 	text: string;

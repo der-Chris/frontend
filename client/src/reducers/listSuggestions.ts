@@ -1,7 +1,7 @@
 import AppState from './AppState';
 import { SimpleAction } from '../actions/Action';
 import { FetchAllActive, FetchAllDone, FetchAllDoneAction } from '../actions/listSuggestions';
-import { SuggestionModel } from '../../../common/models/Suggestion';
+import { SuggestionModel } from '../common/models/Suggestion';
 import { SaveDone as SaveSuggestionDone } from '../actions/createSuggestion';
 import { SaveDoneAction as SaveSuggestionDoneAction } from './createSuggestion';
 

@@ -4,6 +4,10 @@ html, body {
 	background-color: $background-color;
 }
 
+.columns {
+	flex-wrap: wrap
+}
+
 .clickable {
 	cursor: pointer;
 }

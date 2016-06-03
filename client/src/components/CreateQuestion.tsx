@@ -8,7 +8,7 @@ import Flipswitch from '../ui/Flipswitch';
 
 import AppState from '../reducers/AppState';
 import { CreateQuestionState } from '../reducers/createQuestion';
-import { QuestionModel, Visibility } from '../../../common/models/Question';
+import { QuestionModel, Visibility } from '../common/models/Question';
 import { titleChange, visibilityChange, submitClick } from '../actions/createQuestion';
 
 interface Actions {
