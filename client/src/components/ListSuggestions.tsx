@@ -6,7 +6,7 @@ import Progress from '../ui/Progress';
 
 import AppState from '../reducers/AppState';
 import { fetchAll } from '../actions/listSuggestions';
-import { SuggestionModel } from '../models/Suggestion';
+import { SuggestionModel } from '../../../common/models/Suggestion';
 
 class PleaseSuggestions extends React.Component<any, any> {
 	componentDidMount() {

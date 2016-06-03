@@ -2,7 +2,7 @@ jest.mock('../../api/question');
 
 import AppState from '../../reducers/AppState';
 import Action, { FuncAction, SimpleAction } from '../Action';
-import { QuestionModel } from '../../models/Question';
+import { QuestionModel } from '../../../../common/models/Question';
 import { FetchActive, FetchDone, fetchById, redirectViewQuestion, FetchDoneAction } from '../question';
 import { Redirect } from '../global';
 

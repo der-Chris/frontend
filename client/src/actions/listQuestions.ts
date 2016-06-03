@@ -2,7 +2,7 @@ import AppState from '../reducers/AppState';
 import Action from './Action';
 import { SimpleAction } from './Action';
 import * as QuestionApi from '../api/question';
-import { QuestionModel } from '../models/Question';
+import { QuestionModel } from '../../../common/models/Question';
 
 export const FindActive = 'listQuestions:findActive';
 export const FindDone = 'listQuestions:findDone';

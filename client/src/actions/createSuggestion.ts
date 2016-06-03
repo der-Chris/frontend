@@ -1,6 +1,6 @@
 import AppState from '../reducers/AppState';
 import { TextChangeAction } from '../reducers/createSuggestion';
-import { SuggestionModel, textValidator } from '../models/Suggestion';
+import { SuggestionModel, textValidator } from '../../../common/models/Suggestion';
 import * as SuggestionApi from '../api/suggestion';
 import Action from './Action';
 

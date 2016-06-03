@@ -1,7 +1,7 @@
 import { TitleChange, SaveActive, SaveDone } from '../actions/createQuestion';
-import AppState from "./AppState";
-import { Visibility } from "../models/Question";
-import { VisibilityChange } from "../actions/createQuestion";
+import AppState from './AppState';
+import { Visibility } from '../../../common/models/Question';
+import { VisibilityChange } from '../actions/createQuestion';
 import { SimpleAction } from '../actions/Action';
 
 export interface CreateQuestionState {

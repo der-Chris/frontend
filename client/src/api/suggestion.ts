@@ -1,10 +1,10 @@
-import * as request from 'superagent';
-import { Response } from 'superagent';
-
-import { QuestionModel } from '../models/Question';
-import { SuggestionModel } from '../models/Suggestion';
+import { QuestionModel } from '../../../common/models/Question';
+import { SuggestionModel } from '../../../common/models/Suggestion';
 
 const baseUrl = '/api/v1/question';
+
+// TODO
+let request: any;
 
 export function create(text: string, questionId: string, visibilityToken?: string): Promise<SuggestionModel> {
 	return new Promise((resolve, reject) => {

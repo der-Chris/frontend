@@ -2,7 +2,7 @@ import AppState from './AppState';
 
 import { SimpleAction } from '../actions/Action';
 import { FindActive, FindDone, FindDoneAction } from '../actions/listQuestions';
-import { QuestionModel } from '../models/Question';
+import { QuestionModel } from '../../../common/models/Question';
 
 export interface ListQuestionsState {
 	questions: QuestionModel[];

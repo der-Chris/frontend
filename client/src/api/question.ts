@@ -1,6 +1,6 @@
 let PouchDB = require('pouchdb');
 
-import { QuestionModel, Visibility } from '../models/Question';
+import { QuestionModel, Visibility } from '../../../common/models/Question';
 import * as config from '../config';
 import { randomString } from '../util';
 

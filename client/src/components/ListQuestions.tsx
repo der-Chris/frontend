@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 
 import AppState from '../reducers/AppState';
 import { ListQuestionsState } from '../reducers/listQuestions';
-import { QuestionModel } from '../models/Question';
+import { QuestionModel } from '../../../common/models/Question';
 import { find } from '../actions/listQuestions';
 import { redirectViewQuestion } from '../actions/question';
 
