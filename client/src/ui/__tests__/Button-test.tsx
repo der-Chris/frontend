@@ -19,16 +19,19 @@ describe('Button', () => {
 		const button = TestUtils.renderIntoDocument(
 			<Button labelText="Button Label" onClick={clickHandler} />
 		);
-		const buttonNode = ReactDOM.findDOMNode(button);
+		expect(button instanceof React.Component).toBeTruthy();
+		if (button instanceof React.Component) {
+			const buttonNode = ReactDOM.findDOMNode(button);
 
-		expect(buttonNode.textContent).toEqual('Button Label');
-		expect(clickCount).toEqual(0);
+			expect(buttonNode.textContent).toEqual('Button Label');
+			expect(clickCount).toEqual(0);
 
-		// Click with disabled = false
-		TestUtils.Simulate.click(
-			TestUtils.findRenderedDOMComponentWithTag(button, 'button')
-		);
-		expect(clickCount).toEqual(1);
+			// Click with disabled = false
+			TestUtils.Simulate.click(
+				TestUtils.findRenderedDOMComponentWithTag(button, 'button')
+			);
+			expect(clickCount).toEqual(1);
+		}
 	});
 
 	it('should not be clickable if disabled', () => {
@@ -37,11 +40,14 @@ describe('Button', () => {
 		const button = TestUtils.renderIntoDocument(
 			<Button labelText="Button Label" disabled={true} onClick={clickHandler} />
 		);
-		TestUtils.Simulate.click(
-			TestUtils.findRenderedDOMComponentWithTag(button, 'button')
-		);
+		expect(button instanceof React.Component).toBeTruthy();
+		if (button instanceof React.Component) {
+			TestUtils.Simulate.click(
+				TestUtils.findRenderedDOMComponentWithTag(button, 'button')
+			);
 
-		expect(clickCount).toEqual(0);
+			expect(clickCount).toEqual(0);
+		}
 	});
 
 });

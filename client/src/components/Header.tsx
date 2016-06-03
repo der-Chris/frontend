@@ -5,6 +5,7 @@ import { Link } from 'react-router';
 import AppState from '../reducers/AppState';
 
 interface Props {
+	actions: {};
 }
 
 class Header extends React.Component<Props, {}> {
@@ -34,6 +35,6 @@ class Header extends React.Component<Props, {}> {
 
 const mapStateToProps = (state: AppState) => ({});
 
-const mapDispatchToProps = (dispatch: Redux.Dispatch) => ({ actions: {}});
+const mapDispatchToProps = (dispatch: Redux.Dispatch) => ({ actions: {} });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
