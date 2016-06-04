@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import Box from '../ui/Box';
 import TextField from '../ui/TextField';
 import Button from '../ui/Button';
 import AppState from '../reducers/AppState';
@@ -11,7 +10,7 @@ class CreateSuggestion extends React.Component<any, any> {
 	render() {
 		return (
 			<div className="component create-suggestion">
-				<Box>
+				<div className="card">
 					<TextField type="text"
 						value={this.props.text}
 						hintText="Enter your suggestion here."
@@ -26,7 +25,7 @@ class CreateSuggestion extends React.Component<any, any> {
 					</div>
 
 					<div className="clearfix"></div>
-				</Box>
+				</div>
 			</div>
 		);
 	}

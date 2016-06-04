@@ -29,10 +29,10 @@ class Please extends React.Component<Props, {}> {
 		if (this.props.fetchError) {
 			heading = 'Fetch Error';
 			content =
-				<Box>
+				<div className="card">
 					<pre>{this.props.fetchError.message}</pre>
 					<Link to={'/'}>Back to Frontpage...</Link>
-				</Box>;
+				</div>;
 		}
 		else if (this.props.fetchActive || !this.props.question) {
 			heading = 'Loading...';
@@ -52,7 +52,7 @@ class Please extends React.Component<Props, {}> {
 		return (
 			<div className="site please container">
 				<Header />
-				
+
 				<h1>{heading}</h1>
 				{content}
 			</div>
