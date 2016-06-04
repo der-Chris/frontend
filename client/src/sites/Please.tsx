@@ -2,12 +2,13 @@ import * as React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
-import Progress from '../ui/Progress';
-
 import AppState from '../reducers/AppState';
 import { fetchById } from '../actions/question';
+import Header from '../components/Header';
 import CreateSuggestion from '../components/CreateSuggestion';
 import ListSuggestions from '../components/ListSuggestions';
+
+import Progress from '../ui/Progress';
 
 interface Actions {
 	fetchQuestion: (id: string, visibilityToken?: string) => void;
@@ -49,7 +50,9 @@ class Please extends React.Component<Props, {}> {
 		}
 		
 		return (
-			<div className="site please">
+			<div className="site please container">
+				<Header />
+				
 				<h1>{heading}</h1>
 				{content}
 			</div>

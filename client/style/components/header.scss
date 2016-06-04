@@ -1,9 +1,20 @@
 @import "../_colors";
 
+$header-height: 62px;
+
+body {
+	padding-top: $header-height;
+}
+
 .component.header {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: $header-height;
 	margin-left: -1rem;
 	margin-right: -1rem;
 
+	box-shadow: 0 0vh .5rem 0vh $shadow-color;
 	background-color: $foreground-color;
 
 	.column {

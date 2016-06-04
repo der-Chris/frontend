@@ -7,8 +7,6 @@ import Header from '../components/Header';
 import CreateQuestion from '../components/CreateQuestion';
 import ListQuestions from '../components/ListQuestions';
 
-const filter = { visibility: 'public' };
-
 interface Props {
 }
 
@@ -16,7 +14,6 @@ class Frontpage extends React.Component<Props, {}> {
 	render() {
 		return (
 			<div className="site frontpage container">
-				
 				<Header />
 				
 				<div className="section1 columns">
@@ -73,7 +70,7 @@ class Frontpage extends React.Component<Props, {}> {
 						
 						<div className="columns grid-960 centered">
 							<div className="column col-12">
-								<ListQuestions filter={filter} />
+								<ListQuestions />
 							</div>
 						</div>
 

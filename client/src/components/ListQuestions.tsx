@@ -15,7 +15,6 @@ interface Actions {
 
 interface Props {
 	titleText?: string;
-	filter: Object;
 	
 	state?: ListQuestionsState;
 	actions?: Actions;
@@ -23,7 +22,7 @@ interface Props {
 
 class ListQuestions extends React.Component<Props, any> {
 	componentDidMount() {
-		this.props.actions.findQuestions(this.props.filter);
+		this.props.actions.findQuestions({ visibility: 'public' });
 	}
 	
 	render() {
