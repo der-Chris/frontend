@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
-import Box from '../ui/Box';
 import Progress from '../ui/Progress';
 
 import AppState from '../reducers/AppState';
@@ -10,9 +9,17 @@ import { fetchById } from '../actions/question';
 import CreateSuggestion from '../components/CreateSuggestion';
 import ListSuggestions from '../components/ListSuggestions';
 
-class Please extends React.Component<any, any> {
+interface Actions {
+	fetchQuestion: (id: string, visibilityToken?: string) => void;
+}
+
+interface Props {
+	actions?: Actions;
+}
+
+class Please extends React.Component<Props, {}> {
 	componentDidMount() {
-		this.props.fetchQuestion(this.props.params.id, this.props.params.visibilityToken);
+		this.props.actions.fetchQuestion(this.props.params.id, this.props.params.visibilityToken);
 	}
 
 	render() {
@@ -52,8 +59,8 @@ class Please extends React.Component<any, any> {
 
 const mapStateToProps = (state: AppState) => state.question;
 
-const mapDispatchToProps = (dispatch: Redux.Dispatch) => ({
+const mapDispatchToProps = (dispatch: Redux.Dispatch) => ({ actions: {
 	fetchQuestion: (id: string, visibilityToken?: string) => dispatch(fetchById(id, visibilityToken))
-});
+}});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Please);

@@ -1,16 +1,23 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import Box from '../ui/Box';
 import Progress from '../ui/Progress';
 
 import AppState from '../reducers/AppState';
 import { fetchAll } from '../actions/listSuggestions';
 import { SuggestionModel } from '../common/models/Suggestion';
 
-class PleaseSuggestions extends React.Component<any, any> {
+interface Actions {
+	fetchAll: (questionId: string, visibilityToken?: string) => void;
+}
+
+interface Props {
+	actions?: Actions;
+}
+
+class PleaseSuggestions extends React.Component<Props, {}> {
 	componentDidMount() {
-		this.props.fetchAll(this.props.questionId, this.props.visibilityToken);
+		this.props.actions.fetchAll(this.props.questionId, this.props.visibilityToken);
 	}
 
 	render() {
@@ -23,10 +30,10 @@ class PleaseSuggestions extends React.Component<any, any> {
 				<div>
 					{this.props.suggestions.map((suggestion: SuggestionModel) => {
 						return (
-							<Box>
+							<div className="card" key={suggestion._id}>
 								<h3>{suggestion.text}</h3>
 								<small>Created at {suggestion.meta.createdAt}</small>
-							</Box>
+							</div>
 						);
 					})}
 				</div>;
@@ -42,8 +49,8 @@ class PleaseSuggestions extends React.Component<any, any> {
 
 const mapStateToProps = (state: AppState) => state.listSuggestions;
 
-const mapDispatchToProps = (dispatch: Redux.Dispatch) => ({
+const mapDispatchToProps = (dispatch: Redux.Dispatch) => ({ actions: {
 	fetchAll: (questionId: string, visibilityToken?: string) => dispatch(fetchAll(questionId, visibilityToken))
-});
+}});
 
 export default connect(mapStateToProps, mapDispatchToProps)(PleaseSuggestions);

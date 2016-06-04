@@ -3,8 +3,10 @@ window.PouchDB = PouchDB;
 
 import * as config from './config';
 
-const remoteQuestionsDb = new PouchDB(config.baseUrl + config.couchPrefix + '/questions');
-export const questionsDb = new PouchDB('questions');
+export const questionsDb = new PouchDB(config.couchUrl + config.couchPrefix + '/questions');
+
+/*const remoteQuestionsDb = new PouchDB(config.couchUrl + config.couchPrefix + '/questions_test');
+export const questionsDb = new PouchDB('questions_test');
 
 questionsDb.sync(remoteQuestionsDb, {
 		live: true,
@@ -26,3 +28,4 @@ questionsDb.sync(remoteQuestionsDb, {
 		// totally unhandled error (shouldn't happen)
 		console.log('error', err);
 	});
+*/

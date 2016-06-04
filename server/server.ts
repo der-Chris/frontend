@@ -1,6 +1,3 @@
-/// <reference path="../typings/main.d.ts" />
-/// <reference path="../history.d.ts" />
-
 import 'source-map-support/register';
 import * as express from 'express';
 import { Request, Response } from 'express';
