@@ -1,7 +1,4 @@
-/// <reference path='../../typings/index.d.ts' />
-// <reference path='../../history.d.ts' />
-// <reference path='../../superagent.d.ts' />
-// <reference path='../../pouchdb.d.ts' />
+/// <reference path='../typings/index.d.ts' />
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
