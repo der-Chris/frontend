@@ -1,5 +1,6 @@
 {
   "globalDependencies": {
+    "classnames": "registry:dt/classnames#0.0.0+20160316155526",
     "es6-shim": "registry:dt/es6-shim#0.31.2+20160317120654",
     "jest": "registry:dt/jest#0.9.0+20160425141105",
     "node": "registry:dt/node#6.0.0+20160524002506",

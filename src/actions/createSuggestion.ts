@@ -12,7 +12,7 @@ export function textChange(text: string): TextChangeAction {
 	return {
 		type: TextChange,
 		text,
-		textValid: textValidator(text)
+		textError: textValidator(text)
 	};
 }
 

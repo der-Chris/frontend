@@ -9,6 +9,7 @@ import Flipswitch from '../ui/Flipswitch';
 import AppState from '../reducers/AppState';
 import { CreateQuestionState } from '../reducers/createQuestion';
 import { QuestionModel, Visibility } from '../common/models/Question';
+import ValidationError from '../common/ValidationError';
 import { titleChange, visibilityChange, submitClick } from '../actions/createQuestion';
 
 interface Actions {
@@ -24,29 +25,36 @@ interface Props {
 
 class CreateQuestion extends React.Component<Props, {}> {
 	render() {
-		return (
-			<div className="component create-question">
-				<h2>Create Question</h2>
-				
-				<TextField type="text" value={this.props.state.title}
-					hintText="Help me choose which used car to buy."
-					labelText="Enter your Question here"
-					errorText={this.props.state.titleValid}
-					disabled={this.props.state.saveActive}
-					onChange={this.onTitleChange} />
+		console.log(this.props.state.titleError);
 
-				<Flipswitch checked={this.props.state.visibility === 'public'}
-					labelText="Visibility"
-					disabled={this.props.state.saveActive}
-					onLabel="Public" offLabel="Private"
-					onChange={this.onVisibilityChange} />
+		return (
+			<form className="component create-question">
+				<h2>Create your own Question</h2>
 				
-				<div style={{textAlign: 'right'}}>
-					<Button labelText="Create" onClick={this.onCreateClick}
-						active={this.props.state.saveActive}
-						disabled={!('titleValid' in this.props.state) || !!this.props.state.titleValid || this.props.state.saveActive} />
+				<div className="card">
+					<div className="card-body">
+					
+						<TextField type="text" value={this.props.state.title}
+							hintText="Enter your Question here"
+							errorText={ValidationError[this.props.state.titleError]}
+							disabled={this.props.state.saveActive}
+							onChange={this.onTitleChange} />
+
+						<Flipswitch checked={this.props.state.visibility === 'public'}
+							labelText="Visibility"
+							disabled={this.props.state.saveActive}
+							onLabel="Public" offLabel="Private"
+							onChange={this.onVisibilityChange} />
+						
+						<div style={{textAlign: 'right'}}>
+							<Button labelText="Create" onClick={this.onCreateClick}
+								active={this.props.state.saveActive}
+								disabled={!('titleValid' in this.props.state) || !!this.props.state.titleError || this.props.state.saveActive} />
+						</div>
+
+					</div>
 				</div>
-			</div>
+			</form>
 		);
 	}
 	

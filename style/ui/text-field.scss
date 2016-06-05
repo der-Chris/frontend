@@ -1,28 +1,8 @@
 @import "../_colors";
 
-$input-padding-horizontally: 0.8em;
-
 .ui.text-field {
-	display: block;
-	margin-top: 1em;
-
-	span {
-		display: block;
-		margin-bottom: 0.2em;
-
-		color: $text-secondary-color;
-	}
-
-	input {
-		width: 100%;
-		padding: 0.5em $input-padding-horizontally;
-
-		color: black;
-		border: 1px solid $border-color;
-	}
-
 	span.error {
-		margin-left: $input-padding-horizontally;
-		color: red;
+		border-color: #e85600;
+		color: #e85600;
 	}
 }

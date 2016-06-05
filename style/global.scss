@@ -11,3 +11,7 @@ html, body {
 .clickable {
 	cursor: pointer;
 }
+
+.tooltip:after {
+	white-space: nowrap;
+}

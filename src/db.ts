@@ -1,9 +1,14 @@
 let PouchDB = require('pouchdb');
-window.PouchDB = PouchDB;
 
 import * as config from './config';
 
-export const questionsDb = new PouchDB(config.couchUrl + config.couchPrefix + '/questions');
+interface PouchWindow extends Window {
+	PouchDB: PouchDB;
+}
+
+(<PouchWindow>window).PouchDB = PouchDB;
+
+export const questionsDb = new PouchDB(config.couchUrl + 'questions');
 
 /*const remoteQuestionsDb = new PouchDB(config.couchUrl + config.couchPrefix + '/questions_test');
 export const questionsDb = new PouchDB('questions_test');

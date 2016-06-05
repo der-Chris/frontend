@@ -56,10 +56,8 @@ class Frontpage extends React.Component<Props, {}> {
 				<div className="section2 columns">
 					<div className="column col-12">
 
-						<div className="card grid-960 centered">
-							<div className="card-body">
-								<CreateQuestion />
-							</div>
+						<div className="grid-960 centered">
+							<CreateQuestion />
 						</div>
 
 					</div>

@@ -9,7 +9,6 @@ var concat = require('gulp-concat');
 var merge = require('merge-stream');
 var source = require('vinyl-source-stream');
 var resolve = require('resolve');
-var copy = require('gulp-copy');
 
 var tsProject = ts.createProject('tsconfig.json', { sortOutput: true });
 
@@ -34,7 +33,7 @@ gulp.task('ts', function () {
 		.pipe(gulp.dest('build/src/'));
 });
 
-gulp.task('bundle', ['ts'], function () {
+gulp.task('app', ['ts'], function () {
 	return browserify('build/src/app.js', {
 			debug: true
 		})
@@ -75,11 +74,8 @@ gulp.task('style', function () {
 });
 
 gulp.task('assets', function () {
-	return gulp.src([
-			'index.html',
-			'favicon.png'
-		])
-  		.pipe(copy('build/'));
+	return gulp.src('assets/*')
+  		.pipe(gulp.dest('build/'));
 });
 
 gulp.task('app:minify', ['bundle'], function () {
@@ -97,5 +93,4 @@ gulp.task('vendor:minify', ['vendor'], function () {
 });
 
 gulp.task('minify', ['app:minify', 'vendor:minify']);
-gulp.task('client', ['ts', 'bundle', 'assets']);
-gulp.task('default', ['client']);
+gulp.task('default', ['app', 'vendor', 'assets', 'style']);

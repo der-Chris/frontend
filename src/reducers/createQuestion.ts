@@ -1,5 +1,6 @@
-import { TitleChange, SaveActive, SaveDone } from '../actions/createQuestion';
 import AppState from './AppState';
+import { TitleChange, SaveActive, SaveDone } from '../actions/createQuestion';
+import ValidationError from '../common/ValidationError';
 import { Visibility } from '../common/models/Question';
 import { VisibilityChange } from '../actions/createQuestion';
 import { SimpleAction } from '../actions/Action';
@@ -7,14 +8,13 @@ import { SimpleAction } from '../actions/Action';
 export interface CreateQuestionState {
 	title: string;
 	visibility: Visibility;
-
-	titleValid?: string;
+	titleError?: ValidationError;
 	saveActive?: boolean;
 }
 
 export interface TitleChangeAction extends SimpleAction {
 	title: string;
-	titleValid: string;
+	titleError: ValidationError;
 }
 
 export interface VisibilityChangeAction extends SimpleAction {
@@ -32,7 +32,7 @@ export default function createQuestion(state: CreateQuestionState = defaultState
 			var titleChangeAction = action as TitleChangeAction;
 			return Object.assign({}, state, {
 				title: titleChangeAction.title,
-				titleValid: titleChangeAction.titleValid
+				titleError: titleChangeAction.titleError
 			});
 
 		case VisibilityChange:

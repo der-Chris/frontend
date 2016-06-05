@@ -1,17 +1,18 @@
-import AppState from "./AppState";
+import AppState from './AppState';
 import { SimpleAction } from '../actions/Action';
 import { TextChange, SaveActive, SaveDone } from '../actions/createSuggestion';
 import { SuggestionModel } from '../common/models/Suggestion';
+import ValidationError from '../common/ValidationError';
 
 export interface CreateSuggestionState {
 	text: string;
-	textValid?: string;
+	textError?: ValidationError;
 	saveActive?: boolean;
 }
 
 export interface TextChangeAction extends SimpleAction {
 	text: string;
-	textValid: string;
+	textError: ValidationError;
 }
 
 export interface SaveDoneAction extends SimpleAction {
@@ -28,7 +29,7 @@ export default function createSuggestion(state: CreateSuggestionState = defaultS
 			var textChangeAction = action as TextChangeAction;
 			return Object.assign({}, state, {
 				text: textChangeAction.text,
-				textValid: textChangeAction.textValid
+				textError: textChangeAction.textError
 			});
 
 		case SaveActive:

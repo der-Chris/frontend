@@ -1,9 +1,9 @@
 import * as React from 'react';
+import * as classnames from 'classnames';
 
 interface TextFieldProps {
 	type: string;
 	value?: string;
-	labelText?: string;
 	hintText: string;
 	errorText?: string;
 	disabled?: boolean;
@@ -16,17 +16,19 @@ export default class TextField extends React.Component<TextFieldProps, {}> {
 		if (typeof disabled === 'undefined') disabled = false;
 
 		return (
-			<label className="ui text-field">
-				{this.props.labelText ? <span>{this.props.labelText+':'}</span> : ''}
-
-				<input type={this.props.type}
+			<div className={classnames('ui text-field input-group input-lg', { 'has-danger': !!this.props.errorText })}>
+				<input className="form-input"
+					type={this.props.type}
 					placeholder={this.props.hintText}
 					value={this.props.value}
 					disabled={disabled}
 					onChange={this.props.onChange} />
 
-				{this.props.errorText ? <span className="error">{this.props.errorText}</span> : ''}
-			</label>
+				<span className={classnames('error input-group-addon input-lg tooltip tooltip-bottom', { 'hide': !this.props.errorText })}
+					data-tooltip="Lorem ipsum dolor sit amet">
+					{this.props.errorText}
+				</span>
+			</div>
 		);
 	}
 }

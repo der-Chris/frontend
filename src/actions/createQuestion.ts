@@ -14,7 +14,7 @@ export function titleChange(title: string): TitleChangeAction {
 	return {
 		type: TitleChange,
 		title: title,
-		titleValid: titleValidator(title)
+		titleError: titleValidator(title)
 	};
 }
 
