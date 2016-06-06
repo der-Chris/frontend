@@ -1,5 +1,5 @@
 export function randomString(n: number): string {
-	const chars = 'abcdefghijklmnopqrstuvwxyy0123456789';
+	const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 	const charsCount = chars.length;
 
 	var buf = new Array(n);

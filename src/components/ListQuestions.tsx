@@ -14,34 +14,30 @@ interface Actions {
 }
 
 interface Props {
-	titleText?: string;
-	
 	state?: ListQuestionsState;
 	actions?: Actions;
 }
 
-class ListQuestions extends React.Component<Props, any> {
+class ListQuestions extends React.Component<Props, {}> {
 	componentDidMount() {
 		this.props.actions.findQuestions({ visibility: 'public' });
 	}
 	
 	render() {
 		return (
-			<div className="component list-questions columns">
-				{this.props.titleText ? <h2>{this.props.titleText}</h2> : ''}
+			<div className="component list-questions">
 
-				{this.props.state.questions.map((question: QuestionModel) => {
+				{this.props.state.questions.map((question) => {
 					return (
-						<div className="column col-3 col-md-4 col-sm-6 col-xs-12" key={question._id}>
-							<div className="clickable card" onClick={this.onQuestionClick.bind(this, question)}>
-								<div className="card-header">
-									<h4 className="card-title">{question.title}</h4>
-									<h6 className="card-meta">Created at {question.meta.createdAt}</h6>
-								</div>
+						<div className="col-md-4 col-sm-6 col-xs-12" key={question._id}>
+							<div className="clickable card card-block" onClick={this.onQuestionClick.bind(this, question)}>
+								<h4 className="card-title">{question.title}</h4>
+								<p className="card-text">Created at {question.meta.createdAt}</p>
 							</div>
 						</div>
 					);
 				})}
+			
 			</div>
 		);
 	}
@@ -55,7 +51,7 @@ const mapStateToProps = (state: AppState) => ({ state: state.listQuestions });
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch) => ({ actions: {
 	findQuestions: (filter: Object) => dispatch(find(filter)),
-	redirectViewQuestion: (question: QuestionModel) => redirectViewQuestion(question)
+	redirectViewQuestion: (question: QuestionModel) => dispatch(redirectViewQuestion(question))
 }});
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListQuestions);

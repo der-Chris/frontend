@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as classnames from 'classnames';
 
 interface Props {
+	id: string;
 	labelText: string;
 	value?: string;
 	options: { [key: string]: string };
@@ -25,9 +26,16 @@ export default class Select extends React.Component<Props, {}> {
 
 		return (
 			<div className={classnames('ui select form-group')}>
-				<label className="form-control-label">{this.props.labelText}</label>
+				<label className="form-control-label"
+					htmlFor={this.props.id}>
 
-				<select className="form-control" disabled={disabled}>
+					{this.props.labelText}
+				</label>
+
+				<select className="form-control"
+					id={this.props.id}
+					disabled={disabled}>
+					
 					{options}
 				</select>
     		</div>

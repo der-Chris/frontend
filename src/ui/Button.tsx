@@ -13,7 +13,7 @@ interface Props {
 export default class Button extends React.Component<Props, {}> {
 	render() {
 		return (
-			<button className={classnames('ui button btn btn-primary', { 'disabled': this.props.disabled })}
+			<button className={classnames('ui button btn btn-primary', { 'disabled': !!this.props.disabled })}
 				disabled={!!this.props.disabled}
 				onClick={this.props.onClick}>
 				

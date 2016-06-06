@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as classnames from 'classnames';
 
 interface Props {
+	id: string;
 	type: string;
 	value?: string;
 	labelText: string;
@@ -18,13 +19,16 @@ export default class TextField extends React.Component<Props, {}> {
 
 		return (
 			<fieldset className={classnames('ui text-field form-group', { 'has-danger': !!this.props.errorText })}>
-				<label className="form-control-label">
+				<label className="form-control-label"
+					htmlFor={this.props.id}>
+					
 					{this.props.labelText}
 					{this.props.errorText ? ' - '+this.props.errorText : ''}
 				</label>
 
 				<input className={classnames('form-control', { 'form-control-danger': !!this.props.errorText })}
 					type={this.props.type}
+					id={this.props.id}
 					placeholder={this.props.hintText}
 					value={this.props.value}
 					disabled={disabled}

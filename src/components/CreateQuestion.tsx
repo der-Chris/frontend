@@ -33,31 +33,33 @@ class CreateQuestion extends React.Component<Props, {}> {
 		return visibilityOptions;
 	}
 
+	hasValidationError() {
+		return this.props.state.titleError !== null;
+	}
+
 	render() {
 		return (
 			<form className="component create-question card">
 				<div className="card-block">
 
 					<TextField type="text" value={this.props.state.title}
+						id="component-create-question_title"
 						labelText="Question Title"
 						hintText="Help me to choose what used car to buy"
 						errorText={ValidationError[this.props.state.titleError]}
 						disabled={this.props.state.saveActive}
 						onChange={this.onTitleChange} />
 
-					<div className="columns">
-						<div className="column col-6">
-							<Select labelText="Visibility"
-								disabled={this.props.state.saveActive}
-								options={this.getVisibilityOptions()}
-								onChange={this.onVisibilityChange} />
-						</div>
-					</div>
+					<Select labelText="Visibility"
+						id="component-create-question_visibility"
+						disabled={this.props.state.saveActive}
+						options={this.getVisibilityOptions()}
+						onChange={this.onVisibilityChange} />
 					
 					<div className="text-xs-right">
 						<Button labelText="Create" onClick={this.onCreateClick}
 							active={this.props.state.saveActive}
-							disabled={!('titleError' in this.props.state) || !!this.props.state.titleError || this.props.state.saveActive} />
+							disabled={this.props.state.saveActive || this.hasValidationError()} />
 					</div>
 
 				</div>

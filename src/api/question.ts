@@ -3,9 +3,9 @@ import * as config from '../config';
 import { randomString } from '../util';
 import { QuestionModel, Visibility } from '../common/models/Question';
 
-export function create(title: string, visibility: Visibility): Promise<QuestionModel> {
+export function create(title: string, visibility: Visibility): Promise<PouchUpdateResponse> {
 	const questionId = randomString(config.questionIdLength);
-
+	
 	const doc: QuestionModel = {
 		_id: questionId,
 		title,
@@ -17,7 +17,18 @@ export function create(title: string, visibility: Visibility): Promise<QuestionM
 		}
 	};
 
-	return questionsDb.put(doc);
+	if (visibility === 'private') {
+		const visibilityToken = randomString(config.questionVisibilityTokenLength);
+		doc.visibilityToken = visibilityToken;
+	}
+
+	return new Promise((resolve, reject) => {
+		questionsDb.put(doc)
+			.then((res: PouchUpdateResponse) => {
+				if (res.ok) return resolve(doc);
+				else return reject(res);
+			});
+	});
 }
 
 export function fetch(_id: string, visibilityToken?: string): Promise<QuestionModel> {

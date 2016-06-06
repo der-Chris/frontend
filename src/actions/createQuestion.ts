@@ -31,9 +31,6 @@ export function submitClick(): Action {
 		QuestionApi.create(state.createQuestion.title, state.createQuestion.visibility)
 			.then((question: QuestionModel) => {
 				dispatch({ type: SaveDone });
-				return question;
-			})
-			.then((question: QuestionModel) => {
 				dispatch(redirectViewQuestion(question));
 			});
 
