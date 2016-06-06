@@ -11,30 +11,32 @@ interface Props {
 class Header extends React.Component<Props, {}> {
 	render() {
 		return (
-			<div className="component header columns">
-				<div className="column col-12">
+			<nav className="component header navbar navbar-fixed-top navbar-light bg-faded">
+				<div className="container">
+					<div className="row">
+						<div className="col-md-12">
 
-					<div className="columns grid-960 centered">
-						<div className="column col-12">
-					
-							<header className="navbar">
-								<section className="navbar-section">
-									<a href="#" className="btn btn-link btn-lg">
-										<i className="icon icon-people"></i>
-									</a>
-									<a href="#" className="navbar-brand">Help Me Choose</a>
-								</section>
-								
-								<section className="navbar-section">
-									<a href="#" className="btn btn-link">Legal</a>
-								</section>
-							</header>
+							<button className="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="collapsingNavbar">
+								☰
+							</button>
+
+							<div className="collapse navbar-toggleable-xs" id="collapsingNavbar">
+								<a className="navbar-brand" href="#">Help Me Choose</a>
+
+								<ul className="nav navbar-nav pull-xs-right">
+									<li className="nav-item active">
+										<a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+									</li>
+									<li className="nav-item">
+										<a className="nav-link" href="#">Legal</a>
+									</li>
+								</ul>
+							</div>
 
 						</div>
 					</div>
-
 				</div>
-			</div>
+			</nav>
 		);
 	}
 }

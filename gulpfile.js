@@ -64,7 +64,7 @@ gulp.task('style', function () {
 		.pipe(sass().on('error', sass.logError));
 	
 	var depStream = gulp.src([
-		'node_modules/spectre.css/dist/spectre.min.css'
+		'node_modules/bootstrap/dist/css/bootstrap.min.css'
 	]);
 
 	return merge(depStream, sassStream)
@@ -74,7 +74,10 @@ gulp.task('style', function () {
 });
 
 gulp.task('assets', function () {
-	return gulp.src('assets/*')
+	gulp.src([
+			'assets/*',
+			'node_modules/bootstrap/dist/fonts/'
+		])
   		.pipe(gulp.dest('build/'));
 });
 

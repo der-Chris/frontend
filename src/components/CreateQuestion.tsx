@@ -3,12 +3,13 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 import TextField from '../ui/TextField';
+import Select from '../ui/Select';
 import Button from '../ui/Button';
 import Flipswitch from '../ui/Flipswitch';
 
 import AppState from '../reducers/AppState';
 import { CreateQuestionState } from '../reducers/createQuestion';
-import { QuestionModel, Visibility } from '../common/models/Question';
+import { QuestionModel, Visibility, validVisibilityValues } from '../common/models/Question';
 import ValidationError from '../common/ValidationError';
 import { titleChange, visibilityChange, submitClick } from '../actions/createQuestion';
 
@@ -25,7 +26,10 @@ interface Props {
 
 class CreateQuestion extends React.Component<Props, {}> {
 	render() {
-		console.log(this.props.state.titleError);
+		let visibilityOptions: { [key: string]: string; } = {};
+		validVisibilityValues.forEach((value: string) => {
+			visibilityOptions[value] = value;
+		});
 
 		return (
 			<form className="component create-question">
@@ -33,18 +37,21 @@ class CreateQuestion extends React.Component<Props, {}> {
 				
 				<div className="card">
 					<div className="card-body">
-					
+
 						<TextField type="text" value={this.props.state.title}
 							hintText="Enter your Question here"
 							errorText={ValidationError[this.props.state.titleError]}
 							disabled={this.props.state.saveActive}
 							onChange={this.onTitleChange} />
 
-						<Flipswitch checked={this.props.state.visibility === 'public'}
-							labelText="Visibility"
-							disabled={this.props.state.saveActive}
-							onLabel="Public" offLabel="Private"
-							onChange={this.onVisibilityChange} />
+						<div className="columns">
+							<div className="column col-6">
+								<Select labelText="Visibility"
+									disabled={this.props.state.saveActive}
+									options={visibilityOptions}
+									onChange={this.onVisibilityChange} />
+							</div>
+						</div>
 						
 						<div style={{textAlign: 'right'}}>
 							<Button labelText="Create" onClick={this.onCreateClick}

@@ -1,13 +1,19 @@
 @import "../_colors";
 
 .site.frontpage {
-	> .columns:not(.header) > .column {
-		margin-top: 10vh;
-		margin-bottom: 10vh;
+	.section1,
+	.section2,
+	.section3 {
+		padding-top: 10vh;
+		padding-bottom: 10vh;
 	}
 
 	.section1 {
-//		background-color: $secondary-color
+//		background-color: $secondary-color;
+
+		.fa {
+			font-size: 2em;
+		}
 	}
 	.section2 {
 		background: url('bg.jpg');
@@ -20,6 +26,6 @@
 			inset 0 -1vh 2vh -1vh $shadow-color;
 	}
 	.section3 {
-//		background-color: $primary-color
+//		background-color: $primary-color;
 	}
 }

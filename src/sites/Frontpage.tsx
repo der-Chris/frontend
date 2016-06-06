@@ -13,58 +13,58 @@ interface Props {
 class Frontpage extends React.Component<Props, {}> {
 	render() {
 		return (
-			<div className="site frontpage container">
+			<div className="site frontpage">
 				<Header />
 				
-				<div className="section1 columns">
-					<div className="column col-12">
-
-						<div className="columns grid-960 centered">
-							<div className="column col-12">
-								<div className="columns">
-									<div className="column col-4">
-										<div className="empty">
-											<i className="icon icon-people"></i>
-											<p className="empty-title">You have no new messages</p>
-											<p className="empty-meta">Click the button to start a conversation.</p>
-											<button className="empty-action btn btn-primary">Send a message</button>
-										</div>
-									</div>
-									<div className="column col-4">
-										<div className="empty">
-											<span className="icon icon-markunread"></span>
-											<p className="empty-title">You have no new messages</p>
-											<p className="empty-meta">Click the button to start a conversation.</p>
-											<button className="empty-action btn btn-primary">Send a message</button>
-										</div>
-									</div>
-									<div className="column col-4">
-										<div className="empty">
-											<i className="icon icon-people"></i>
-											<p className="empty-title">You have no new messages</p>
-											<p className="empty-meta">Click the button to start a conversation.</p>
-											<button className="empty-action btn btn-primary">Send a message</button>
-										</div>
-									</div>
-								</div>
+				<div className="section1 container">
+					<div className="row">
+						
+						<div className="col-md-4">
+							<div className="card card-block text-xs-center">
+								<i className="fa fa-users" aria-hidden="true"></i>
+								<h4 className="card-title">You have no new messages</h4>
+								<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+							</div>
+						</div>
+						<div className="col-md-4">
+							<div className="card card-block text-xs-center">
+								<i className="fa fa-users" aria-hidden="true"></i>
+								<h4 className="card-title">You have no new messages</h4>
+								<p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
+							</div>
+						</div>
+						<div className="col-md-4">
+							<div className="card card-block text-xs-center">
+								<i className="fa fa-users" aria-hidden="true"></i>
+								<h4 className="card-title">You have no new messages</h4>
+								<p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
 							</div>
 						</div>
 
 					</div>
 				</div>
 
-				<div className="section2 columns">
-					<div className="column col-12">
+				<div className="section2">
+					<div className="container">
+						<div className="row">
+							<div className="col-md-12">
 
-						<div className="grid-960 centered">
-							<CreateQuestion />
+								<div className="row">
+									<div className="col-lg-7 col-md-12">
+										<CreateQuestion />
+									</div>
+									<div className="col-lg-5 col-md-12">
+										<h2>Featured Questions</h2>
+									</div>
+								</div>
+
+							</div>
 						</div>
-
 					</div>
 				</div>
 
-				<div className="section3 columns">
-					<div className="column col-12">
+				<div className="section3 row">
+					<div className="col-md-12">
 						
 						<div className="columns grid-960 centered">
 							<div className="column col-12">

@@ -2,16 +2,9 @@
 
 html, body {
 	background-color: $background-color;
-}
-
-.columns {
-	flex-wrap: wrap
+	overflow-x: hidden;
 }
 
 .clickable {
 	cursor: pointer;
-}
-
-.tooltip:after {
-	white-space: nowrap;
 }
