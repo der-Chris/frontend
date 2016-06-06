@@ -1,24 +1,23 @@
 import * as React from 'react';
+import * as classnames from 'classnames';
 
 import Spinner from './Spinner';
 
-interface ButtonProps {
+interface Props {
 	labelText: string;
 	disabled?: boolean;
 	active?: boolean;
 	onClick: any;
 }
 
-export default class Button extends React.Component<ButtonProps, {}> {
+export default class Button extends React.Component<Props, {}> {
 	render() {
-		let spinner: JSX.Element = <span />;
-		if (this.props.active) {
-			spinner = <Spinner />;
-		}
-
 		return (
-			<button className="ui button" disabled={!!this.props.disabled} onClick={this.props.onClick}>
-				{spinner}
+			<button className={classnames('ui button btn btn-primary', { 'disabled': this.props.disabled })}
+				disabled={!!this.props.disabled}
+				onClick={this.props.onClick}>
+				
+				<Spinner visibile={this.props.active} />
 				{this.props.labelText}
 			</button>
 		);

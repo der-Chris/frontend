@@ -25,11 +25,9 @@ export default class Select extends React.Component<Props, {}> {
 
 		return (
 			<div className={classnames('ui select form-group')}>
-				<label className="block">{this.props.labelText}</label>
+				<label className="form-control-label">{this.props.labelText}</label>
 
-				<select className="form-select"
-					disabled={disabled}>
-
+				<select className="form-control" disabled={disabled}>
 					{options}
 				</select>
     		</div>

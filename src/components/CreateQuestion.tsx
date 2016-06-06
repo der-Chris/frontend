@@ -25,41 +25,41 @@ interface Props {
 }
 
 class CreateQuestion extends React.Component<Props, {}> {
-	render() {
+	getVisibilityOptions() {
 		let visibilityOptions: { [key: string]: string; } = {};
 		validVisibilityValues.forEach((value: string) => {
 			visibilityOptions[value] = value;
 		});
+		return visibilityOptions;
+	}
 
+	render() {
 		return (
-			<form className="component create-question">
-				<h2>Create your own Question</h2>
-				
-				<div className="card">
-					<div className="card-body">
+			<form className="component create-question card">
+				<div className="card-block">
 
-						<TextField type="text" value={this.props.state.title}
-							hintText="Enter your Question here"
-							errorText={ValidationError[this.props.state.titleError]}
-							disabled={this.props.state.saveActive}
-							onChange={this.onTitleChange} />
+					<TextField type="text" value={this.props.state.title}
+						labelText="Question Title"
+						hintText="Help me to choose what used car to buy"
+						errorText={ValidationError[this.props.state.titleError]}
+						disabled={this.props.state.saveActive}
+						onChange={this.onTitleChange} />
 
-						<div className="columns">
-							<div className="column col-6">
-								<Select labelText="Visibility"
-									disabled={this.props.state.saveActive}
-									options={visibilityOptions}
-									onChange={this.onVisibilityChange} />
-							</div>
+					<div className="columns">
+						<div className="column col-6">
+							<Select labelText="Visibility"
+								disabled={this.props.state.saveActive}
+								options={this.getVisibilityOptions()}
+								onChange={this.onVisibilityChange} />
 						</div>
-						
-						<div style={{textAlign: 'right'}}>
-							<Button labelText="Create" onClick={this.onCreateClick}
-								active={this.props.state.saveActive}
-								disabled={!('titleValid' in this.props.state) || !!this.props.state.titleError || this.props.state.saveActive} />
-						</div>
-
 					</div>
+					
+					<div className="text-xs-right">
+						<Button labelText="Create" onClick={this.onCreateClick}
+							active={this.props.state.saveActive}
+							disabled={!('titleError' in this.props.state) || !!this.props.state.titleError || this.props.state.saveActive} />
+					</div>
+
 				</div>
 			</form>
 		);

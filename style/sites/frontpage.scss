@@ -24,6 +24,10 @@
 		box-shadow:
 			inset 0 1vh 2vh -1vh $shadow-color,
 			inset 0 -1vh 2vh -1vh $shadow-color;
+
+		h2 {
+			color: white;
+		}
 	}
 	.section3 {
 //		background-color: $primary-color;

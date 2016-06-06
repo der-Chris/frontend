@@ -96,4 +96,5 @@ gulp.task('vendor:minify', ['vendor'], function () {
 });
 
 gulp.task('minify', ['app:minify', 'vendor:minify']);
+gulp.task('dev', ['app', 'style']);
 gulp.task('default', ['app', 'vendor', 'assets', 'style']);
