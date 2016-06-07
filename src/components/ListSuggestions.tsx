@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Progress from '../ui/Progress';
 
 import AppState from '../reducers/AppState';
+import { ListSuggestionsState } from '../reducers/listSuggestions';
 import { fetchAll } from '../actions/listSuggestions';
 import { SuggestionModel } from '../common/models/Suggestion';
 
@@ -12,7 +13,11 @@ interface Actions {
 }
 
 interface Props {
+	questionId: string;
+	visibilityToken?: string;
+
 	actions?: Actions;
+	state?: ListSuggestionsState;
 }
 
 class PleaseSuggestions extends React.Component<Props, {}> {
@@ -22,13 +27,13 @@ class PleaseSuggestions extends React.Component<Props, {}> {
 
 	render() {
 		let content: JSX.Element;
-		if (this.props.fetchAllActive) {
+		if (this.props.state.fetchAllActive) {
 			content = <Progress />;
 		}
 		else {
 			content =
 				<div>
-					{this.props.suggestions.map((suggestion: SuggestionModel) => {
+					{this.props.state.suggestions.map((suggestion: SuggestionModel) => {
 						return (
 							<div className="card" key={suggestion._id}>
 								<h3>{suggestion.text}</h3>
@@ -47,7 +52,7 @@ class PleaseSuggestions extends React.Component<Props, {}> {
 	}
 }
 
-const mapStateToProps = (state: AppState) => state.listSuggestions;
+const mapStateToProps = (state: AppState) => ({ state: state.listSuggestions });
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch) => ({ actions: {
 	fetchAll: (questionId: string, visibilityToken?: string) => dispatch(fetchAll(questionId, visibilityToken))

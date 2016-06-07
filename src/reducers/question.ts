@@ -6,7 +6,7 @@ import AppState from './AppState';
 export interface QuestionState {
 	question?: QuestionModel;
 	fetchActive?: boolean;
-	fetchError?: boolean;
+	fetchError?: PouchError;
 }
 
 export default function question(state: QuestionState = {}, action: SimpleAction): QuestionState {

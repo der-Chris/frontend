@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
 import AppState from '../reducers/AppState';
+import { QuestionState } from '../reducers/question';
 import { fetchById } from '../actions/question';
 import Header from '../components/Header';
 import CreateSuggestion from '../components/CreateSuggestion';
@@ -15,6 +16,12 @@ interface Actions {
 }
 
 interface Props {
+	params?: {
+		id: string;
+		visibilityToken?: string;
+	};
+
+	state?: QuestionState;
 	actions?: Actions;
 }
 
@@ -26,20 +33,20 @@ class Please extends React.Component<Props, {}> {
 	render() {
 		let heading = '', content: JSX.Element;
 
-		if (this.props.fetchError) {
+		if (this.props.state.fetchError) {
 			heading = 'Fetch Error';
 			content =
 				<div className="card">
-					<pre>{this.props.fetchError.message}</pre>
+					<pre>{this.props.state.fetchError.reason}</pre>
 					<Link to={'/'}>Back to Frontpage...</Link>
 				</div>;
 		}
-		else if (this.props.fetchActive || !this.props.question) {
+		else if (this.props.state.fetchActive || !this.props.state.question) {
 			heading = 'Loading...';
 			content = <Progress />;
 		}
 		else {
-			heading = this.props.question.title;
+			heading = this.props.state.question.title;
 			content =
 				<div>
 					<CreateSuggestion />
@@ -60,7 +67,7 @@ class Please extends React.Component<Props, {}> {
 	}
 }
 
-const mapStateToProps = (state: AppState) => state.question;
+const mapStateToProps = (state: AppState) => ({ state: state.question });
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch) => ({ actions: {
 	fetchQuestion: (id: string, visibilityToken?: string) => dispatch(fetchById(id, visibilityToken))

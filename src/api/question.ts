@@ -32,6 +32,7 @@ export function create(title: string, visibility: Visibility): Promise<PouchUpda
 }
 
 export function fetch(_id: string, visibilityToken?: string): Promise<QuestionModel> {
+	// TODO visibilityToken
 	return questionsDb.get(_id);
 }
 
