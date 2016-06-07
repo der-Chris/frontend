@@ -7,7 +7,7 @@ interface Props {
 	value?: string;
 	options: { [key: string]: string };
 	disabled?: boolean;
-	onChange: any;
+	onChange: React.FormEventHandler;
 }
 
 export default class Select extends React.Component<Props, {}> {
@@ -34,6 +34,7 @@ export default class Select extends React.Component<Props, {}> {
 
 				<select className="form-control"
 					id={this.props.id}
+					onChange={this.props.onChange}
 					disabled={disabled}>
 					
 					{options}

@@ -6,6 +6,7 @@ import Progress from '../ui/Progress';
 import AppState from '../reducers/AppState';
 import { ListSuggestionsState } from '../reducers/listSuggestions';
 import { fetchAll } from '../actions/listSuggestions';
+import { QuestionModel } from '../common/models/Question';
 import { SuggestionModel } from '../common/models/Suggestion';
 
 interface Actions {
@@ -13,16 +14,15 @@ interface Actions {
 }
 
 interface Props {
-	questionId: string;
-	visibilityToken?: string;
+	question: QuestionModel;
 
-	actions?: Actions;
-	state?: ListSuggestionsState;
+	actions: Actions;
+	state: ListSuggestionsState;
 }
 
-class PleaseSuggestions extends React.Component<Props, {}> {
+class ListSuggestions extends React.Component<Props, {}> {
 	componentDidMount() {
-		this.props.actions.fetchAll(this.props.questionId, this.props.visibilityToken);
+		this.props.actions.fetchAll(this.props.question._id, this.props.question.visibilityToken);
 	}
 
 	render() {
@@ -58,4 +58,4 @@ const mapDispatchToProps = (dispatch: Redux.Dispatch) => ({ actions: {
 	fetchAll: (questionId: string, visibilityToken?: string) => dispatch(fetchAll(questionId, visibilityToken))
 }});
 
-export default connect(mapStateToProps, mapDispatchToProps)(PleaseSuggestions);
+export default connect(mapStateToProps, mapDispatchToProps)(ListSuggestions);

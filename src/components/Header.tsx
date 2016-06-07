@@ -3,9 +3,14 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 import AppState from '../reducers/AppState';
+import { redirect } from '../actions/global';
+
+interface Actions {
+	redirectTo: (path: string) => void;
+}
 
 interface Props {
-	actions: {};
+	actions: Actions;
 }
 
 class Header extends React.Component<Props, {}> {
@@ -21,7 +26,7 @@ class Header extends React.Component<Props, {}> {
 							</button>
 
 							<div className="collapse navbar-toggleable-xs" id="collapsingNavbar">
-								<a className="navbar-brand" href="#">Help Me Choose</a>
+								<a className="navbar-brand" onClick={this.props.actions.redirectTo.bind(this, '/')} href="">Help Me Choose</a>
 
 								<ul className="nav navbar-nav pull-xs-right">
 									<li className="nav-item active">
@@ -43,6 +48,8 @@ class Header extends React.Component<Props, {}> {
 
 const mapStateToProps = (state: AppState) => ({});
 
-const mapDispatchToProps = (dispatch: Redux.Dispatch) => ({ actions: {} });
+const mapDispatchToProps = (dispatch: Redux.Dispatch) => ({ actions: {
+	redirectTo: (path: string) => dispatch(redirect(path))
+}});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

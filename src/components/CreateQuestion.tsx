@@ -20,8 +20,8 @@ interface Actions {
 }
 
 interface Props {
-	state?: CreateQuestionState;
-	actions?: Actions;
+	state: CreateQuestionState;
+	actions: Actions;
 }
 
 class CreateQuestion extends React.Component<Props, {}> {
@@ -72,6 +72,7 @@ class CreateQuestion extends React.Component<Props, {}> {
 	};
 
 	onVisibilityChange = (event: any) => {
+		console.log(event);
 		let visibility: Visibility = event.target.checked ? 'public' : 'private';
 		this.props.actions.visibilityChange(visibility);
 	};

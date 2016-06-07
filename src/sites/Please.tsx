@@ -21,8 +21,8 @@ interface Props {
 		visibilityToken?: string;
 	};
 
-	state?: QuestionState;
-	actions?: Actions;
+	state: QuestionState;
+	actions: Actions;
 }
 
 class Please extends React.Component<Props, {}> {
@@ -50,9 +50,7 @@ class Please extends React.Component<Props, {}> {
 			content =
 				<div>
 					<CreateSuggestion />
-					<ListSuggestions
-						questionId={this.props.params.id}
-						visibilityToken={this.props.params.visibilityToken} />
+					<ListSuggestions question={this.props.state.question} />
 				</div>;
 		}
 		

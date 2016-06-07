@@ -14,8 +14,8 @@ interface Actions {
 }
 
 interface Props {
-	state?: ListQuestionsState;
-	actions?: Actions;
+	state: ListQuestionsState;
+	actions: Actions;
 }
 
 class ListQuestions extends React.Component<Props, {}> {

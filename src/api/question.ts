@@ -3,7 +3,7 @@ import * as config from '../config';
 import { randomString } from '../util';
 import { QuestionModel, Visibility } from '../common/models/Question';
 
-export function create(title: string, visibility: Visibility): Promise<PouchUpdateResponse> {
+export function create(title: string, visibility: Visibility): Promise<QuestionModel> {
 	const questionId = randomString(config.questionIdLength);
 	
 	const doc: QuestionModel = {
