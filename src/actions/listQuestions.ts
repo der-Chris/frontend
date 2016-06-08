@@ -11,9 +11,9 @@ export interface FindDoneAction extends SimpleAction {
 	questions: QuestionModel[];
 }
 
-export function find(filter: Object): Action {
+export function findPublic(limit: number): Action {
 	return (dispatch: Redux.Dispatch, getState: () => AppState) => {
-		QuestionApi.find(filter)
+		QuestionApi.query('questions/public')
 			.then((questions: QuestionModel[]) => {
 				let action: FindDoneAction = {
 					type: FindDone,

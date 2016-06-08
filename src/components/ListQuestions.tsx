@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 import AppState from '../reducers/AppState';
 import { ListQuestionsState } from '../reducers/listQuestions';
 import { QuestionModel } from '../common/models/Question';
-import { find } from '../actions/listQuestions';
+import { findPublic } from '../actions/listQuestions';
 import { redirectViewQuestion } from '../actions/question';
 
 interface Actions {
@@ -20,7 +20,7 @@ interface Props {
 
 class ListQuestions extends React.Component<Props, {}> {
 	componentDidMount() {
-		this.props.actions.findQuestions({ visibility: 'public' });
+		this.props.actions.findQuestions();
 	}
 	
 	render() {
@@ -50,7 +50,7 @@ class ListQuestions extends React.Component<Props, {}> {
 const mapStateToProps = (state: AppState) => ({ state: state.listQuestions });
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch) => ({ actions: {
-	findQuestions: (filter: Object) => dispatch(find(filter)),
+	findQuestions: () => dispatch(findPublic(12)),
 	redirectViewQuestion: (question: QuestionModel) => dispatch(redirectViewQuestion(question))
 }});
 

@@ -26,11 +26,10 @@ interface Props {
 
 class CreateQuestion extends React.Component<Props, {}> {
 	getVisibilityOptions() {
-		let visibilityOptions: { [key: string]: string; } = {};
-		validVisibilityValues.forEach((value: string) => {
-			visibilityOptions[value] = value;
-		});
-		return visibilityOptions;
+		return {
+			'public': 'Public - Question is publicly accessible, anybody can contribute',
+			'private': 'Private - Question is not listed, only invited people can contribute'
+		};
 	}
 
 	hasValidationError() {

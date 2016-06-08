@@ -8,6 +8,8 @@ export function create(title: string, visibility: Visibility): Promise<QuestionM
 	
 	const doc: QuestionModel = {
 		_id: questionId,
+		type: 'question',
+		version: 1,
 		title,
 		visibility,
 		meta: {
@@ -36,7 +38,7 @@ export function fetch(_id: string, visibilityToken?: string): Promise<QuestionMo
 	return questionsDb.get(_id);
 }
 
-export function find(filter: Object): Promise<QuestionModel[]> {
-	return questionsDb.allDocs({ include_docs: true })
-		.then((res: any) => res.rows.map((row: any) => row.doc));
+export function query(viewName: string): Promise<QuestionModel[]> {
+	return questionsDb.query(viewName, { include_docs: true })
+		.then((res: PouchQueryResponse) => res.rows.map((row: any) => row.doc));
 }

@@ -1,19 +1,26 @@
 let PouchDB = require('pouchdb');
+PouchDB.debug.enable('*');
 
 import * as config from './config';
+import upgradeDb from './common/db/upgrade';
 
 interface PouchWindow extends Window {
 	PouchDB: PouchDB;
+	questionsDb: PouchApi;
 }
 
 (<PouchWindow>window).PouchDB = PouchDB;
 
-export const questionsDb = new PouchDB(config.couchUrl + 'questions');
+export const questionsDb = new PouchDB('questions');
+(<PouchWindow>window).questionsDb = questionsDb;
 
-/*const remoteQuestionsDb = new PouchDB(config.couchUrl + config.couchPrefix + '/questions_test');
-export const questionsDb = new PouchDB('questions_test');
+if (config.couchLocalOnly) {
+	upgradeDb(questionsDb);
+}
+else {
+	let remoteQuestionsDb = new PouchDB(config.couchUrl + '/questions');
 
-questionsDb.sync(remoteQuestionsDb, {
+	/*questionsDb.sync(remoteQuestionsDb, {
 		live: true,
 		retry: true
 	})
@@ -33,4 +40,5 @@ questionsDb.sync(remoteQuestionsDb, {
 		// totally unhandled error (shouldn't happen)
 		console.log('error', err);
 	});
-*/
+	*/
+}
