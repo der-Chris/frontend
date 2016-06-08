@@ -9,6 +9,8 @@ export function create(text: string, questionId: string, visibilityToken?: strin
 
 	const doc: SuggestionModel = {
 		_id: suggestionId,
+		type: 'suggestion',
+		version: 1,
 		questionId,
 		text,
 		meta: {
@@ -21,7 +23,7 @@ export function create(text: string, questionId: string, visibilityToken?: strin
 	return questionsDb.put(doc);
 }
 
-export function fetchAll(questionId: string, visibilityToken?: string): Promise<SuggestionModel[]> {
-	return questionsDb.allDocs({ include_docs: true })
-		.then((res: any) => res.rows.map((row: any) => row.doc));
+export function fetchAll(question: QuestionModel): Promise<SuggestionModel[]> {
+	return questionsDb.query('suggestions/all', { key: question._id, include_docs: true })
+		.then((res: PouchQueryResponse) => res.rows.map((row: any) => row.doc));
 }

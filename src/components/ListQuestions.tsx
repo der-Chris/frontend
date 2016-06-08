@@ -20,12 +20,15 @@ interface Props {
 
 class ListQuestions extends React.Component<Props, {}> {
 	componentDidMount() {
-		this.props.actions.findQuestions();
+		this.props.actions.findQuestions(12);
 	}
 	
 	render() {
 		return (
 			<div className="component list-questions">
+				<h2 className="col-md-12">
+					Latest Public Questions
+				</h2>
 
 				{this.props.state.questions.map((question) => {
 					return (

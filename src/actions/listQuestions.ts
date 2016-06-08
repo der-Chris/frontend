@@ -13,7 +13,7 @@ export interface FindDoneAction extends SimpleAction {
 
 export function findPublic(limit: number): Action {
 	return (dispatch: Redux.Dispatch, getState: () => AppState) => {
-		QuestionApi.query('questions/public')
+		QuestionApi.query('questions/public', limit, true)
 			.then((questions: QuestionModel[]) => {
 				let action: FindDoneAction = {
 					type: FindDone,

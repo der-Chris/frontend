@@ -9,7 +9,7 @@ import Header from '../components/Header';
 import CreateSuggestion from '../components/CreateSuggestion';
 import ListSuggestions from '../components/ListSuggestions';
 
-import Progress from '../ui/Progress';
+import Spinner from '../ui/Spinner';
 
 interface Actions {
 	fetchQuestion: (id: string, visibilityToken?: string) => void;
@@ -25,13 +25,13 @@ interface Props {
 	actions: Actions;
 }
 
-class Please extends React.Component<Props, {}> {
+class Question extends React.Component<Props, {}> {
 	componentDidMount() {
 		this.props.actions.fetchQuestion(this.props.params.id, this.props.params.visibilityToken);
 	}
 
 	render() {
-		let heading = '', content: JSX.Element;
+		let heading = '', content: JSX.Element = <span />;
 
 		if (this.props.state.fetchError) {
 			heading = 'Fetch Error';
@@ -43,22 +43,25 @@ class Please extends React.Component<Props, {}> {
 		}
 		else if (this.props.state.fetchActive || !this.props.state.question) {
 			heading = 'Loading...';
-			content = <Progress />;
 		}
 		else {
 			heading = this.props.state.question.title;
 			content =
 				<div>
-					<CreateSuggestion />
 					<ListSuggestions question={this.props.state.question} />
 				</div>;
+//					
+//					<CreateSuggestion />
 		}
 		
 		return (
 			<div className="site please container">
 				<Header />
 
-				<h1>{heading}</h1>
+				<h1>
+					{heading}
+					<Spinner visibile={this.props.state.fetchActive} />
+				</h1>
 				{content}
 			</div>
 		);
@@ -71,4 +74,4 @@ const mapDispatchToProps = (dispatch: Redux.Dispatch) => ({ actions: {
 	fetchQuestion: (id: string, visibilityToken?: string) => dispatch(fetchById(id, visibilityToken))
 }});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Please);
+export default connect(mapStateToProps, mapDispatchToProps)(Question);

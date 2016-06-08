@@ -38,7 +38,7 @@ export function fetch(_id: string, visibilityToken?: string): Promise<QuestionMo
 	return questionsDb.get(_id);
 }
 
-export function query(viewName: string): Promise<QuestionModel[]> {
-	return questionsDb.query(viewName, { include_docs: true })
+export function query(viewName: string, limit: number, descending?: boolean): Promise<QuestionModel[]> {
+	return questionsDb.query(viewName, { include_docs: true, limit, descending: !!descending })
 		.then((res: PouchQueryResponse) => res.rows.map((row: any) => row.doc));
 }

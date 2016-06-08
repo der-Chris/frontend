@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import Progress from '../ui/Progress';
+import Spinner from '../ui/Spinner';
 
 import AppState from '../reducers/AppState';
 import { ListSuggestionsState } from '../reducers/listSuggestions';
@@ -22,15 +22,12 @@ interface Props {
 
 class ListSuggestions extends React.Component<Props, {}> {
 	componentDidMount() {
-		this.props.actions.fetchAll(this.props.question._id, this.props.question.visibilityToken);
+		this.props.actions.fetchAll(this.props.question);
 	}
 
 	render() {
-		let content: JSX.Element;
-		if (this.props.state.fetchAllActive) {
-			content = <Progress />;
-		}
-		else {
+		let content: JSX.Element = <span />;
+		if (!this.props.state.fetchAllActive) {
 			content =
 				<div>
 					{this.props.state.suggestions.map((suggestion: SuggestionModel) => {
@@ -46,6 +43,7 @@ class ListSuggestions extends React.Component<Props, {}> {
 
 		return (
 			<div className="component list-suggestions">
+				<Spinner visibile={this.props.state.fetchAllActive} />
 				{content}
 			</div>
 		);
@@ -55,7 +53,7 @@ class ListSuggestions extends React.Component<Props, {}> {
 const mapStateToProps = (state: AppState) => ({ state: state.listSuggestions });
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch) => ({ actions: {
-	fetchAll: (questionId: string, visibilityToken?: string) => dispatch(fetchAll(questionId, visibilityToken))
+	fetchAll: (question: QuestionModel) => dispatch(fetchAll(question))
 }});
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListSuggestions);

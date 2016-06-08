@@ -1,6 +1,7 @@
 import AppState from '../reducers/AppState';
 import Action, { SimpleAction } from './Action';
 import * as SuggestionApi from '../api/suggestion';
+import { QuestionModel } from '../common/models/Question';
 import { SuggestionModel } from '../common/models/Suggestion';
 
 export const FetchAllActive = 'listSuggestions:fetchAllActive';
@@ -10,9 +11,9 @@ export interface FetchAllDoneAction extends SimpleAction {
 	suggestions: SuggestionModel[];
 }
 
-export function fetchAll(questionId: string, visibilityToken?: string): Action {
+export function fetchAll(question: QuestionModel): Action {
 	return (dispatch: Redux.Dispatch, getState: () => AppState) => {
-		SuggestionApi.fetchAll(questionId, visibilityToken)
+		SuggestionApi.fetchAll(question)
 			.then((suggestions: SuggestionModel[]) => {
 				let action: FetchAllDoneAction = {
 					type: FetchAllDone,
