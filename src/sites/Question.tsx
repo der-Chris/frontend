@@ -5,10 +5,10 @@ import { connect } from 'react-redux';
 import AppState from '../reducers/AppState';
 import { QuestionState } from '../reducers/question';
 import { fetchById } from '../actions/question';
-import Header from '../components/Header';
 import CreateSuggestion from '../components/CreateSuggestion';
 import ListSuggestions from '../components/ListSuggestions';
 
+import Header from '../components/Header';
 import Spinner from '../ui/Spinner';
 
 interface Actions {
@@ -16,7 +16,7 @@ interface Actions {
 }
 
 interface Props {
-	params?: {
+	params: {
 		id: string;
 		visibilityToken?: string;
 	};
@@ -30,22 +30,38 @@ class Question extends React.Component<Props, {}> {
 		this.props.actions.fetchQuestion(this.props.params.id, this.props.params.visibilityToken);
 	}
 
-	render() {
-		let heading = '', content: JSX.Element = <span />;
+	renderHeading() {
+		let heading: string;
 
 		if (this.props.state.fetchError) {
 			heading = 'Fetch Error';
-			content =
-				<div className="card">
-					<pre>{this.props.state.fetchError.reason}</pre>
-					<Link to={'/'}>Back to Frontpage...</Link>
-				</div>;
 		}
 		else if (this.props.state.fetchActive || !this.props.state.question) {
 			heading = 'Loading...';
 		}
 		else {
 			heading = this.props.state.question.title;
+		}
+
+		return (
+			<h1>
+				{heading}
+				<Spinner visibile={this.props.state.fetchActive} />
+			</h1>
+		);
+	}
+
+	render() {
+		let content: JSX.Element = <span />;
+
+		if (this.props.state.fetchError) {
+			content =
+				<div className="card">
+					<pre>{this.props.state.fetchError.reason}</pre>
+					<Link to={'/'}>Back to Frontpage...</Link>
+				</div>;
+		}
+		else if (!this.props.state.fetchActive && this.props.state.question) {
 			content =
 				<div>
 					<ListSuggestions question={this.props.state.question} />
@@ -58,10 +74,7 @@ class Question extends React.Component<Props, {}> {
 			<div className="site please container">
 				<Header />
 
-				<h1>
-					{heading}
-					<Spinner visibile={this.props.state.fetchActive} />
-				</h1>
+				{this.renderHeading()}
 				{content}
 			</div>
 		);
