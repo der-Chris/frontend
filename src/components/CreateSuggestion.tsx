@@ -25,8 +25,9 @@ class CreateSuggestion extends React.Component<Props, {}> {
 
 	render() {
 		return (
-			<div className="component create-suggestion">
-				<div className="card">
+			<div className="component create-suggestion row">
+				<form className="col-xs-12 card card-block">
+
 					<TextField type="text" value={this.props.state.text}
 						id="component-create-suggestion_text"
 						hintText=""
@@ -35,14 +36,13 @@ class CreateSuggestion extends React.Component<Props, {}> {
 						disabled={this.props.state.saveActive}
 						onChange={this.onTextChange} />
 
-					<div style={{float: 'right'}}>
+					<div className="text-xs-right">
 						<Button labelText="Create" onClick={this.onCreateClick}
 							active={this.props.state.saveActive}
 							disabled={this.props.state.saveActive || this.hasValidationError()} />
 					</div>
 
-					<div className="clearfix"></div>
-				</div>
+				</form>
 			</div>
 		);
 	}
@@ -56,7 +56,7 @@ class CreateSuggestion extends React.Component<Props, {}> {
 	};
 }
 
-const mapStateToProps = (state: AppState) => state.createSuggestion ? state.createSuggestion : {};
+const mapStateToProps = (state: AppState) => ({ state: state.createSuggestion });
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch) => ({ actions: {
 	textChange: (text: string) => dispatch(textChange(text)),

@@ -64,10 +64,9 @@ class Question extends React.Component<Props, {}> {
 		else if (!this.props.state.fetchActive && this.props.state.question) {
 			content =
 				<div>
+					<CreateSuggestion />
 					<ListSuggestions question={this.props.state.question} />
 				</div>;
-//					
-//					<CreateSuggestion />
 		}
 		
 		return (
