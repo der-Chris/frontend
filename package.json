@@ -31,6 +31,7 @@
     "es6-shim": "^0.35.0",
     "express": "^4.13.4",
     "express-http-proxy": "^0.6.0",
+    "fontawesome": "git@github.com:FortAwesome/Font-Awesome#v4.6.3",
     "morgan": "^1.7.0",
     "pouchdb": "^5.3.2",
     "react": "^15.0.2",

@@ -64,7 +64,6 @@ gulp.task('style', function () {
 		.pipe(sass().on('error', sass.logError));
 	
 	var depStream = gulp.src([
-		'node_modules/bootstrap/dist/css/bootstrap.min.css'
 	]);
 
 	return merge(depStream, sassStream)
@@ -74,14 +73,16 @@ gulp.task('style', function () {
 });
 
 gulp.task('assets', function () {
+	gulp.src('assets/*').pipe(gulp.dest('build/'));
+
+
 	gulp.src([
-			'assets/*',
-			'node_modules/bootstrap/dist/fonts/'
-		])
-  		.pipe(gulp.dest('build/'));
+		'node_modules/bootstrap/dist/fonts/*',
+		'node_modules/font-awesome/fonts/*'
+	]).pipe(gulp.dest('build/fonts/'));
 });
 
-gulp.task('app:minify', ['bundle'], function () {
+gulp.task('app:minify', ['app'], function () {
 	gulp.src('build/a.js')
 		.pipe(uglify())
 		.pipe(gulp.dest('build/'));
